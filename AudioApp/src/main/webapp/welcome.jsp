@@ -155,7 +155,7 @@
 
 									<!-- Text input-->
 									<div class="control-group">
-										<label class="control-label" for="userid">Alias:</label>
+										<label class="control-label" for="userid">User Name:</label>
 										<div class="controls">
 											<input id="fullname" name="fullname" class="form-control"
 												type="text" placeholder="Full Name" class="input-large"
@@ -217,8 +217,6 @@
 
 	<div id="footer">
 		<ul id="footer_menu">
-			<li class="homeButton"><a href="#" data-toggle="modal"
-				data-target="#login-modal">Login</a></li>
 			<li><a href="#" class="drop">About</a>
 
 				<div class="one_column_layout">
