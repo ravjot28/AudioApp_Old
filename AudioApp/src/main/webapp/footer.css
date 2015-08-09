@@ -1,6 +1,7 @@
-/* body {
-        background:url("images/bg.jpg");
-} */
+body {
+	background: url("images/bg.jpg");
+}
+
 #footer {
 	position: fixed;
 	bottom: 0px;

@@ -62,7 +62,7 @@
 
 	<!-- Button trigger modal -->
 
-	<div class="container">
+	<!-- <div class="container">
 		<hr class="prettyline">
 		<br>
 		<center>
@@ -76,7 +76,7 @@
 		</center>
 		<br>
 		<hr class="prettyline">
-	</div>
+	</div> -->
 
 
 	<!-- Modal -->
@@ -217,6 +217,8 @@
 
 	<div id="footer">
 		<ul id="footer_menu">
+			<li class="homeButton"><a href="#" data-toggle="modal"
+				data-target="#signup">Sing In/ Sign Up</a></li>
 			<li><a href="#" class="drop">About</a>
 
 				<div class="one_column_layout">
