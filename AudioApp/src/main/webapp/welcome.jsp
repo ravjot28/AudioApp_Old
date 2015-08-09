@@ -4,24 +4,43 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" href="LoginRegistration.css" type="text/css"
-	media="screen">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="footer.css" type="text/css" media="screen">
+<!-- Latest compiled and minified CSS -->
+
 <title>FameDen</title>
 
 </head>
 <body>
-	<div>
-		<s:form action="login">
-			<div align="right">
-				<s:textfield name="userName" label="Username"></s:textfield>
-				<s:password name="password" label="Password" />
-				<center>
-					<s:submit value="Login"></s:submit>
-				</center>
+
+	<div class="modal fade" id="login-modal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true"
+		style="display: none;">
+		<div class="modal-dialog">
+			<div class="loginmodal-container">
+				<h1>Login to Your Account</h1>
+				<br>
+				<s:form action="login">
+					<input type="text" name="userName" placeholder="Username">
+					<input type="password" name="password" placeholder="Password">
+					<input type="submit" name="login" class="login loginmodal-submit"
+						value="Login">
+				</s:form>
+
+				<div class="login-help">
+					<a href="#">Register</a> - <a href="#">Forgot Password</a>
+				</div>
 			</div>
-		</s:form>
+		</div>
 	</div>
 	<center>
 		<div class=transbox>
@@ -41,9 +60,9 @@
 	</center>
 	<div id="footer">
 		<ul id="footer_menu">
-
-
-			<li class="left"><a href="#" class="drop">About</a>
+			<li class="homeButton"><a href="#" data-toggle="modal"
+				data-target="#login-modal">Login</a></li>
+			<li><a href="#" class="drop">About</a>
 
 				<div class="one_column_layout">
 					<div>
