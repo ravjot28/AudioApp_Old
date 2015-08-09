@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+	<package name="basicStruts" namespace="/ravjot" extends="struts-default">
+		<action name="hello" class="com.fameden.action.MavenDemo">
+			<result name="success">index.jsp</result>
+		</action>
+	</package>
+	<package name="loginRegistration" extends="struts-default">
+		<action name="login" class="com.rav.audtioapp.action.RegisterationAction">
+			<result name="success">LoginRegistration.jsp</result>
+		</action>
+		<action name="register" class="com.rav.audtioapp.action.RegisterationAction">
+			<result name="success">index.html</result>
+		</action>
+	</package>
+
+</struts>
+    
