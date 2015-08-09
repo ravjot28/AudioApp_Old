@@ -1,7 +1,7 @@
 package com.rav.audtioapp.action;
 
-import com.rav.audtioapp.dto.RegistrationDTO;
-import com.rav.audtioapp.service.RegistrationService;
+import com.rav.audtioapp.dto.LoginDTO;
+import com.rav.audtioapp.service.LoginService;
 
 public class LoginAction {
 	private String userName;
@@ -24,8 +24,8 @@ public class LoginAction {
 	}
 
 	public String execute() {
-		RegistrationService service = new RegistrationService();
-		service.processRequest(new RegistrationDTO());
+		LoginService service = new LoginService();
+		service.processRequest(new LoginDTO());
 		return "success";
 
 	}

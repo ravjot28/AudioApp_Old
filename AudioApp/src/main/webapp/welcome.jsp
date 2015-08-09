@@ -114,7 +114,7 @@
 		style="display: none;">
 		<div class="modal-dialog">
 			<div class="loginmodal-container">
-				<h1>Login to Your Account</h1>
+				<h1>Sign Up</h1>
 				<br>
 				<s:form action="register">
 					<input type="text" id="emailAddress" name="emailAddress"
@@ -124,7 +124,7 @@
 					<input type="password" id="password" name="password"
 						placeholder="Password">
 					<input type="password" id="repassword" name="repassword"
-						placeholder="Password">
+						placeholder="Re enter the Password">
 					<input type="submit" name="login" class="login loginmodal-submit"
 						value="Login">
 				</s:form>
