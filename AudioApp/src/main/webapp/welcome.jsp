@@ -128,17 +128,6 @@
 										</div>
 									</div>
 
-									<!-- Multiple Checkboxes (inline) -->
-									<div class="control-group">
-										<label class="control-label" for="rememberme"></label>
-										<div class="controls">
-											<label class="checkbox inline" for="rememberme-0"> <input
-												type="checkbox" name="rememberme" id="rememberme-0"
-												value="Remember me"> Remember me
-											</label>
-										</div>
-									</div>
-
 									<!-- Button -->
 									<div class="control-group">
 										<label class="control-label" for="signin"></label>
