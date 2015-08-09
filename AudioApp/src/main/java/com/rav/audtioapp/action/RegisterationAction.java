@@ -1,5 +1,6 @@
 package com.rav.audtioapp.action;
 
+import com.rav.audtioapp.dto.RegistrationDTO;
 import com.rav.audtioapp.service.RegistrationService;
 
 public class RegisterationAction {
@@ -42,6 +43,7 @@ public class RegisterationAction {
 
 	public String execute() {
 		RegistrationService service = new RegistrationService();
+		service.processRequest(new RegistrationDTO());
 		return "success";
 
 	}
