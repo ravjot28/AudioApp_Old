@@ -22,203 +22,69 @@
 </head>
 <body>
 
-	<%-- <div class="modal fade" id="login-modal" tabindex="-1" role="dialog"
+	<div class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button class="navbar-toggle" type="button" data-toggle="collapse"
+					data-target="#navbar-main">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Audio App</a>
+			</div>
+
+			<center>
+				<div class="navbar-collapse collapse" id="navbar-main">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#" data-toggle="modal"
+							data-target="#login-modal">Sign Up</a></li>
+					</ul>
+
+					<s:form class="navbar-form navbar-right" role="search"
+						action="login">
+						<div class="form-group">
+							<input type="text" class="form-control" id="userName"
+								name="userName" placeholder="Username">
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" id="password"
+								name="password" placeholder="Password">
+						</div>
+						<button type="submit" class="btn btn-default">Sign In</button>
+					</s:form>
+				</div>
+			</center>
+
+		</div>
+	</div>
+
+
+
+	<div class="modal fade" id="login-modal" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true"
 		style="display: none;">
 		<div class="modal-dialog">
 			<div class="loginmodal-container">
 				<h1>Login to Your Account</h1>
 				<br>
-				<s:form action="login">
-					<input type="text" name="userName" placeholder="Username">
-					<input type="password" name="password" placeholder="Password">
+				<s:form action="register">
+					<input type="text" id="emailAddress" name="emailAddress"
+						placeholder="Email Address">
+					<input type="text" id="userName" name="userName"
+						placeholder="User Name">
+					<input type="password" id="password" name="password"
+						placeholder="Password">
+					<input type="password" id="repassword" name="repassword"
+						placeholder="Password">
 					<input type="submit" name="login" class="login loginmodal-submit"
 						value="Login">
 				</s:form>
-
-				<div class="login-help">
-					<a href="#">Register</a> - <a href="#">Forgot Password</a>
-				</div>
 			</div>
 		</div>
 	</div>
-	<center>
-		<div class=transbox>
-			<div id=Registration>
-				<s:form action="register">
-					<div align="center">
-						<s:textfield id="fullname" name="fullname" label="Full Name"></s:textfield>
-						<s:textfield id="email" name="email" label="Email"></s:textfield>
-						<s:password id="password" name="password" label="Password" />
-						<s:password id="repassword" name="re-enter password"
-							label="Re-Enter Password" />
-						<s:submit value="Sign Up"></s:submit>
-					</div>
-				</s:form>
-			</div>
-		</div>
-	</center> --%>
-
-
-	<!-- Button trigger modal -->
-
-	<!-- <div class="container">
-		<hr class="prettyline">
-		<br>
-		<center>
-			<h1>
-				<b>Welcome</b>
-			</h1>
-			<h3>You need to sign in or register for using this application</h3>
-			<button class="btn btn-primary btn-lg" href="#signup"
-				data-toggle="modal" data-target=".bs-modal-sm">Sign In/Sign
-				Up</button>
-		</center>
-		<br>
-		<hr class="prettyline">
-	</div> -->
-
-
-	<!-- Modal -->
-	<div class="modal fade bs-modal-sm" id="myModal" tabindex="-1"
-		role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-sm">
-			<div class="modal-content">
-				<br>
-				<div class="bs-example bs-example-tabs">
-					<ul id="myTab" class="nav nav-tabs">
-						<li class="active"><a href="#signin" data-toggle="tab">Sign
-								In</a></li>
-						<li class=""><a href="#signup" data-toggle="tab">Sign Up</a></li>
-						<li class=""><a href="#why" data-toggle="tab">Why?</a></li>
-					</ul>
-				</div>
-				<div class="modal-body">
-					<div id="myTabContent" class="tab-content">
-						<div class="tab-pane fade in" id="why">
-							<p>We need this information so that you can receive access to
-								the site and its content. Rest assured your information will not
-								be sold, traded, or given to anyone.</p>
-							<p></p>
-							<br> Please contact <a mailto:href="rsingh@cs.queensu.ca"></a>rsingh@cs.queensu.ca</a>
-							for any other inquiries.
-							</p>
-						</div>
-						<div class="tab-pane fade active in" id="signin">
-							<s:form class="form-horizontal" action="login">
-								<fieldset>
-									<!-- Sign In Form -->
-									<!-- Text input-->
-									<div class="control-group">
-										<label class="control-label" for="userid">User Name:</label>
-										<div class="controls">
-											<input required="" id="userName" name="userid" type="text"
-												class="form-control" placeholder="Email Address"
-												class="input-medium" required="">
-										</div>
-									</div>
-
-									<!-- Password input-->
-									<div class="control-group">
-										<label class="control-label" for="passwordinput">Password:</label>
-										<div class="controls">
-											<input required="" id="password" name="password"
-												class="form-control" type="password" placeholder="********"
-												class="input-medium">
-										</div>
-									</div>
-
-									<!-- Button -->
-									<div class="control-group">
-										<label class="control-label" for="signin"></label>
-										<div class="controls">
-											<button id="signin" name="signin" type="submit"
-												class="btn btn-success">Sign In</button>
-										</div>
-									</div>
-								</fieldset>
-							</s:form>
-						</div>
-						<div class="tab-pane fade" id="signup">
-							<s:form class="form-horizontal" action="register">
-								<fieldset>
-									<!-- Sign Up Form -->
-									<!-- Text input-->
-									<div class="control-group">
-										<label class="control-label" for="Email">Email:</label>
-										<div class="controls">
-											<input id="email" name="email" class="form-control"
-												type="text" placeholder="Email Address" class="input-large"
-												required="">
-										</div>
-									</div>
-
-									<!-- Text input-->
-									<div class="control-group">
-										<label class="control-label" for="userid">User Name:</label>
-										<div class="controls">
-											<input id="fullname" name="fullname" class="form-control"
-												type="text" placeholder="Full Name" class="input-large"
-												required="">
-										</div>
-									</div>
-
-									<!-- Password input-->
-									<div class="control-group">
-										<label class="control-label" for="password">Password:</label>
-										<div class="controls">
-											<input id="password" name="password" class="form-control"
-												type="password" placeholder="********" class="input-large"
-												required=""> <em>1-8 Characters</em>
-										</div>
-									</div>
-
-									<!-- Text input-->
-									<div class="control-group">
-										<label class="control-label" for="reenterpassword">Re-Enter
-											Password:</label>
-										<div class="controls">
-											<input id="repassword" class="form-control" name="repassword"
-												type="password" placeholder="********" class="input-large"
-												required="">
-										</div>
-									</div>
-
-									<!-- Multiple Radios (inline) -->
-									<br>
-
-									<!-- Button -->
-									<div class="control-group">
-										<label class="control-label" for="confirmsignup"></label>
-										<div class="controls">
-											<button id="confirmsignup" name="confirmsignup"
-												class="btn btn-success">Sign Up</button>
-										</div>
-									</div>
-								</fieldset>
-							</s:form>
-						</div>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<center>
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					</center>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-
-
-
-
 
 	<div id="footer">
 		<ul id="footer_menu">
-			<li class="homeButton"><a href="#" data-toggle="modal"
-				data-target="#signup">Sing In/ Sign Up</a></li>
 			<li><a href="#" class="drop">About</a>
 
 				<div class="one_column_layout">
@@ -250,12 +116,7 @@
 						</p>
 					</div>
 				</div></li>
-
 		</ul>
-		<!-- End Footer Menu -->
-
-
-
 	</div>
 </body>
 </html>

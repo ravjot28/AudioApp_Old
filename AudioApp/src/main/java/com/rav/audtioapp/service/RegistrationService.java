@@ -23,7 +23,7 @@ public class RegistrationService {
 
 	public boolean processRequest(RegistrationDTO dto) {
 		boolean result = false;
-		if (validateEmail(dto.getEmailId()) && validatePassword(dto.getPassword(), dto.getPasswordReEnter())) {
+		if (validateEmail(dto.getEmailAddress()) && validatePassword(dto.getPassword(), dto.getRepassword())) {
 			return true;
 
 		}

@@ -2,16 +2,17 @@ package com.rav.audtioapp.dto;
 
 public class RegistrationDTO {
 
-	private String emailId;
+	private String userName;
 	private String password;
-	private String passwordReEnter;
+	private String repassword;
+	private String emailAddress;
 
-	public String getEmailId() {
-		return emailId;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getPassword() {
@@ -22,12 +23,20 @@ public class RegistrationDTO {
 		this.password = password;
 	}
 
-	public String getPasswordReEnter() {
-		return passwordReEnter;
+	public String getRepassword() {
+		return repassword;
 	}
 
-	public void setPasswordReEnter(String passwordReEnter) {
-		this.passwordReEnter = passwordReEnter;
+	public void setRepassword(String repassword) {
+		this.repassword = repassword;
+	}
+
+	public String getEmailAddress() {
+		return emailAddress;
+	}
+
+	public void setEmailAddress(String emailAddress) {
+		this.emailAddress = emailAddress;
 	}
 
 }

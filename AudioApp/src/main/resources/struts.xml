@@ -10,8 +10,8 @@
 	<package name="basicStruts" namespace="/ravjot" extends="struts-default">
 	</package>
 	<package name="loginRegistration" extends="struts-default">
-		<action name="login" class="com.rav.audtioapp.action.RegisterationAction">
-			<result name="success">LoginRegistration.jsp</result>
+		<action name="login" class="com.rav.audtioapp.action.LoginAction">
+			<result name="success">index.html</result>
 		</action>
 		<action name="register" class="com.rav.audtioapp.action.RegisterationAction">
 			<result name="success">index.html</result>
