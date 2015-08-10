@@ -9,7 +9,7 @@
 		<welcome-file>welcome.jsp</welcome-file>
 	</welcome-file-list>
 
-	<display-name>Archetype Created Web Application</display-name>
+	<display-name>Audio Application</display-name>
 
 	<filter>
 		<filter-name>struts2</filter-name>
