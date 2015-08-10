@@ -41,7 +41,7 @@
 							data-target="#login-modal">Sign Up</a></li>
 
 					</ul>
-					<form class="navbar-form navbar-right" role="search" action="login">
+					<form class="navbar-form navbar-right" role="search" action="login" method="post">
 						<div class="form-group">
 							<input type="text" class="form-control" name="username"
 								placeholder="Username">
@@ -63,7 +63,7 @@
 			<div class="loginmodal-container">
 				<h1>Sign Up</h1>
 				<br>
-				<s:form action="register">
+				<s:form action="register" method="post">
 					<input type="text" id="emailAddress" name="emailAddress"
 						placeholder="Email Address">
 					<input type="text" id="userName" name="userName"

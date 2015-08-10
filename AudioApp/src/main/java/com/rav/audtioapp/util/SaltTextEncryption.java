@@ -99,7 +99,7 @@ public class SaltTextEncryption {
 			System.out.println(hash);
 
 			System.out.println(new SaltTextEncryption().validateStrings("apple!3401", hash));
-		} catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
