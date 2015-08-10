@@ -13,8 +13,8 @@
 
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="style.css" type="text/css" media="screen">
-<link rel="stylesheet" href="footer.css" type="text/css" media="screen">
+<link rel="stylesheet" href="CSS/style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="CSS/footer.css" type="text/css" media="screen">
 <!-- Latest compiled and minified CSS -->
 
 <title>Audio App</title>
