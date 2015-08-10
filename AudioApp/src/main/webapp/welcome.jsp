@@ -13,8 +13,10 @@
 
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="CSS/style.css" type="text/css" media="screen">
-<link rel="stylesheet" href="CSS/footer.css" type="text/css" media="screen">
+<link rel="stylesheet" href="CSS/style.css" type="text/css"
+	media="screen">
+<link rel="stylesheet" href="CSS/footer.css" type="text/css"
+	media="screen">
 <!-- Latest compiled and minified CSS -->
 
 <title>Audio App</title>
@@ -108,64 +110,7 @@
 		</div>
 	</div>
 
+	<%@include file="footer.html"%>
 
-	<div class="modal fade" id="login-modal" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true"
-		style="display: none;">
-		<div class="modal-dialog">
-			<div class="loginmodal-container">
-				<h1>Sign Up</h1>
-				<br>
-				<s:form action="register">
-					<input type="text" id="emailAddress" name="emailAddress"
-						placeholder="Email Address">
-					<input type="text" id="userName" name="userName"
-						placeholder="User Name">
-					<input type="password" id="password" name="password"
-						placeholder="Password">
-					<input type="password" id="repassword" name="repassword"
-						placeholder="Re enter the Password">
-					<input type="submit" name="login" class="login loginmodal-submit"
-						value="Login">
-				</s:form>
-			</div>
-		</div>
-	</div>
-
-	<div id="footer">
-		<ul id="footer_menu">
-			<li><a href="#" class="drop">About</a>
-
-				<div class="one_column_layout">
-					<div>
-						<h2>About this website</h2>
-					</div>
-
-					<div class="clear"></div>
-
-					<div>
-						<p class="black_box">This website records the voices and also
-							allows user to hear the voices which are persisted in the
-							application</p>
-					</div>
-					<div class="clear"></div>
-
-					<div>
-						<h2>Developer Profile</h2>
-					</div>
-
-					<div>
-						<!-- Examples of paragraphs with side images -->
-						<p>
-							<img src="http://www.rankopedia.com/CandidatePix/32307.gif"
-								class="img_left whiteBorder" alt="" /> <a
-								style="display: inline; font-weight: bold; color: white;">Ravjot
-								Singh</a> <a href="http://cultofprogramming.blogspot.ca">Read
-								more...</a>
-						</p>
-					</div>
-				</div></li>
-		</ul>
-	</div>
 </body>
 </html>
