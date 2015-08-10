@@ -12,9 +12,11 @@
 	<package name="loginRegistration" extends="struts-default">
 		<action name="login" class="com.rav.audtioapp.action.LoginAction">
 			<result name="success">audio.jsp</result>
+			<result name="error">welcome.jsp</result>
 		</action>
 		<action name="register" class="com.rav.audtioapp.action.RegisterationAction">
 			<result name="success">welcome.jsp</result>
+			<result name="error">welcome.jsp</result>
 		</action>
 	</package>
 

@@ -43,9 +43,20 @@ public class RegisterationAction {
 
 	public String execute() {
 		RegistrationService service = new RegistrationService();
-		service.processRequest(new RegistrationDTO());
-		return "success";
+		if(service.processRequest(createDTO()))
+			return "success";
+		else
+			return "error";
 
+	}
+
+	public RegistrationDTO createDTO() {
+		RegistrationDTO dto = new RegistrationDTO();
+		dto.setEmailAddress(emailAddress);
+		dto.setPassword(password);
+		dto.setRepassword(repassword);
+		dto.setUserName(userName);
+		return dto;
 	}
 
 }

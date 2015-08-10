@@ -25,8 +25,17 @@ public class LoginAction {
 
 	public String execute() {
 		LoginService service = new LoginService();
-		service.processRequest(new LoginDTO());
-		return "success";
+		if (service.processRequest(createDTO()))
+			return "success";
+		else
+			return "error";
 
+	}
+
+	public LoginDTO createDTO() {
+		LoginDTO dto = new LoginDTO();
+		dto.setPassword(password);
+		dto.setUserName(userName);
+		return dto;
 	}
 }
