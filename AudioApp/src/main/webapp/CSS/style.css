@@ -94,3 +94,7 @@
 .login-help{
   font-size: 12px;
 }
+
+body { margin-top:30px; }
+#login-nav input { margin-bottom: 15px; }
+

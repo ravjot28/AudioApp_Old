@@ -21,42 +21,75 @@
 
 <title>Audio App</title>
 
+<script>
+	$(document).ready(function() {
+		//Handles menu drop down
+		$('.dropdown-menu').find('form').click(function(e) {
+			e.stopPropagation();
+		});
+	});
+</script>
 </head>
 <body>
 
-	<div class="navbar navbar-default navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<button class="navbar-toggle" type="button" data-toggle="collapse"
-					data-target="#navbar-main">
-					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Audio App</a>
-			</div>
-			<center>
-				<div class="navbar-collapse collapse" id="navbar-main">
-					<ul class="nav navbar-nav">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<nav class="navbar navbar-default" role="navigation"> <!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="http://www.jquery2dotnet.com">Audio
+						App</a>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse"
+					id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right">
 						<li class="active"><a href="#" data-toggle="modal"
 							data-target="#login-modal">Sign Up</a></li>
-
+						<li class="dropdown"><a href="http://www.jquery2dotnet.com"
+							class="dropdown-toggle" data-toggle="dropdown">Sign in <b
+								class="caret"></b></a>
+							<ul class="dropdown-menu"
+								style="padding: 15px; min-width: 250px;">
+								<li>
+									<div class="row">
+										<div class="col-md-12">
+											<form class="form" role="form" method="post"
+												action="login.action" accept-charset="UTF-8" id="login-nav">
+												<div class="form-group">
+													<label class="sr-only" for="exampleInputEmail2">User
+														Name</label> <input type="text" id="userName" name="userName"
+														class="form-control" id="exampleInputEmail2"
+														placeholder="Email address" required>
+												</div>
+												<div class="form-group">
+													<label class="sr-only" for="exampleInputPassword2">Password</label>
+													<input type="password" class="form-control" id="password"
+														name="password" placeholder="Password" required>
+												</div>
+												<div class="form-group">
+													<button type="submit" class="btn btn-success btn-block">Sign
+														in</button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</li>
+							</ul></li>
 					</ul>
-					<form class="navbar-form navbar-right" role="search"
-						action="login.action" method="post">
-						<div class="form-group">
-							<input type="text" class="form-control" name="userName"
-								id="userName" placeholder="Username">
-						</div>
-						<div class="form-group">
-							<input type="password" class="form-control" name="password"
-								id="password" placeholder="Password" height="14">
-						</div>
-						<button type="submit" class="btn btn-default">Sign In</button>
-					</form>
 				</div>
-			</center>
+				<!-- /.navbar-collapse --> </nav>
+			</div>
 		</div>
 	</div>
+
+
 	<div class="modal fade" id="login-modal" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true"
 		style="display: none;">
