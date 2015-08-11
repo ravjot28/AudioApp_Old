@@ -10,7 +10,7 @@ public class RegistrationDAO {
 	public RegistrationDAO() {
 		try {
 			Statement stmt = DAOUtil.getConnection().createStatement();
-			stmt.executeUpdate("CREATE TABLE IF NOT EXISTS \"Users\" (\"userName\" character varying(4000),  "
+			stmt.executeUpdate("CREATE TABLE IF NOT EXISTS \"UsersDetails\" (\"userName\" character varying(4000),  "
 					+ "\"emailAddress\" character varying(4000) NOT NULL,  password character varying(4000),  "
 					+ "active character(1),  CONSTRAINT \"Users_pkey\" PRIMARY KEY (\"emailAddress\"))");
 		} catch (Exception e) {
@@ -27,7 +27,7 @@ public class RegistrationDAO {
 
 			statement = connection.createStatement();
 
-			String sql = "select count(1) FROM \"Users\" where \"userName\" = '" + userName + "' and active ='Y'";
+			String sql = "select count(1) FROM \"UsersDetails\" where \"userName\" = '" + userName + "' and active ='Y'";
 			ResultSet rs = statement.executeQuery(sql);
 			while (rs.next()) {
 				count = rs.getInt(1);
@@ -54,7 +54,7 @@ public class RegistrationDAO {
 
 			statement = connection.createStatement();
 
-			String sql = "select count(1) FROM \"Users\" where \"emailAddress\" = '" + emailAddress
+			String sql = "select count(1) FROM \"UsersDetails\" where \"emailAddress\" = '" + emailAddress
 					+ "' and active ='Y'";
 			ResultSet rs = statement.executeQuery(sql);
 			while (rs.next()) {
@@ -79,7 +79,7 @@ public class RegistrationDAO {
 		try {
 
 			statement = connection.prepareStatement(
-					"INSERT INTO \"Users\" (\"userName\", \"emailAddress\", password, active) VALUES (?, ?, ?, ?, ?)");
+					"INSERT INTO \"UsersDetails\" (\"userName\", \"emailAddress\", password, active) VALUES (?, ?, ?, ?)");
 			statement.setString(1, userName);
 			statement.setString(2, emailAddress);
 			statement.setString(3, password);

@@ -10,7 +10,7 @@ public class LoginDAO {
 
 		try {
 			Statement stmt = DAOUtil.getConnection().createStatement();
-			stmt.executeUpdate("CREATE TABLE IF NOT EXISTS \"Users\" (\"userName\" character varying(4000),  "
+			stmt.executeUpdate("CREATE TABLE IF NOT EXISTS \"UsersDetails\" (\"userName\" character varying(4000),  "
 					+ "\"emailAddress\" character varying(4000) NOT NULL,  password character varying(4000),  "
 					+ "active character(1),  CONSTRAINT \"Users_pkey\" PRIMARY KEY (\"emailAddress\"))");
 		} catch (Exception e) {
@@ -27,7 +27,8 @@ public class LoginDAO {
 
 			statement = connection.createStatement();
 
-			String sql = "select count(1) FROM \"Users\" where \"userName\" = '" + userName + "' and active ='Y'";
+			String sql = "select count(1) FROM \"UsersDetails\" where \"userName\" = '" + userName
+					+ "' and active ='Y'";
 			ResultSet rs = statement.executeQuery(sql);
 			while (rs.next()) {
 				count = rs.getInt(1);
@@ -54,7 +55,7 @@ public class LoginDAO {
 
 			statement = connection.createStatement();
 
-			String sql = "select count(1) FROM \"Users\" where \"emailAddress\" = '" + emailAddress
+			String sql = "select count(1) FROM \"UsersDetails\" where \"emailAddress\" = '" + emailAddress
 					+ "' and active ='Y'";
 			ResultSet rs = statement.executeQuery(sql);
 			while (rs.next()) {
@@ -82,7 +83,8 @@ public class LoginDAO {
 
 			statement = connection.createStatement();
 
-			String sql = "select password FROM \"Users\" where \"userName\" = '" + userName + "' and active ='Y'";
+			String sql = "select password FROM \"UsersDetails\" where \"userName\" = '" + userName
+					+ "' and active ='Y'";
 			ResultSet rs = statement.executeQuery(sql);
 			while (rs.next()) {
 				result = rs.getString(1);
