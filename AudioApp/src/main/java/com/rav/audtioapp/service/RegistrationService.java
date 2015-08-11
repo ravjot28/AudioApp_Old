@@ -28,6 +28,7 @@ public class RegistrationService {
 
 	public boolean processRequest(RegistrationDTO dto) {
 		boolean result = false;
+		System.out.println("Processing Request");
 		if (validateEmail(dto.getEmailAddress()) && validatePassword(dto.getPassword(), dto.getRepassword())) {
 			RegistrationDAO dao = new RegistrationDAO();
 			if (!dao.userNameExists(dto.getUserName()) && !dao.emailAddressExists(dto.getEmailAddress())) {

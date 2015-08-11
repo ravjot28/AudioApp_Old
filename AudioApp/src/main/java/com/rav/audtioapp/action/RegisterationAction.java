@@ -43,7 +43,8 @@ public class RegisterationAction {
 
 	public String execute() {
 		RegistrationService service = new RegistrationService();
-		if(service.processRequest(createDTO()))
+		System.out.println("Sending Request to Service Layer");
+		if (service.processRequest(createDTO()))
 			return "success";
 		else
 			return "error";
