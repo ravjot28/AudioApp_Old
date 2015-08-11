@@ -49,7 +49,7 @@
 						</div>
 						<div class="form-group">
 							<input type="password" class="form-control" name="password"
-								id="password" placeholder="Password">
+								id="password" placeholder="Password" height="34">
 						</div>
 						<button type="submit" class="btn btn-default">Sign In</button>
 					</form>
