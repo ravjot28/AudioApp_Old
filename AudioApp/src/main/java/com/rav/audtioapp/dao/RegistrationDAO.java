@@ -12,7 +12,7 @@ public class RegistrationDAO {
 			Statement stmt = DAOUtil.getConnection().createStatement();
 			stmt.executeUpdate("CREATE TABLE IF NOT EXISTS \"UsersDetails\" (\"userName\" character varying(4000),  "
 					+ "\"emailAddress\" character varying(4000) NOT NULL,  password character varying(4000),  "
-					+ "active character varying(4000),  CONSTRAINT \"Users_pkey\" PRIMARY KEY (\"emailAddress\"))");
+					+ "active character varying(4000),  CONSTRAINT \"UsersDetails_pkey\" PRIMARY KEY (\"emailAddress\"))");
 		} catch (Exception e) {
 			System.err.println(e);
 		}
