@@ -40,7 +40,7 @@ public class LoginDAO {
 			connection.close();
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.err.println(e);
 		}
 
 		return result;
@@ -68,7 +68,7 @@ public class LoginDAO {
 			connection.close();
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.err.println(e);
 		}
 
 		return result;
@@ -94,7 +94,7 @@ public class LoginDAO {
 			connection.close();
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.err.println(e);
 		}
 
 		return result;
