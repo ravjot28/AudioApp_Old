@@ -66,7 +66,7 @@
 													<label class="sr-only" for="exampleInputEmail2">User
 														Name</label> <input type="text" id="userName" name="userName"
 														class="form-control" id="exampleInputEmail2"
-														placeholder="Email address" required>
+														placeholder="User Name" required>
 												</div>
 												<div class="form-group">
 													<label class="sr-only" for="exampleInputPassword2">Password</label>
