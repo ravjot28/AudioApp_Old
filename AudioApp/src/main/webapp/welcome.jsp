@@ -44,7 +44,7 @@
 					<s:form class="navbar-form navbar-right" role="search"
 						action="login" method="post">
 						<div class="form-group">
-							<input type="text" class="form-control" name="username"
+							<input type="text" class="form-control" name="userName"
 								id="userName" placeholder="Username">
 						</div>
 						<div class="form-group">
