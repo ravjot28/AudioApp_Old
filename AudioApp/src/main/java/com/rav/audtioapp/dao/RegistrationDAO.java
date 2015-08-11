@@ -14,7 +14,7 @@ public class RegistrationDAO {
 					+ "\"emailAddress\" character varying(4000) NOT NULL,  password character varying(4000),  "
 					+ "active character(1),  CONSTRAINT \"Users_pkey\" PRIMARY KEY (\"emailAddress\"))");
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.err.println(e);
 		}
 	}
 
@@ -39,7 +39,7 @@ public class RegistrationDAO {
 			connection.close();
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.err.println(e);
 		}
 
 		return result;
@@ -67,7 +67,7 @@ public class RegistrationDAO {
 			connection.close();
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.err.println(e);
 		}
 
 		return result;
@@ -86,13 +86,13 @@ public class RegistrationDAO {
 			statement.setString(4, "Y");
 			statement.executeUpdate();
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.err.println(e);
 		} finally {
 			try {
 				statement.close();
 				connection.close();
 			} catch (Exception e) {
-				e.printStackTrace();
+				System.err.println(e);
 			}
 		}
 	}

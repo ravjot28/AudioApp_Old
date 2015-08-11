@@ -37,11 +37,11 @@ public class RegistrationService {
 					dao.insertNewuser(dto.getEmailAddress(), dto.getUserName(), dto.getPassword());
 					return true;
 				} catch (NoSuchAlgorithmException e) {
-					e.printStackTrace();
+					System.err.println(e);
 				} catch (InvalidKeySpecException e) {
-					e.printStackTrace();
+					System.err.println(e);
 				} catch (Exception e) {
-					e.printStackTrace();
+					System.err.println(e);
 				}
 			}
 		}
