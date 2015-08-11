@@ -43,11 +43,11 @@
 					</ul>
 					<form class="navbar-form navbar-right" role="search" action="login" method="post">
 						<div class="form-group">
-							<input type="text" class="form-control" name="username"
+							<input type="text" class="form-control" name="username" id="userName"
 								placeholder="Username">
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control" name="password"
+							<input type="password" class="form-control" name="password" id="password"
 								placeholder="Password">
 						</div>
 						<button type="submit" class="btn btn-default">Sign In</button>
