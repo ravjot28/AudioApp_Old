@@ -31,11 +31,14 @@ public class RegistrationService {
 		System.out.println("Processing Request");
 		if (validateEmail(dto.getEmailAddress()) && validatePassword(dto.getPassword(), dto.getRepassword())) {
 			RegistrationDAO dao = new RegistrationDAO();
+			System.out.println("RegistrationDAO object created");
 			if (!dao.userNameExists(dto.getUserName()) && !dao.emailAddressExists(dto.getEmailAddress())) {
 
 				try {
 					dto.setPassword(SaltTextEncryption.getInstance().createHash(dto.getPassword()));
+					System.out.println("Password encrypted");
 					dao.insertNewuser(dto.getEmailAddress(), dto.getUserName(), dto.getPassword());
+					System.out.println("Inserted");
 					return true;
 				} catch (NoSuchAlgorithmException e) {
 					System.err.println(e);
