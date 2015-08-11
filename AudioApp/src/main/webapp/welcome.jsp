@@ -41,8 +41,8 @@
 							data-target="#login-modal">Sign Up</a></li>
 
 					</ul>
-					<s:form class="navbar-form navbar-right" role="search"
-						action="login" method="post">
+					<form class="navbar-form navbar-right" role="search"
+						action="login.action" method="post">
 						<div class="form-group">
 							<input type="text" class="form-control" name="userName"
 								id="userName" placeholder="Username">
@@ -52,7 +52,7 @@
 								id="password" placeholder="Password">
 						</div>
 						<button type="submit" class="btn btn-default">Sign In</button>
-					</s:form>
+					</form>
 				</div>
 			</center>
 		</div>
