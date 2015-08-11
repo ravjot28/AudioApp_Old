@@ -18,13 +18,11 @@ public class LoginService {
 					System.out.println("Checking password");
 					if (SaltTextEncryption.getInstance().validateStrings(dto.getPassword(),
 							dao.getPassword(dto.getUserName())))
-						return true;
+						result = true;
 				} catch (Exception e) {
 					System.err.println(e);
 				}
 			}
-
-			result = true;
 
 		} else {
 			result = false;
