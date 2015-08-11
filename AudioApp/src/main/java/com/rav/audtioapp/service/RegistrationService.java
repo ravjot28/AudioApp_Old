@@ -12,7 +12,7 @@ public class RegistrationService {
 	private boolean validatePassword(String password, String rePassword) {
 		if (password.length() < 6)
 			return false;
-		if (password != rePassword)
+		if (!password.equals(rePassword))
 			return false;
 		else
 			return true;
