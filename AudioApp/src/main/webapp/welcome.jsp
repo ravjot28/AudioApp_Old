@@ -41,17 +41,18 @@
 							data-target="#login-modal">Sign Up</a></li>
 
 					</ul>
-					<form class="navbar-form navbar-right" role="search" action="login" method="post">
+					<s:form class="navbar-form navbar-right" role="search"
+						action="login" method="post">
 						<div class="form-group">
-							<input type="text" class="form-control" name="username" id="userName"
-								placeholder="Username">
+							<input type="text" class="form-control" name="username"
+								id="userName" placeholder="Username">
 						</div>
 						<div class="form-group">
-							<input type="password" class="form-control" name="password" id="password"
-								placeholder="Password">
+							<input type="password" class="form-control" name="password"
+								id="password" placeholder="Password">
 						</div>
 						<button type="submit" class="btn btn-default">Sign In</button>
-					</form>
+					</s:form>
 				</div>
 			</center>
 		</div>
