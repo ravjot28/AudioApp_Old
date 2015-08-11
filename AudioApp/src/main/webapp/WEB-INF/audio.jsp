@@ -58,6 +58,6 @@ a.button {
 	</div>
 	<input class="button" type="checkbox" id="live" />
 	<label for="live">Live Output</label>
-	<%@include file="footer.html"%>
+	<%@include file="../footer.html"%>
 </body>
 </html>
