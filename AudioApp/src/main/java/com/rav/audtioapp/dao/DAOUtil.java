@@ -2,42 +2,35 @@ package com.rav.audtioapp.dao;
 
 import java.net.URI;
 import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
+
+import org.apache.commons.dbcp2.BasicDataSource;
 
 public class DAOUtil {
+	private static BasicDataSource connectionPool;
 
 	public static Connection getConnection() {
 		URI dbUri;
+		Connection connection = null;
 		try {
-			dbUri = new URI(System.getenv("DATABASE_URL"));
-			String username = dbUri.getUserInfo().split(":")[0];
-			String password = dbUri.getUserInfo().split(":")[1];
-			String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
-
-			return DriverManager.getConnection(dbUrl, username, password);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	public static boolean isTableCreated(String tableName, Connection conn) {
-		boolean result = false;
-		try {
-			DatabaseMetaData md = conn.getMetaData();
-			ResultSet rs = md.getTables(null, null, tableName, null);
-			while (rs.next()) {
-				System.out.println(rs.getString(3));
-				result = true;
+			if (connectionPool != null) {
+				connection = connectionPool.getConnection();
+			} else {
+				dbUri = new URI(System.getenv("DATABASE_URL"));
+				String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + dbUri.getPath();
+				connectionPool = new BasicDataSource();
+				if (dbUri.getUserInfo() != null) {
+					connectionPool.setUsername(dbUri.getUserInfo().split(":")[0]);
+					connectionPool.setPassword(dbUri.getUserInfo().split(":")[1]);
+				}
+				connectionPool.setDriverClassName("org.postgresql.Driver");
+				connectionPool.setUrl(dbUrl);
+				connectionPool.setInitialSize(100);
+				connection = connectionPool.getConnection();
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		return result;
+		return connection;
 	}
 
 }

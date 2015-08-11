@@ -8,26 +8,13 @@ import java.sql.Statement;
 public class RegistrationDAO {
 
 	public RegistrationDAO() {
-		Connection connection = DAOUtil.getConnection();
-		if (!DAOUtil.isTableCreated("Users", connection)) {
-			String sql = "CREATE TABLE \"Users\" (\"userName\" character varying(4000),  "
+		try {
+			Statement stmt = DAOUtil.getConnection().createStatement();
+			stmt.executeUpdate("CREATE TABLE IF NOT EXISTS \"Users\" (\"userName\" character varying(4000),  "
 					+ "\"emailAddress\" character varying(4000) NOT NULL,  password character varying(4000),  "
-					+ "active character(1),  CONSTRAINT \"Users_pkey\" PRIMARY KEY (\"emailAddress\"))";
-
-			PreparedStatement statement = null;
-			try {
-				statement = connection.prepareStatement(sql);
-				statement.executeUpdate();
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				try {
-					statement.close();
-					connection.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
+					+ "active character(1),  CONSTRAINT \"Users_pkey\" PRIMARY KEY (\"emailAddress\"))");
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
