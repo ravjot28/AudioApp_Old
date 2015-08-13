@@ -113,7 +113,7 @@
 					<input type="password" id="repassword" name="repassword"
 						placeholder="Re enter the Password">
 					<input type="submit" name="login" class="login loginmodal-submit"
-						value="Login">
+						value="Sign Up">
 				</s:form>
 			</div>
 		</div>
