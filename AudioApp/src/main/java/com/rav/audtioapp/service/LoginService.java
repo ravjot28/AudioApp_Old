@@ -6,6 +6,8 @@ import com.rav.audtioapp.util.SaltTextEncryption;
 
 public class LoginService {
 
+	private String message = null;
+
 	public boolean processRequest(LoginDTO dto) {
 		boolean result = false;
 		System.out.println("In Login Service userName " + dto.getUserName() + " password " + dto.getPassword());
@@ -19,15 +21,34 @@ public class LoginService {
 					if (SaltTextEncryption.getInstance().validateStrings(dto.getPassword(),
 							dao.getPassword(dto.getUserName())))
 						result = true;
+					else
+						message = "Incorrect Password";
 				} catch (Exception e) {
 					System.err.println(e);
+					message = "Oops!! Something went wrond";
 				}
+			} else {
+				message = "User Name does not exists";
 			}
 
 		} else {
+
+			if (dto.getUserName() != null && dto.getUserName().length() > 0)
+				message = "Please enter the User Name";
+			if (dto.getPassword() != null && dto.getPassword().length() > 0)
+				message = "Please enter the Password";
+
 			result = false;
 		}
 		return result;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
 }

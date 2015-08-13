@@ -4,6 +4,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.rav.audtioapp.dto.RegistrationDTO;
 import com.rav.audtioapp.service.RegistrationService;
 
+@SuppressWarnings("serial")
 public class RegisterationAction extends ActionSupport {
 	private String userName;
 	private String password;
@@ -48,7 +49,7 @@ public class RegisterationAction extends ActionSupport {
 		if (service.processRequest(createDTO()))
 			return "success";
 		else {
-			addActionError("I don't know you, dont try to hack me!");
+			addActionError(service.getMessage());
 			return "error";
 		}
 	}

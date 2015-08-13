@@ -32,10 +32,11 @@
 </head>
 <body>
 
-	<s:if test="hasActionErrors()">
-		<div class="errors">
-			<s:actionerror />
-		</div>
+	<s:if
+		test="hasFieldErrors() || hasActionMessages() || hasActionErrors()">
+
+		<jsp:include page="/WEB-INF/errorHandling/errorHandling.jsp" />
+
 	</s:if>
 
 	<div class="container">

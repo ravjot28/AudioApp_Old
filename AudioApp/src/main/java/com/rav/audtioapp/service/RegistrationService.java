@@ -8,6 +8,7 @@ import com.rav.audtioapp.dto.RegistrationDTO;
 import com.rav.audtioapp.util.SaltTextEncryption;
 
 public class RegistrationService {
+	private String message = null;
 
 	private boolean validatePassword(String password, String rePassword) {
 		if (password.length() < 6)
@@ -42,14 +43,38 @@ public class RegistrationService {
 					return true;
 				} catch (NoSuchAlgorithmException e) {
 					System.err.println(e);
+					message = "Oops!! Something went wrond";
 				} catch (InvalidKeySpecException e) {
 					System.err.println(e);
+					message = "Oops!! Something went wrond";
 				} catch (Exception e) {
 					System.err.println(e);
+					message = "Oops!! Something went wrond";
 				}
+			} else {
+				if (dao.userNameExists(dto.getUserName()))
+					message = "User Name already exists";
+
+				if (dao.emailAddressExists(dto.getEmailAddress()))
+					message = "Email address already exists";
+
 			}
+		} else {
+			if (!validateEmail(dto.getEmailAddress()))
+				message = "Incorrect email address";
+
+			if (!validatePassword(dto.getPassword(), dto.getRepassword()))
+				message = "Password do not match";
 		}
 		return result;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
 }

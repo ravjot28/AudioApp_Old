@@ -1,9 +1,11 @@
 package com.rav.audtioapp.action;
 
+import com.opensymphony.xwork2.ActionSupport;
 import com.rav.audtioapp.dto.LoginDTO;
 import com.rav.audtioapp.service.LoginService;
 
-public class LoginAction {
+@SuppressWarnings("serial")
+public class LoginAction extends ActionSupport {
 	private String userName;
 	private String password;
 
@@ -27,9 +29,10 @@ public class LoginAction {
 		LoginService service = new LoginService();
 		if (service.processRequest(createDTO()))
 			return "success";
-		else
+		else {
+			addActionError(service.getMessage());
 			return "error";
-
+		}
 	}
 
 	public LoginDTO createDTO() {
