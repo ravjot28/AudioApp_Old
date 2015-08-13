@@ -31,7 +31,7 @@ public class LoginAction extends ActionSupport {
 			return "success";
 		else {
 			addActionError(service.getMessage());
-			return "error";
+			return "input";
 		}
 	}
 

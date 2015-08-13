@@ -50,7 +50,7 @@ public class RegisterationAction extends ActionSupport {
 			return "success";
 		else {
 			addActionError(service.getMessage());
-			return "error";
+			return "input";
 		}
 	}
 
