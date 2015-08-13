@@ -4,6 +4,7 @@
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <html>
 <head>
+<base href="/">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
