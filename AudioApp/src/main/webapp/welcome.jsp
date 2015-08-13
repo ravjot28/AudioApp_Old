@@ -57,7 +57,7 @@
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
-						<li class="active"><a href="#" data-toggle="modal"
+						<li ><a href="#" data-toggle="modal"
 							data-target="#login-modal">Sign Up</a></li>
 						<li class="dropdown"><a href="http://www.jquery2dotnet.com"
 							class="dropdown-toggle" data-toggle="dropdown">Sign in <b
