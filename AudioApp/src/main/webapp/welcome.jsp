@@ -14,9 +14,9 @@
 
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="CSS/style.css" type="text/css"
+<link rel="stylesheet" href="/CSS/style.css" type="text/css"
 	media="screen">
-<link rel="stylesheet" href="CSS/footer.css" type="text/css"
+<link rel="stylesheet" href="/CSS/footer.css" type="text/css"
 	media="screen">
 <!-- Latest compiled and minified CSS -->
 
@@ -120,7 +120,7 @@
 			</div>
 		</div>
 	</div>
-	<%@include file="footer.html"%>
+	<%@include file="/footer.html"%>
 
 </body>
 </html>
