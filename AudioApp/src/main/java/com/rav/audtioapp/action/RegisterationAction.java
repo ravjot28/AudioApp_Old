@@ -1,9 +1,10 @@
 package com.rav.audtioapp.action;
 
+import com.opensymphony.xwork2.ActionSupport;
 import com.rav.audtioapp.dto.RegistrationDTO;
 import com.rav.audtioapp.service.RegistrationService;
 
-public class RegisterationAction {
+public class RegisterationAction extends ActionSupport {
 	private String userName;
 	private String password;
 	private String repassword;
@@ -46,9 +47,10 @@ public class RegisterationAction {
 		System.out.println("Sending Request to Service Layer");
 		if (service.processRequest(createDTO()))
 			return "success";
-		else
+		else {
+			addActionError("I don't know you, dont try to hack me!");
 			return "error";
-
+		}
 	}
 
 	public RegistrationDTO createDTO() {

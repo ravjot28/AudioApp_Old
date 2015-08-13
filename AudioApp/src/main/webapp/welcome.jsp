@@ -32,6 +32,12 @@
 </head>
 <body>
 
+	<s:if test="hasActionErrors()">
+		<div class="errors">
+			<s:actionerror />
+		</div>
+	</s:if>
+
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
