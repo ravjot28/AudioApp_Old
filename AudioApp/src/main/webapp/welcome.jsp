@@ -2,6 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
+<%@taglib uri="/struts-jquery-tags" prefix="sj"%>
 <html>
 <head>
 <base href="/">
@@ -14,15 +16,16 @@
 
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://lit-journey-6254.herokuapp.com/CSS/style.css" type="text/css"
-	media="screen">
+<link rel="stylesheet"
+	href="https://lit-journey-6254.herokuapp.com/CSS/style.css"
+	type="text/css" media="screen">
 <link rel="stylesheet" href="/CSS/footer.css" type="text/css"
 	media="screen">
 <!-- Latest compiled and minified CSS -->
 
 <title>Audio App</title>
 
-<script>
+<script type="text/javascript">
 	$(document).ready(function() {
 		//Handles menu drop down
 		$('.dropdown-menu').find('form').click(function(e) {
@@ -30,13 +33,29 @@
 		});
 	});
 </script>
+
+<sj:head jqueryui="true" />
 </head>
 <body>
 
 	<s:if
 		test="hasFieldErrors() || hasActionMessages() || hasActionErrors()">
 
-		<jsp:include page="/WEB-INF/errorHandling/errorHandling.jsp" />
+		<div style="visibility: hidden">
+			<sj:dialog id="ErrorDialog" title=" " modal="true" width="500"
+				resizable="false"
+				buttons="{
+        'Ok':function() {
+        $(this).dialog('close');
+        }
+        }">
+				<h6>
+					<s:actionerror />
+					<s:fielderror />
+					<s:actionmessage />
+				</h6>
+			</sj:dialog>
+		</div>
 
 	</s:if>
 
@@ -58,7 +77,7 @@
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
-						<li ><a href="#" data-toggle="modal"
+						<li><a href="#" data-toggle="modal"
 							data-target="#login-modal">Sign Up</a></li>
 						<li class="dropdown"><a href="http://www.jquery2dotnet.com"
 							class="dropdown-toggle" data-toggle="dropdown">Sign in <b
