@@ -19,8 +19,9 @@ $(document).ready(function() {
 	    //Google map option
 	    var googleMapOptions = 
 	    { 
-	        center: mapCenter, // map center
-	        zoom: 17, //zoom level, 0 = earth view to higher value
+	    	center:new google.maps.LatLng(56,-96),
+	        //center: mapCenter, // map center
+	        zoom: 10, //zoom level, 0 = earth view to higher value
 	        panControl: true, //enable pan Control
 	        zoomControl: true, //enable zoom control
 	        zoomControlOptions: {
