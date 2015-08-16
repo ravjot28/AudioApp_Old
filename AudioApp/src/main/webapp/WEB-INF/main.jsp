@@ -7,7 +7,7 @@
 <title>Audio App</title>
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script
-	src="https://maps.googleapis.com/maps/api/js?client=AIzaSyDhliPSwNOwEL-sM_40sliWrpetpbMDQ-o&v=3.20&sensor=false"></script>
+	src="https://maps.googleapis.com/maps/api/js"></script>
 
 
 <script type="text/javascript">
