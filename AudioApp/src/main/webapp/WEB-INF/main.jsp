@@ -6,8 +6,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Audio App</title>
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-<script type="text/javascript"
-	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDhliPSwNOwEL-sM_40sliWrpetpbMDQ-o&sensor=false"></script>
+<script
+	src="https://maps.googleapis.com/maps/api/js?client=AIzaSyDhliPSwNOwEL-sM_40sliWrpetpbMDQ-o&v=3.20&sensor=false"></script>
+
 
 <script type="text/javascript">
 $(document).ready(function() {
