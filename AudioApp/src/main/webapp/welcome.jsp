@@ -70,8 +70,7 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="http://www.jquery2dotnet.com">Audio
-						App</a>
+					<a class="navbar-brand" href="#">Audio App</a>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse"
@@ -79,9 +78,8 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="#" data-toggle="modal"
 							data-target="#login-modal">Sign Up</a></li>
-						<li class="dropdown"><a href="http://www.jquery2dotnet.com"
-							class="dropdown-toggle" data-toggle="dropdown">Sign in <b
-								class="caret"></b></a>
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown">Sign in <b class="caret"></b></a>
 							<ul class="dropdown-menu"
 								style="padding: 15px; min-width: 250px;">
 								<li>
