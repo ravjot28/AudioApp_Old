@@ -33,9 +33,9 @@ public class LoginService {
 
 		} else {
 
-			if (dto.getUserName() != null && dto.getUserName().length() > 0)
+			if (dto.getUserName() == null || dto.getUserName().length() > 0)
 				message = "Please enter the User Name";
-			if (dto.getPassword() != null && dto.getPassword().length() > 0)
+			if (dto.getPassword() == null || dto.getPassword().length() > 0)
 				message = "Please enter the Password";
 
 			result = false;
