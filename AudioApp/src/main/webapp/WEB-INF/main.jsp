@@ -40,7 +40,7 @@ $(document).ready(function() {
 	            draggable:true, //set marker draggable 
 	            animation: google.maps.Animation.DROP, //bounce animation
 	            title:"Hello World!",
-	            icon: "https://lit-journey-6254.herokuapp.com/icons/pin_green.png" //custom pin icon
+	            icon: "https://lit-journey-6254.herokuapp.com/icons/pin.png" //custom pin icon
 	        });
 	        
 	        //Content structure of info Window for the Markers
