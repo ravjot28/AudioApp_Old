@@ -63,7 +63,7 @@
 	var recording_option_stop;
 
 	$(document).ready(function() {
-		google.maps.event.addDomListener(window, "load", initAutocomplete);
+		//google.maps.event.addDomListener(window, "load", initAutocomplete);
 		/* microm = new Microm(); */
 		$("body").show();
 		$("#my").wizard();
@@ -283,7 +283,7 @@
 </script>
 
 <script
-	src="//maps.googleapis.com/maps/api/js?libraries=places&callback=initAutocomplete"
+	src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initAutocomplete"
 	async defer></script>
 
 <style>
