@@ -63,7 +63,7 @@
 	var recording_option_stop;
 
 	$(document).ready(function() {
-		//google.maps.event.addDomListener(window, "load", initAutocomplete);
+		google.maps.event.addDomListener(window, "load", initAutocomplete);
 		/* microm = new Microm(); */
 		$("body").show();
 		$("#my").wizard();
