@@ -96,7 +96,7 @@
 	});
 
 	function initAutocomplete() {
-		map = new google.maps.Map(document.getElementById('map'), {
+		map = new google.maps.Map(document.getElementById("map"), {
 			center : {
 				lat : 45.4,
 				lng : -75.7
