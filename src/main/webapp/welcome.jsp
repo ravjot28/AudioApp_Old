@@ -155,7 +155,7 @@
 </script>
 
 <script
-	src="//maps.googleapis.com/maps/api/js?libraries=places&callback=initAutocomplete"
+	src="https://maps.googleapis.com/maps/api/js?v=3?libraries=places&callback=initAutocomplete"
 	async defer></script>
 <style>
 html, body {
