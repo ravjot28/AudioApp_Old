@@ -73,8 +73,10 @@
      */
     stop: function(){
     	this.recorder.stop();
+    	
+    	
     	this.recorder.clear();
-    	this.stream.stop();
+    	//this.stream.stop();
     	return this;
     },
     
