@@ -33,10 +33,10 @@
 	function initAutocomplete() {
 		map = new google.maps.Map(document.getElementById('map'), {
 			center : {
-				lat : 45.4,
-				lng : -75.7
+				lat : 54.723705,
+				lng : -113.7155106
 			},
-			zoom : 5,
+			zoom : 1,
 			mapTypeId : google.maps.MapTypeId.ROADMAP,
 			streetViewControl : false
 		});
