@@ -9,14 +9,14 @@ public class GetAudioAction {
 	
 	public String getUnapprovedAudios() {
 		System.out.println("In getAudio");
-		jsonString = GetAudioService.getInstance().processRequest("Unapproved");
+		jsonString = new GetAudioService().processRequest("Unapproved");
 		return "success";
 	}
 	
 	
 	public String getApprovedAudios() {
 		System.out.println("In getAudio");
-		jsonString = GetAudioService.getInstance().processRequest("Approved");
+		jsonString = new GetAudioService().processRequest("Approved");
 		return "success";
 	}
 

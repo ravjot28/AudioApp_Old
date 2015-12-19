@@ -24,7 +24,7 @@ public class SaveAudioAction {
 
 	public String execute() {
 		// System.out.println(array);
-		String id = SaveAudioService.getInstance().processRequest(getDTO(array.get(0)));
+		String id = new SaveAudioService().processRequest(getDTO(array.get(0)));
 		jsonString = "[\"id\":" + id + "]";
 		jsonString = id;
 		return "success";

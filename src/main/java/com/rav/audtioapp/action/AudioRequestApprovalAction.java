@@ -27,7 +27,7 @@ public class AudioRequestApprovalAction {
 		AudioRequestApprovalDTO dto = getDTO(array.get(0));
 		System.out.println(dto.getId() + " " + dto.getStatus());
 
-		jsonString = AudioRequestApprovalService.getInstance().processRequest(dto);//"Got " + dto.getId() + " " + dto.getStatus();
+		jsonString = new AudioRequestApprovalService().processRequest(dto);//"Got " + dto.getId() + " " + dto.getStatus();
 		return "success";
 	}
 
