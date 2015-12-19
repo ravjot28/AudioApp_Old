@@ -98,10 +98,10 @@
 	function initAutocomplete() {
 		map = new google.maps.Map(document.getElementById("map"), {
 			center : {
-				lat : 45.4,
-				lng : -75.7
+				lat : 59.723705,
+				lng : -110.7155106
 			},
-			zoom : 10,
+			zoom : 4,
 			mapTypeId : google.maps.MapTypeId.ROADMAP,
 			streetViewControl : false
 		});
@@ -295,7 +295,7 @@ html, body {
 
 #map {
 	width: 100%;
-	height: 80%;
+	height: 88%;
 	margin-top: 0px;
 	margin-left: auto;
 	margin-right: auto;
@@ -801,7 +801,7 @@ a.button {
 			</div>
 		</div>
 	</div>
-	<div align="center">Right Click to Drop a New Marker</div>
+	<!-- <div align="center">Right Click to Drop a New Marker</div> -->
 
 	<input id="pac-input" class="controls" type="text"
 		placeholder="Search Box">
