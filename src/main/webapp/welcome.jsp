@@ -36,7 +36,7 @@
 				lat : 54.723705,
 				lng : -113.7155106
 			},
-			zoom : 1,
+			zoom : 2,
 			mapTypeId : google.maps.MapTypeId.ROADMAP,
 			streetViewControl : false
 		});
