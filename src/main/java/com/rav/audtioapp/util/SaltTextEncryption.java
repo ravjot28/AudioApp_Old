@@ -26,9 +26,10 @@ public class SaltTextEncryption {
 	}
 
 	public static SaltTextEncryption getInstance() throws Exception {
-		if (SINGLETON == null)
-
-			SINGLETON = new SaltTextEncryption();
+		synchronized (SaltTextEncryption.class) {
+			if (SINGLETON == null)
+				SINGLETON = new SaltTextEncryption();
+		}
 
 		return SINGLETON;
 	}
