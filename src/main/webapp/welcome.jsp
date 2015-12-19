@@ -33,8 +33,8 @@
 	function initAutocomplete() {
 		map = new google.maps.Map(document.getElementById('map'), {
 			center : {
-				lat : 54.723705,
-				lng : -113.7155106
+				lat : 59.723705,
+				lng : -110.7155106
 			},
 			zoom : 4,
 			mapTypeId : google.maps.MapTypeId.ROADMAP,
@@ -166,7 +166,7 @@ html, body {
 
 #map {
 	width: 100%;
-	height: 80%;
+	height: 88%;
 	margin-top: 0px;
 	margin-left: auto;
 	margin-right: auto;
