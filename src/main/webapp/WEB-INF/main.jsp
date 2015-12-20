@@ -89,7 +89,7 @@
 
 									create_marker(point, 'Hi', form, false,
 											false, false,
-											"https://lit-journey-6254.herokuapp.com/icons/pin.png");
+											"https://lit-journey-6254.herokuapp.com/icons/pin_strathyunit.png");
 
 								}
 								//Do something

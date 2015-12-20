@@ -87,6 +87,9 @@
 		$('#my').on('hidden.bs.modal', function() {
 			clicked = "false";
 		});
+		$('#alertMessageModal').on('hidden.bs.modal', function() {
+			clicked = "false";
+		});
 
 		/* btnFinish.on("click", function() {
 			var hv = $('#location').val();
@@ -96,6 +99,13 @@
 	});
 
 	function initAutocomplete() {
+		var sUsrAg = navigator.userAgent;
+		if (sUsrAg.indexOf("Chrome") > -1) {
+			$('#alertMessageModal').modal('show');
+		} else {
+			$('#alertBrowserMessageModal').modal('show');
+		}
+
 		map = new google.maps.Map(document.getElementById("map"), {
 			center : {
 				lat : 59.723705,
@@ -393,6 +403,61 @@ a.button {
 		<!-- / .modal-dialog -->
 	</div>
 
+
+	<div class="modal fade" id="alertMessageModal" tabindex="-1"
+		role="dialog" aria-labelledby="alertMessageModal" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&#10006</button>
+					<h4 class="modal-title" id="myModalLabel">Welcome!</h4>
+				</div>
+				<div class="modal-body">
+					<p>To choose your location:</p>
+					<p>If you lived in Canada as a child, select the location where
+						you spent the majority of your time between ages five and
+						eighteen.</p>
+					<p>If you came to Canada as an adult, select the location where
+						you have spent the majority of your time since arriving. Zoom in
+						to get as precise a location as you can!</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Proceed</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="modal fade" id="alertBrowserMessageModal" tabindex="-1"
+		role="dialog" aria-labelledby="alertMessageModal" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&#10006</button>
+					<h4 class="modal-title" id="myModalLabel">
+						<font color="red">Oops!!!</font>
+					</h4>
+				</div>
+				<div class="modal-body">
+					<p>The recording functionality is available for only Google
+						Chrome browser. Please open the website using Google Chrome
+						Browser.</p>
+					<p>
+						You can download Google Chrome by clicking <a target="_blank"
+							href="https://www.google.com/chrome/browser/desktop/">here</a>
+					</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<div class="modal fade" id="my" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
@@ -408,47 +473,51 @@ a.button {
 
 				<div class="modal-body wizard-content">
 					<div id="agreement" class="wizard-step">
-						<p>Thank you for your interest in being a part of our voice
-							map. Before we get started recording your audio, please read the
-							following information and answer the question related to consent.
-							Once you click "Next", you will proceed to a brief questionnaire
-							about you and then to the recording portion.</p>
-						<p>
-							<strong>Canadian Voices Map</strong> is an interactive digital
-							map with structured audio samples from around the country. The
-							goal of the project is to explore dialect diversity in Canadian
-							English. Users can listen to samples, download audio files and
-							contribute their own voices.
-						</p>
-						<p>On the following screens, you will be asked to answer some
-							background questions about yourself and then to record yourself
-							reading twenty different English words. The process should take
-							less than ten minutes. There are no known risks to participation
-							in the study; participation is voluntary, and you may decline to
-							answer any questions you choose.</p>
-						<p>The audio files you submit will be available through the
-							website to any user, and these files will be linked to your
-							background information. We are not collecting names and your data
-							will therefore be anonymous and your confidentiality protected.
-							However, given that your voice could be recognized by others, you
-							should be aware that it may be possible for some users to
-							identify your data. If your audio samples are displayed on the
-							map and you later change your mind about your participation,
-							please contact us and we will remove the data.</p>
-						<p>
-							Any questions about study participation may be directed to the
-							Strathy Language Unit at strathy@queenus.ca. Any ethical concerns
-							about the study may be directed to the Chair of the General
-							Research Ethics Board at <a href="mailto:chair.GREB@queensu.ca">chair.GREB@queensu.ca</a>
-							or 613-533-6081. This study has been granted clearance according
-							to the recommended principles of Canadian ethics guidelines, and
-							Queen's policies.
-						</p>
-						<p>By clicking "Next" below, you acknowledge the following:</p>
-						<p>1. You have read and understand the above Letter of
-							Information.</p>
-						<p>2. You understand that the audio files and background
-							information you submit will be available on a public website.</p>
+						<div id="concsent"
+							style="overflow-y: scroll; overflow-x: hidden; height: 400px;">
+							<p>Thank you for your interest in being a part of our voice
+								map. Before we get started recording your audio, please read the
+								following information and answer the question related to
+								consent. Once you click "Next", you will proceed to a brief
+								questionnaire about you and then to the recording portion.</p>
+							<p>
+								<strong>Canadian Voices Map</strong> is an interactive digital
+								map with structured audio samples from around the country. The
+								goal of the project is to explore dialect diversity in Canadian
+								English. Users can listen to samples, download audio files and
+								contribute their own voices.
+							</p>
+							<p>On the following screens, you will be asked to answer some
+								background questions about yourself and then to record yourself
+								reading twenty different English words. The process should take
+								less than ten minutes. There are no known risks to participation
+								in the study; participation is voluntary, and you may decline to
+								answer any questions you choose.</p>
+							<p>The audio files you submit will be available through the
+								website to any user, and these files will be linked to your
+								background information. We are not collecting names and your
+								data will therefore be anonymous and your confidentiality
+								protected. However, given that your voice could be recognized by
+								others, you should be aware that it may be possible for some
+								users to identify your data. If your audio samples are displayed
+								on the map and you later change your mind about your
+								participation, please contact us and we will remove the data.</p>
+							<p>
+								Any questions about study participation may be directed to the
+								Strathy Language Unit at strathy@queenus.ca. Any ethical
+								concerns about the study may be directed to the Chair of the
+								General Research Ethics Board at <a
+									href="mailto:chair.GREB@queensu.ca">chair.GREB@queensu.ca</a>
+								or 613-533-6081. This study has been granted clearance according
+								to the recommended principles of Canadian ethics guidelines, and
+								Queen's policies.
+							</p>
+							<p>By clicking "Next" below, you acknowledge the following:</p>
+							<p>1. You have read and understand the above Letter of
+								Information.</p>
+							<p>2. You understand that the audio files and background
+								information you submit will be available on a public website.</p>
+						</div>
 					</div>
 					<div id="location" class="wizard-step">
 						<input type="hidden" id="locationCoordinates"

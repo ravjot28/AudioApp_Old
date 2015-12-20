@@ -233,7 +233,13 @@ $.fn.wizard = function(config) {
 												+ '		<i class="glyphicon glyphicon-check"></i>'
 												+ '	</div>'
 												+ '	<div class="modal-title">Success</div>'
-												+ ' <div class="modal-body">You can refer this submission with the ID: '+jsonString+' </div>'
+												+ ' <div class="modal-body">'
+												+ '<p>Thank you for your participation in the Canadian Voices Map! Your reference number is: '
+												+ jsonString
+												+ '.</p>'
+												+ '<p>We will review your submission and assuming all looks well, add your audio data to our website. This usually takes about a week. If you would like to contact us regarding your participation in the project, please contact: CVM@queensu.ca</p>'
+												+ ''
+												+ ' </div>'
 												+ '	<div class="modal-footer">'
 												+ '		<button type="button" class="btn btn-success" data-dismiss="modal">OK</button>'
 												+ '	</div>'
@@ -241,12 +247,13 @@ $.fn.wizard = function(config) {
 												+ '<!-- / .modal-content -->'
 												+ '</div>';
 										$("#modal-success").empty();
-										$("#modal-success").append(replacingText);
+										$("#modal-success").append(
+												replacingText);
 										$("#modal-success").modal('show');
 										$('#my').modal("hide");
-										//alert(jsonString);
-										//console.log(jsonString);
-										//console.log(obj);
+										// alert(jsonString);
+										// console.log(jsonString);
+										// console.log(obj);
 									},
 									complete : function(msg, a, b) {
 										console.log('complete :' + msg);
