@@ -6,7 +6,7 @@
 
 
 	<welcome-file-list>
-		<welcome-file>welcome.jsp</welcome-file>
+		<welcome-file>/WEB-INF/welcome.jsp</welcome-file>
 	</welcome-file-list>
 
 	<display-name>Audio Application</display-name>

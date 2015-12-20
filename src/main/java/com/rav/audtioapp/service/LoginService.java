@@ -13,6 +13,7 @@ public class LoginService {
 		System.out.println("In Login Service userName " + dto.getUserName() + " password " + dto.getPassword());
 		if (dto.getUserName() != null && dto.getUserName().length() > 0 && dto.getPassword() != null
 				&& dto.getPassword().length() > 0) {
+			System.out.println("If statement passed");
 			LoginDAO dao = new LoginDAO();
 			System.out.println("Checking username exists");
 			if (dao.userNameExists(dto.getUserName())) {
@@ -32,7 +33,7 @@ public class LoginService {
 			}
 
 		} else {
-
+			System.out.println("If statement failed");
 			if (dto.getUserName() == null || dto.getUserName().length() > 0)
 				message = "Please enter the User Name";
 			if (dto.getPassword() == null || dto.getPassword().length() > 0)

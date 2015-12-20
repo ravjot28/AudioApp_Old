@@ -3,13 +3,14 @@ package com.rav.audtioapp.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class RegistrationDAO {
 
 	public RegistrationDAO() {
 		try {
-			Statement stmt = DAOUtil.getConnection().createStatement();
+			Statement stmt = DAOUtil.getInstance().getConnection().createStatement();
 			stmt.executeUpdate("CREATE TABLE IF NOT EXISTS \"UsersDetails\" (\"userName\" character varying(4000),  "
 					+ "\"emailAddress\" character varying(4000) NOT NULL,  password character varying(4000),  "
 					+ "active character varying(4000),  CONSTRAINT \"UsersDetails_pkey\" PRIMARY KEY (\"emailAddress\"))");
@@ -20,7 +21,7 @@ public class RegistrationDAO {
 
 	public boolean userNameExists(String userName) {
 		boolean result = false;
-		Connection connection = DAOUtil.getConnection();
+		Connection connection = DAOUtil.getInstance().getConnection();
 		Statement statement = null;
 		int count = -1;
 		try {
@@ -37,10 +38,17 @@ public class RegistrationDAO {
 			if (count > 0)
 				result = true;
 			statement.close();
-			connection.close();
 
 		} catch (Exception e) {
 			System.err.println(e);
+		} finally {
+			try {
+				connection.close();
+				connection = null;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 		return result;
@@ -48,7 +56,7 @@ public class RegistrationDAO {
 
 	public boolean emailAddressExists(String emailAddress) {
 		boolean result = false;
-		Connection connection = DAOUtil.getConnection();
+		Connection connection = DAOUtil.getInstance().getConnection();
 		Statement statement = null;
 		int count = -1;
 		try {
@@ -65,10 +73,17 @@ public class RegistrationDAO {
 			if (count > 0)
 				result = true;
 			statement.close();
-			connection.close();
 
 		} catch (Exception e) {
 			System.err.println(e);
+		} finally {
+			try {
+				connection.close();
+				connection = null;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 		return result;
@@ -76,7 +91,7 @@ public class RegistrationDAO {
 
 	public void insertNewuser(String emailAddress, String userName, String password) {
 		PreparedStatement statement = null;
-		Connection connection = DAOUtil.getConnection();
+		Connection connection = DAOUtil.getInstance().getConnection();
 		try {
 
 			statement = connection.prepareStatement(
@@ -86,14 +101,16 @@ public class RegistrationDAO {
 			statement.setString(3, password);
 			statement.setString(4, "Y");
 			statement.executeUpdate();
+			statement.close();
 		} catch (Exception e) {
 			System.err.println(e);
 		} finally {
 			try {
-				statement.close();
 				connection.close();
-			} catch (Exception e) {
-				System.err.println(e);
+				connection = null;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 	}

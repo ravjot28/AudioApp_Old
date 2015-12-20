@@ -57,7 +57,7 @@
 
 		$
 				.get(
-						"getUnapprovedAudio.action",
+						"getAudio.action",
 						function(data) {
 
 							//alert(data);
@@ -75,87 +75,13 @@
 									var id = coordinates[3].replace("{", "").replace("}", "");
 									var point = new google.maps.LatLng(
 											parseFloat(longi), parseFloat(lati));
-
-									var form = '<div style="margin: 10px;">'
-											+ '<p>Hello '
-											+ email
-											+ '</p>'
-											+ '<p>ID: '
-											+ id
-											+ '</p>'
-											+ '<button class="'+id+'" id="approve">Approve</a>'
-											+ '<button class="'+id+'" id="reject">Reject</a>'
-											+ '</div>'
-
-									create_marker(point, 'Hi', form, false,
-											false, false,
+									create_marker(point, 'ID: ' + id,
+											'<p>Hello ' + email + '</p>',
+											false, false, false,
 											"https://lit-journey-6254.herokuapp.com/icons/pin.png");
-
 								}
 								//Do something
 							}
-
-							$(document).on("click", "#approve", function() {
-								
-								id = $(this).attr('class');
-								alert("clicked approved "+id);
-								var request = {
-										"status" : "APPROVED",
-										"id" : id
-									};
-								var ajaxData = {};
-								ajaxData["array"] = [ JSON.stringify(request).replace(
-										',', ', ').replace('[', '').replace(']', '') ];
-								$
-										.ajax({
-											"dataType" : 'json',
-											"type" : "POST",
-											"url" : 'audioRequestApproval.action',
-											"data" : JSON.stringify(ajaxData),
-											contentType : "application/json; charset=utf-8",
-											async : false,
-											success : function(jsonString) {
-												alert(jsonString);
-											},
-											complete : function(msg, a, b) {
-												console.log('complete :' + msg);
-											},
-											error : function(msg, a, b) {
-												console.log('error:' + msg);
-											}
-										});
-							});
-
-							$(document).on("click", "#reject", function() {
-								id = $(this).attr('class');
-								alert("clicked reject "+id);
-								
-								var request = {
-										"status" : "REJECT",
-										"id" : id
-									};
-								var ajaxData = {};
-								ajaxData["array"] = [ JSON.stringify(request).replace(
-										',', ', ').replace('[', '').replace(']', '') ];
-								$
-										.ajax({
-											"dataType" : 'json',
-											"type" : "POST",
-											"url" : 'audioRequestApproval.action',
-											"data" : JSON.stringify(ajaxData),
-											contentType : "application/json; charset=utf-8",
-											async : false,
-											success : function(jsonString) {
-												alert(jsonString);
-											},
-											complete : function(msg, a, b) {
-												console.log('complete :' + msg);
-											},
-											error : function(msg, a, b) {
-												console.log('error:' + msg);
-											}
-										});
-							});
 							// $(data).find("marker").each(function () {
 							//Get user input values for the marker from the form
 							//        var name      = $(this).attr('name');
@@ -328,15 +254,43 @@ html, body {
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="strathyUnit">Strathy Language</a>
+					<a class="navbar-brand" href="#">Strathy Language</a>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="#" data-toggle="modal"
-							data-target="#login-modal">Logout</a></li>
-
+							data-target="#login-modal">Sign Up</a></li>
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown">Sign in <b class="caret"></b></a>
+							<ul class="dropdown-menu"
+								style="padding: 15px; min-width: 250px;">
+								<li>
+									<div class="row">
+										<div class="col-md-12">
+											<form class="form" role="form" method="post"
+												action="login.action" accept-charset="UTF-8" id="login-nav">
+												<div class="form-group">
+													<label class="sr-only" for="exampleInputEmail2">User
+														Name</label> <input type="text" id="userName" name="userName"
+														class="form-control" id="exampleInputEmail2"
+														placeholder="User Name" required>
+												</div>
+												<div class="form-group">
+													<label class="sr-only" for="exampleInputPassword2">Password</label>
+													<input type="password" class="form-control" id="password"
+														name="password" placeholder="Password" required>
+												</div>
+												<div class="form-group">
+													<button type="submit" class="btn btn-success btn-block">Sign
+														in</button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</li>
+							</ul></li>
 					</ul>
 				</div>
 				<!-- /.navbar-collapse --> </nav>
@@ -344,9 +298,31 @@ html, body {
 		</div>
 	</div>
 
+
+	<div class="modal fade" id="login-modal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true"
+		style="display: none;">
+		<div class="modal-dialog">
+			<div class="loginmodal-container">
+				<h1>Sign Up</h1>
+				<br>
+				<s:form action="register" method="post">
+					<input type="text" id="emailAddress" name="emailAddress"
+						placeholder="Email Address">
+					<input type="text" id="userName" name="userName"
+						placeholder="User Name">
+					<input type="password" id="password" name="password"
+						placeholder="Password">
+					<input type="password" id="repassword" name="repassword"
+						placeholder="Re enter the Password">
+					<input type="submit" name="login" class="login loginmodal-submit"
+						value="Sign Up">
+				</s:form>
+			</div>
+		</div>
+	</div>
 	<input id="pac-input" class="controls" type="text"
 		placeholder="Search Box">
 	<div id="map"></div>
-	
 </body>
 </html>

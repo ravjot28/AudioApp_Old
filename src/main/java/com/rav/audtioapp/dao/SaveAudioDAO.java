@@ -3,6 +3,7 @@ package com.rav.audtioapp.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.StringTokenizer;
 
@@ -13,7 +14,7 @@ public class SaveAudioDAO {
 	public SaveAudioDAO() {
 
 		try {
-			Statement stmt = DAOUtil.getConnection().createStatement();
+			Statement stmt = DAOUtil.getInstance().getConnection().createStatement();
 			stmt.executeUpdate("CREATE TABLE IF NOT EXISTS \"AudioRepo\" "
 					+ "(id numeric NOT NULL, bag text, cot text, gang text, past text, spa text, band text, "
 					+ "deck text, house text, pasta text, test text, boat text, duck text, how text, pool text, "
@@ -30,7 +31,7 @@ public class SaveAudioDAO {
 
 	private int getMaxID() {
 		int result = -1;
-		Connection connection = DAOUtil.getConnection();
+		Connection connection = DAOUtil.getInstance().getConnection();
 		Statement statement = null;
 		try {
 			statement = connection.createStatement();
@@ -40,9 +41,16 @@ public class SaveAudioDAO {
 				result = rs.getInt(1);
 			}
 			statement.close();
-			connection.close();
 		} catch (Exception e) {
 			System.err.println(e);
+		}finally{
+			try {
+				connection.close();
+				connection = null;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 		return result;
@@ -51,7 +59,7 @@ public class SaveAudioDAO {
 	public int insertNewAudio(SaveAudioDTO dto) {
 		int id = getMaxID() + 1;
 		PreparedStatement statement = null;
-		Connection connection = DAOUtil.getConnection();
+		Connection connection = DAOUtil.getInstance().getConnection();
 		try {
 
 			statement = connection.prepareStatement(
@@ -105,12 +113,13 @@ public class SaveAudioDAO {
 			statement.executeUpdate();
 		} catch (Exception e) {
 			System.err.println(e);
-		} finally {
+		} finally{
 			try {
-				statement.close();
 				connection.close();
-			} catch (Exception e) {
-				System.err.println(e);
+				connection = null;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 

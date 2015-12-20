@@ -2,6 +2,7 @@ package com.rav.audtioapp.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class AudioApprovalDAO {
@@ -9,7 +10,7 @@ public class AudioApprovalDAO {
 	public AudioApprovalDAO() {
 
 		try {
-			Statement stmt = DAOUtil.getConnection().createStatement();
+			Statement stmt = DAOUtil.getInstance().getConnection().createStatement();
 			stmt.executeUpdate("CREATE TABLE IF NOT EXISTS \"AudioRepo\" "
 					+ "(id numeric NOT NULL, bag text, cot text, gang text, past text, spa text, band text, "
 					+ "deck text, house text, pasta text, test text, boat text, duck text, how text, pool text, "
@@ -25,7 +26,7 @@ public class AudioApprovalDAO {
 	}
 
 	public void updateStatus(String status, int id) {
-		Connection connection = DAOUtil.getConnection();
+		Connection connection = DAOUtil.getInstance().getConnection();
 		PreparedStatement statement = null;
 		try {
 			statement = connection.prepareStatement("update \"AudioRepo\" set status = ? where id = ?");
@@ -34,9 +35,16 @@ public class AudioApprovalDAO {
 			statement.executeUpdate();
 
 			statement.close();
-			connection.close();
 		} catch (Exception e) {
 			System.err.println(e);
+		}finally{
+			try {
+				connection.close();
+				connection = null;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 

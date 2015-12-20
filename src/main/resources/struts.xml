@@ -12,6 +12,21 @@
 	<package name="basicStruts" namespace="/ravjot" extends="struts-default">
 	</package>
 
+	<package name="strathyUnit" extends="struts-default">
+
+		<action name="strathyUnitLogin" class="com.rav.audtioapp.action.DummyAction">
+			<result name="success">WEB-INF/welcome_strathyUnit.jsp</result>
+		</action>
+		
+		<action name="strathyUnit" class="com.rav.audtioapp.action.DummyAction">
+			<result name="success">WEB-INF/welcome.jsp</result>
+		</action>
+		
+		<action name="strathyUnitAddAudio" class="com.rav.audtioapp.action.DummyAction">
+			<result name="success">WEB-INF/addAudio.jsp</result>
+		</action>
+	</package>
+
 	<package name="loginRegistration" extends="struts-default,json-default">
 
 		<action name="login" class="com.rav.audtioapp.action.LoginAction">
@@ -42,9 +57,10 @@
 				<param name="root">jsonString</param>
 			</result>
 		</action>
-		
-		
-		<action name="audioRequestApproval" class="com.rav.audtioapp.action.AudioRequestApprovalAction">
+
+
+		<action name="audioRequestApproval"
+			class="com.rav.audtioapp.action.AudioRequestApprovalAction">
 			<interceptor-ref name="jsonStack"></interceptor-ref>
 			<result type="json">
 				<param name="noCache">true</param>
@@ -52,23 +68,25 @@
 				<param name="root">jsonString</param>
 			</result>
 		</action>
-		
-		<action name="getAudio" class="com.rav.audtioapp.action.GetAudioAction" method="getApprovedAudios">
+
+		<action name="getAudio" class="com.rav.audtioapp.action.GetAudioAction"
+			method="getApprovedAudios">
 			<result type="json">
 				<param name="noCache">true</param>
 				<param name="excludeNullProperties">true</param>
 				<param name="root">jsonString</param>
 			</result>
 		</action>
-		
-		<action name="getUnapprovedAudio" class="com.rav.audtioapp.action.GetAudioAction" method="getUnapprovedAudios">
+
+		<action name="getUnapprovedAudio" class="com.rav.audtioapp.action.GetAudioAction"
+			method="getUnapprovedAudios">
 			<result type="json">
 				<param name="noCache">true</param>
 				<param name="excludeNullProperties">true</param>
 				<param name="root">jsonString</param>
 			</result>
 		</action>
-		
+
 	</package>
 
 </struts>

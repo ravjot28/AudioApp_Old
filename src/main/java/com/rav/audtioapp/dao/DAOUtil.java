@@ -8,17 +8,33 @@ import org.apache.commons.dbcp2.BasicDataSource;
 public class DAOUtil {
 	private static BasicDataSource connectionPool;
 
+	private static DAOUtil object;
+
+	private DAOUtil() {
+
+	}
+
 	public static void main(String[] args) {
 		System.setProperty("DATABASE_URL", "postgres://postgres:admin@localhost:5432/AudioApp");
 		System.out.println(System.getenv("DATABASE_URL"));
 	}
 
-	public static Connection getConnection() {
+	public static DAOUtil getInstance() {
+		synchronized (DAOUtil.class) {
+			if (object == null)
+				object = new DAOUtil();
+		}
+		return object;
+	}
+
+	public Connection getConnection() {
 		URI dbUri;
 		Connection connection = null;
 		try {
 			if (connectionPool != null) {
-				connection = connectionPool.getConnection();
+				synchronized (this) {
+					connection = connectionPool.getConnection();
+				}
 			} else {
 				connectionPool = new BasicDataSource();
 				connectionPool.setDriverClassName("org.postgresql.Driver");
@@ -40,6 +56,8 @@ public class DAOUtil {
 				}
 
 				connectionPool.setInitialSize(100);
+				connectionPool.setMaxTotal(100);
+				connectionPool.setMaxIdle(100);
 				connection = connectionPool.getConnection();
 			}
 		} catch (Exception e) {
