@@ -90,7 +90,7 @@
 		$('#alertMessageModal').on('hidden.bs.modal', function() {
 			clicked = "false";
 		});
-
+		
 		
 
 		
@@ -107,6 +107,9 @@
 			$('#alertMessageModal').modal('show');
 		} else {
 			$('#alertBrowserMessageModal').modal('show');
+			$('#alertBrowserMessageModal').on('hidden.bs.modal', function() {
+				 history.back();
+			});
 		}
 
 		map = new google.maps.Map(document.getElementById("map"), {
@@ -455,7 +458,7 @@ a.button {
 					</p>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Go Back</button>
 				</div>
 			</div>
 		</div>
