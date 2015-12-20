@@ -91,6 +91,9 @@
 			clicked = "false";
 		});
 
+		
+
+		
 		/* btnFinish.on("click", function() {
 			var hv = $('#location').val();
 			alert("Location Coordinates selected " + hv);
@@ -458,6 +461,7 @@ a.button {
 		</div>
 	</div>
 
+
 	<div class="modal fade" id="my" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
@@ -602,6 +606,23 @@ a.button {
 								can contact you about your participation if necessary? </label> <input
 								type="text" class="form-control" id="emailAddress">
 						</p>
+
+					</div>
+
+					<div class="wizard-step">
+					<p><h2><font color="red">Alert!!</font></h2>
+						<p>
+							Before you get started, make sure that your microphone is working
+							and that you are in a relatively quiet location. For some tips on
+							improving the quality of your recording, <a target="_blank"
+								href="http://www.soundonsound.com/sos/dec98/articles/20tips.568.htm">click
+								here</a>.
+						</p>
+
+						<p>To record, click on the "start recording" button and then
+							say the word in a natural, casual manner. Press "stop" when you
+							are done. To re-record a word, simply do it again and the
+							previous version will be erased.</p>
 
 					</div>
 					<div class="wizard-step">

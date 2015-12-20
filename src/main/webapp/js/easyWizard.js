@@ -115,6 +115,7 @@ $.fn.wizard = function(config) {
 			return;
 		}
 		;
+		
 		$(container).find(".wizard-steps-panel .step-" + step).toggleClass(
 				"doing").toggleClass("done");
 		step++;
