@@ -60,7 +60,7 @@
 						"getAudio.action",
 						function(data) {
 
-							alert(data);
+							//alert(data);
 
 							var res = data.split("{}");
 							var arrayLength = res.length;
@@ -84,7 +84,6 @@
 								    var nowYear = now.getFullYear();
 								    var pastYear = past.getFullYear();
 								    var age = nowYear - pastYear;
-									
 									var point = new google.maps.LatLng(
 											parseFloat(longi), parseFloat(lati));
 									var nativeLang ;
@@ -92,7 +91,7 @@
 										nativeLang = "Yes";
 									else
 										nativeLang = mothertoungedata;
-									create_marker(point, 'ID: ' + id,
+									create_marker(point, 'ID: ' + id,'<div style="margin: 10px;">'
 											+ '<p>Age: '
 											+ age
 											+ '</p>'
@@ -104,7 +103,7 @@
 											+ '</p>'
 											+ '<p>Time in Canada: '
 											+ atwhatage
-											+ '</p>',
+											+ '</p>'+ '</div>',
 											false, false, false,
 											"https://lit-journey-6254.herokuapp.com/icons/pin.png");
 								}

@@ -93,7 +93,8 @@
 									else
 										nativeLang = mothertoungedata;
 									create_marker(point, 'ID: ' + id,
-											+ '<p>Age: '
+											'<div style="margin: 10px;">'
+											+  '<p>Age: '
 											+ age
 											+ '</p>'
 											+ '<p>Gender: '
@@ -104,7 +105,7 @@
 											+ '</p>'
 											+ '<p>Time in Canada: '
 											+ atwhatage
-											+ '</p>',
+											+ '</p>'+ '</div>',
 											false, false, false,
 											"https://lit-journey-6254.herokuapp.com/icons/pin.png");
 								}

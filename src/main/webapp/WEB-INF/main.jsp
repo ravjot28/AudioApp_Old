@@ -21,6 +21,8 @@
 
 
 <script type="text/javascript">
+var markers = [];
+var uniqueId = 1;
 	$(document).ready(function() {
 		//google.maps.event.addDomListener(window, "load", initAutocomplete);
 
@@ -114,7 +116,7 @@
 
 									create_marker(point, 'Hi', form, false,
 											false, false,
-											"https://lit-journey-6254.herokuapp.com/icons/pin_strathyunit.png");
+											"https://lit-journey-6254.herokuapp.com/icons/pin_strathyunit.png",id);
 
 								}
 								//Do something
@@ -123,7 +125,6 @@
 							$(document).on("click", "#approve", function() {
 								var approvalId = null;
 								id = $(this).attr('class');
-								alert("clicked approved "+id);
 								var request = {
 										"status" : "APPROVED",
 										"id" : id,
@@ -141,7 +142,15 @@
 											contentType : "application/json; charset=utf-8",
 											async : false,
 											success : function(jsonString) {
-												alert(jsonString);
+												//alert(jsonString);
+												for (var i = 0; i < markers.length; i++) {
+										            if (markers[i].id == id) {              
+										                markers[i].setMap(null);
+										                markers.splice(i, 1);
+										                return;
+										            }
+										        }
+												alert(id+' succeffully accepted');
 											},
 											complete : function(msg, a, b) {
 												console.log('complete :' + msg);
@@ -154,7 +163,7 @@
 
 							$(document).on("click", "#reject", function() {
 								id = $(this).attr('class');
-								alert("clicked reject "+id);
+								
 								
 								var request = {
 										"status" : "REJECT",
@@ -172,7 +181,14 @@
 											contentType : "application/json; charset=utf-8",
 											async : false,
 											success : function(jsonString) {
-												alert(jsonString);
+												for (var i = 0; i < markers.length; i++) {
+										            if (markers[i].id == id) {              
+										                markers[i].setMap(null);
+										                markers.splice(i, 1);
+										                return;
+										            }
+										        }
+												alert(id+' succeffully rejected');
 											},
 											complete : function(msg, a, b) {
 												console.log('complete :' + msg);
@@ -225,7 +241,7 @@
 	}
 
 	function create_marker(MapPos, MapTitle, MapDesc, InfoOpenDefault,
-			DragAble, Removable, iconPath) {
+			DragAble, Removable, iconPath,id) {
 		//new marker
 		var marker = new google.maps.Marker({
 			position : MapPos,
@@ -236,6 +252,8 @@
 			icon : iconPath
 		});
 
+		 marker.id = id;
+         uniqueId++;
 		var contentString = $('<div class="marker-info-win">'
 				+ '<div class="marker-inner-win"><span class="info-content">'
 				+ '<h1 class="marker-heading">' + MapTitle + '</h1>' + MapDesc
@@ -251,6 +269,7 @@
 		if (InfoOpenDefault) {
 			infowindow.open(map, marker);
 		}
+		markers.push(marker);
 	}
 </script>
 
