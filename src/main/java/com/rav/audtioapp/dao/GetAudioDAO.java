@@ -20,7 +20,7 @@ public class GetAudioDAO {
 					+ "pack text, sharp text, too text, longitude character varying(4000), lattitude character varying(4000), "
 					+ "birthyear character varying(4000), gender character varying(4000), mothertoungedata character varying(4000), "
 					+ "ratefluency character varying(4000),  atwhatage character varying(4000),  emailaddress character varying(4000),  "
-					+ "town character varying(4000),  bornincanada character varying(4000), ifnotmothertounge character varying(4000),"
+					+ "town character varying(4000),  bornincanada character varying(4000), ifnotmothertounge character varying(4000),\"approvedBy\" character varying(4000),"
 					+ "status character varying(4000), " + "CONSTRAINT \"AudioRepo_pkey\" PRIMARY KEY (id) )");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -33,11 +33,12 @@ public class GetAudioDAO {
 		Statement statement = null;
 		try {
 			statement = connection.createStatement();
-			String sql = "select emailaddress,longitude,lattitude,id FROM \"AudioRepo\" where status  ='NOTAPPROVED'";
+			String sql = "select birthyear,longitude,lattitude,id,gender,ifnotmothertounge,mothertoungedata,atwhatage FROM \"AudioRepo\" where status  ='NOTAPPROVED'";
 			ResultSet rs = statement.executeQuery(sql);
 			while (rs.next()) {
 				result.add("{" + rs.getString(1) + "}" + "{" + rs.getString(2) + "}" + "{" + rs.getString(3) + "}"
-						+ "{STRATHY-" + rs.getInt(4) + "}");
+						+ "{STRATHY-" + rs.getInt(4) + "}" + "{" + rs.getString(5) + "}" + "{" + rs.getString(6) + "}"
+						+ "{" + rs.getString(7) + "}" + "{" + rs.getString(8) + "}");
 			}
 			statement.close();
 		} catch (Exception e) {
@@ -61,12 +62,13 @@ public class GetAudioDAO {
 		Statement statement = null;
 		try {
 			statement = connection.createStatement();
-			String sql = "select emailaddress,longitude,lattitude,id FROM \"AudioRepo\" where status  ='APPROVED'";
+			String sql = "select birthyear,longitude,lattitude,id,gender,ifnotmothertounge,mothertoungedata,atwhatage FROM \"AudioRepo\" where status  ='APPROVED'";
 			System.out.println("select emailaddress,longitude,lattitude FROM \"AudioRepo\" where status  ='APPROVED'");
 			ResultSet rs = statement.executeQuery(sql);
 			while (rs.next()) {
 				result.add("{" + rs.getString(1) + "}" + "{" + rs.getString(2) + "}" + "{" + rs.getString(3) + "}"
-						+ "{STRATHY-" + rs.getInt(4) + "}");
+						+ "{STRATHY-" + rs.getInt(4) + "}" + "{" + rs.getString(5) + "}" + "{" + rs.getString(6) + "}"
+						+ "{" + rs.getString(7) + "}" + "{" + rs.getString(8) + "}");
 			}
 			statement.close();
 		} catch (Exception e) {

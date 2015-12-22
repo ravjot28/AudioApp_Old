@@ -22,7 +22,7 @@ public class SaveAudioDAO {
 					+ "pack text, sharp text, too text, longitude character varying(4000), lattitude character varying(4000), "
 					+ "birthyear character varying(4000), gender character varying(4000), mothertoungedata character varying(4000), "
 					+ "ratefluency character varying(4000),  atwhatage character varying(4000),  emailaddress character varying(4000),  "
-					+ "town character varying(4000),  bornincanada character varying(4000), ifnotmothertounge character varying(4000),"
+					+ "town character varying(4000),  bornincanada character varying(4000), ifnotmothertounge character varying(4000),\"approvedBy\" character varying(4000),"
 					+ "status character varying(4000), " + "CONSTRAINT \"AudioRepo_pkey\" PRIMARY KEY (id) )");
 		} catch (Exception e) {
 			e.printStackTrace();

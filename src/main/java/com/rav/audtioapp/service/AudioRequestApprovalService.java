@@ -9,7 +9,7 @@ public class AudioRequestApprovalService {
 		AudioApprovalDAO dao = new AudioApprovalDAO();
 
 		int id = Integer.parseInt(dto.getId().replaceAll("STRATHY-", ""));
-		dao.updateStatus(dto.getStatus(), id);
+		dao.updateStatus(dto.getStatus(), id,dto.getApprovalId());
 		return dto.getId() + "'s status updated to " + dto.getStatus();
 	}
 

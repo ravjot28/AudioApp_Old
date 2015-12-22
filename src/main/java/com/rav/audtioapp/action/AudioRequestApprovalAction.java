@@ -43,7 +43,7 @@ public class AudioRequestApprovalAction {
 		}
 		dto.setId(getValue(obj, "id"));
 		dto.setStatus(getValue(obj, "status"));
-
+		dto.setApprovalId(getValue(obj, "approvalId"));
 		return dto;
 	}
 

@@ -54,6 +54,7 @@
 		          create_marker(point, name, address, false, false, false, "https://lit-journey-6254.herokuapp.com/icons/pin.png");
 		    });
 		});  */
+		
 
 		$
 				.get(
@@ -69,19 +70,43 @@
 
 								var coordinates = res[i].split("}{");
 								if (coordinates.length > 3) {
-									var email = coordinates[0].replace("{", "").replace("}", "");
+									
+									var birthyear = coordinates[0].replace("{", "").replace("}", "");
 									var longi = coordinates[1].replace("{", "").replace("}", "");
 									var lati = coordinates[2].replace("{", "").replace("}", "");
 									var id = coordinates[3].replace("{", "").replace("}", "");
+									
+									var gender = coordinates[4].replace("{", "").replace("}", "");
+									var ifnotmothertounge = coordinates[5].replace("{", "").replace("}", "");
+									var mothertoungedata = coordinates[6].replace("{", "").replace("}", "");
+									var atwhatage = coordinates[7].replace("{", "").replace("}", "");
+									
+									var now = new Date();
+								    var past = new Date(birthyear);
+								    var nowYear = now.getFullYear();
+								    var pastYear = past.getFullYear();
+								    var age = nowYear - pastYear;
+									
 									var point = new google.maps.LatLng(
 											parseFloat(longi), parseFloat(lati));
+									var nativeLang ;
+									if(ifnotmothertounge == "true")
+										nativeLang = "Yes";
+									else
+										nativeLang = mothertoungedata;
 
 									var form = '<div style="margin: 10px;">'
-											+ '<p>Hello '
-											+ email
+											+ '<p>Age: '
+											+ age
 											+ '</p>'
-											+ '<p>ID: '
-											+ id
+											+ '<p>Gender: '
+											+ gender
+											+ '</p>'
+											+ '<p>Native language: '
+											+ nativeLang
+											+ '</p>'
+											+ '<p>Time in Canada: '
+											+ atwhatage
 											+ '</p>'
 											+ '<button class="'+id+'" id="approve">Approve</a>'
 											+ '<button class="'+id+'" id="reject">Reject</a>'
@@ -96,12 +121,13 @@
 							}
 
 							$(document).on("click", "#approve", function() {
-								
+								var approvalId = null;
 								id = $(this).attr('class');
 								alert("clicked approved "+id);
 								var request = {
 										"status" : "APPROVED",
-										"id" : id
+										"id" : id,
+										"approvalId":approvalId
 									};
 								var ajaxData = {};
 								ajaxData["array"] = [ JSON.stringify(request).replace(
