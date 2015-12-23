@@ -69,44 +69,70 @@
 
 								var coordinates = res[i].split("}{");
 								if (coordinates.length > 3) {
-									var birthyear = coordinates[0].replace("{", "").replace("}", "");
-									var longi = coordinates[1].replace("{", "").replace("}", "");
-									var lati = coordinates[2].replace("{", "").replace("}", "");
-									var id = coordinates[3].replace("{", "").replace("}", "");
-									
-									var gender = coordinates[4].replace("{", "").replace("}", "");
-									var ifnotmothertounge = coordinates[5].replace("{", "").replace("}", "");
-									var mothertoungedata = coordinates[6].replace("{", "").replace("}", "");
-									var atwhatage = coordinates[7].replace("{", "").replace("}", "");
-									
+									var birthyear = coordinates[0].replace("{",
+											"").replace("}", "");
+									var longi = coordinates[1].replace("{", "")
+											.replace("}", "");
+									var lati = coordinates[2].replace("{", "")
+											.replace("}", "");
+									var id = coordinates[3].replace("{", "")
+											.replace("}", "");
+
+									var gender = coordinates[4]
+											.replace("{", "").replace("}", "");
+									var ifnotmothertounge = coordinates[5]
+											.replace("{", "").replace("}", "");
+									var mothertoungedata = coordinates[6]
+											.replace("{", "").replace("}", "");
+									var atwhatage = coordinates[7].replace("{",
+											"").replace("}", "");
+
+									var voices = coordinates[8]
+											.replace("{", "").replace("}", "");
+
+									var s = '<select id = \''+id+'\'>';
+									var voiceOptions = voices.split("-");
+									var voiceOptionsLength = voiceOptions.length;
+									for (var k = 0; k < voiceOptionsLength; k++) {
+										s += '<option value = '+id+"-"+voiceOptions[k]+'>'
+												+ voiceOptions[k] + '</option>';
+									}
+									s += '</select>';
+
 									var now = new Date();
-								    var past = new Date(birthyear);
-								    var nowYear = now.getFullYear();
-								    var pastYear = past.getFullYear();
-								    var age = nowYear - pastYear;
-									
+									var past = new Date(birthyear);
+									var nowYear = now.getFullYear();
+									var pastYear = past.getFullYear();
+									var age = nowYear - pastYear;
 									var point = new google.maps.LatLng(
 											parseFloat(longi), parseFloat(lati));
-									var nativeLang ;
-									if(ifnotmothertounge == "true")
+									var nativeLang;
+									if (ifnotmothertounge == "true")
 										nativeLang = "Yes";
 									else
 										nativeLang = mothertoungedata;
-									create_marker(point, 'ID: ' + id,
+									create_marker(
+											point,
+											'ID: ' + id,
 											'<div style="margin: 10px;">'
-											+  '<p>Age: '
-											+ age
-											+ '</p>'
-											+ '<p>Gender: '
-											+ gender
-											+ '</p>'
-											+ '<p>Native language: '
-											+ nativeLang
-											+ '</p>'
-											+ '<p>Time in Canada: '
-											+ atwhatage
-											+ '</p>'+ '</div>',
-											false, false, false,
+													+ '<p>Age: '
+													+ age
+													+ '</p>'
+													+ '<p>Gender: '
+													+ gender
+													+ '</p>'
+													+ '<p>Native language: '
+													+ nativeLang
+													+ '</p>'
+													+ '<p>Time in Canada: '
+													+ atwhatage
+													+ '</p>'
+													+ '<p>Choose Word:</p>'
+													+ s+'<p><audio id="audio" > <source src = ""/> </audio></p>'
+													+ '<button class="'+id+'" id="playVoice">Play</button>'
+													+ '<button class="'+id+'" id="downloadVoice">Download</button>'
+													+ '</div>', false, false,
+											false,
 											"https://lit-journey-6254.herokuapp.com/icons/pin.png");
 								}
 								//Do something
@@ -124,6 +150,112 @@
 							//	"https://lit-journey-6254.herokuapp.com/icons/pin.png");
 							//        create_marker(point, name, address, false, false, false, "https://lit-journey-6254.herokuapp.com/icons/pin.png");
 							// });
+							
+							$(document).on(
+									"click",
+									"#playVoice",
+									function() {
+										id = $(this).attr('class');
+
+										var voiceSelected = $('#' + id + '')
+												.find(":selected").text();
+										
+										
+										var request = {
+												"id" : id,
+												"voice" : voiceSelected
+											};
+											var ajaxData = {};
+											ajaxData["array"] = [ JSON
+													.stringify(request)
+													.replace(',', ', ')
+													.replace('[', '')
+													.replace(']', '') ];
+											$
+													.ajax({
+														"dataType" : 'json',
+														"type" : "POST",
+														"url" : 'getParticularAudio.action',
+														"data" : JSON
+																.stringify(ajaxData),
+														contentType : "application/json; charset=utf-8",
+														async : false,
+														success : function(
+																jsonString) {
+															$("#audio").attr("src", jsonString);
+															$("#audio")[0].play();
+														},
+														complete : function(
+																msg, a, b) {
+															console
+																	.log('complete :'
+																			+ msg);
+														},
+														error : function(
+																msg, a, b) {
+															console
+																	.log('error:'
+																			+ msg);
+														}
+													});
+
+									});
+
+							$(document).on(
+									"click",
+									"#downloadVoice",
+									function() {
+										id = $(this).attr('class');
+
+										var voiceSelected = $('#' + id + '')
+												.find(":selected").text();
+										
+										
+										var request = {
+												"id" : id,
+												"voice" : voiceSelected
+											};
+											var ajaxData = {};
+											ajaxData["array"] = [ JSON
+													.stringify(request)
+													.replace(',', ', ')
+													.replace('[', '')
+													.replace(']', '') ];
+											$
+													.ajax({
+														"dataType" : 'json',
+														"type" : "POST",
+														"url" : 'getParticularAudio.action',
+														"data" : JSON
+																.stringify(ajaxData),
+														contentType : "application/json; charset=utf-8",
+														async : false,
+														success : function(
+																jsonString) {
+															/* $("<a href='"
+																	+ jsonString
+																	+ "' download='"+id+"_"+voiceSelected++".wav'></a>")[0]
+																	.click(); */
+																		var a = document.createElement('a');
+																		$(a).attr('href',jsonString).attr('download',id+'_'+voiceSelected+'.wav').addClass('.voiceSelectedDownload').attr('id',id+'_'+voiceSelected).appendTo('body');
+																	
+																		$(a)[0].click();
+														},
+														complete : function(
+																msg, a, b) {
+															console
+																	.log('complete :'
+																			+ msg);
+														},
+														error : function(
+																msg, a, b) {
+															console
+																	.log('error:'
+																			+ msg);
+														}
+													});
+
+									});
 						});
 
 		var input = document.getElementById('pac-input');

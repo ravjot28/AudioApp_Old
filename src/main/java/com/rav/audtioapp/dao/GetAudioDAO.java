@@ -2,6 +2,7 @@ package com.rav.audtioapp.dao;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -33,12 +34,23 @@ public class GetAudioDAO {
 		Statement statement = null;
 		try {
 			statement = connection.createStatement();
-			String sql = "select birthyear,longitude,lattitude,id,gender,ifnotmothertounge,mothertoungedata,atwhatage FROM \"AudioRepo\" where status  ='NOTAPPROVED'";
+			String sql = "select birthyear,longitude,lattitude,id,gender,ifnotmothertounge,mothertoungedata,atwhatage,bag, cot, gang, past, "
+					+ "spa, band, deck, house, pasta, test,boat, duck, how, pool, tie, boot, face, kiss, seat, tight, caught,  far, pack, "
+					+ "sharp, too FROM \"AudioRepo\" where status  ='NOTAPPROVED'";
 			ResultSet rs = statement.executeQuery(sql);
 			while (rs.next()) {
+				ResultSetMetaData rsmd = rs.getMetaData();
+				String voices = "";
+				for (int j = 9; j < rsmd.getColumnCount(); j++) {
+					if (rs.getString(rsmd.getColumnName(j)) != null) {
+						voices += rsmd.getColumnName(j) + "-";
+					}
+				}
+				voices = voices.substring(0, voices.length() - 1);
 				result.add("{" + rs.getString(1) + "}" + "{" + rs.getString(2) + "}" + "{" + rs.getString(3) + "}"
 						+ "{STRATHY-" + rs.getInt(4) + "}" + "{" + rs.getString(5) + "}" + "{" + rs.getString(6) + "}"
-						+ "{" + rs.getString(7) + "}" + "{" + rs.getString(8) + "}");
+						+ "{" + rs.getString(7) + "}" + "{" + rs.getString(8) + "}" + "{" + voices + "}");
+
 			}
 			statement.close();
 		} catch (Exception e) {
@@ -62,13 +74,50 @@ public class GetAudioDAO {
 		Statement statement = null;
 		try {
 			statement = connection.createStatement();
-			String sql = "select birthyear,longitude,lattitude,id,gender,ifnotmothertounge,mothertoungedata,atwhatage FROM \"AudioRepo\" where status  ='APPROVED'";
+			String sql = "select birthyear,longitude,lattitude,id,gender,ifnotmothertounge,mothertoungedata,atwhatage,bag, cot, gang, past, "
+					+ "spa, band, deck, house, pasta, test,boat, duck, how, pool, tie, boot, face, kiss, seat, tight, caught,  far, pack, "
+					+ "sharp, too FROM \"AudioRepo\" where status  ='APPROVED'";
 			System.out.println("select emailaddress,longitude,lattitude FROM \"AudioRepo\" where status  ='APPROVED'");
 			ResultSet rs = statement.executeQuery(sql);
 			while (rs.next()) {
+				ResultSetMetaData rsmd = rs.getMetaData();
+				String voices = "";
+				for (int j = 9; j < rsmd.getColumnCount(); j++) {
+					if (rs.getString(rsmd.getColumnName(j)) != null) {
+						voices += rsmd.getColumnName(j) + "-";
+					}
+				}
+				voices = voices.substring(0, voices.length() - 1);
 				result.add("{" + rs.getString(1) + "}" + "{" + rs.getString(2) + "}" + "{" + rs.getString(3) + "}"
 						+ "{STRATHY-" + rs.getInt(4) + "}" + "{" + rs.getString(5) + "}" + "{" + rs.getString(6) + "}"
-						+ "{" + rs.getString(7) + "}" + "{" + rs.getString(8) + "}");
+						+ "{" + rs.getString(7) + "}" + "{" + rs.getString(8) + "}" + "{" + voices + "}");
+			}
+			statement.close();
+		} catch (Exception e) {
+			System.err.println(e);
+		} finally {
+			try {
+				connection.close();
+				connection = null;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		return result;
+	}
+
+	public String getParticularAudio(String voice, int id) {
+		String result = null;
+		Connection connection = DAOUtil.getInstance().getConnection();
+		Statement statement = null;
+		try {
+			statement = connection.createStatement();
+			String sql = "select " + voice + " FROM \"AudioRepo\" where id = " + id ;
+			ResultSet rs = statement.executeQuery(sql);
+			while (rs.next()) {
+				result = rs.getString(1);
 			}
 			statement.close();
 		} catch (Exception e) {
