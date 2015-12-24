@@ -527,7 +527,7 @@ a.button {
 					<div id="location" class="wizard-step">
 						<input type="hidden" id="locationCoordinates"
 							name="locationCoordinates" />
-						<p>
+						<p>Select your birth year:
 							<select class="form-control" id="age">
 								<option selected="selected">Select your birth year</option>
 								<option>before 1915</option>
@@ -541,7 +541,7 @@ a.button {
 							</select>
 						</p>
 
-						<p>
+						<p>Select your gender:
 							<select class="form-control" id="gender">
 								<option selected="selected">Select your gender</option>
 								<option>Male</option>
@@ -566,7 +566,7 @@ a.button {
 							</label> <input type="text" class="form-control" id="mothertounge">
 						</p>
 
-						<p>
+						<p>How would you rate your fluency in English?:
 							<select class="form-control" id="fluency">
 								<option selected="selected">How would you rate your
 									fluency in English?</option>
@@ -584,7 +584,7 @@ a.button {
 							name="citizenNo">No
 						</label>
 
-						<p>
+						<p>If no, at what age did you move to Canada?:
 							<select class="form-control" id="canadaage">
 								<option selected="selected">If no, at what age did you
 									move to Canada?</option>
