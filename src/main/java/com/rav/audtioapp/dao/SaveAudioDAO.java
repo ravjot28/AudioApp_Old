@@ -15,7 +15,7 @@ public class SaveAudioDAO {
 
 		try {
 			Statement stmt = DAOUtil.getInstance().getConnection().createStatement();
-			stmt.executeUpdate("CREATE TABLE IF NOT EXISTS \"AudioRepo\" "
+			stmt.executeUpdate("CREATE TABLE IF NOT EXISTS \"AudioSubmission_Details\" "
 					+ "(id numeric NOT NULL, bag text, cot text, gang text, past text, spa text, band text, "
 					+ "deck text, house text, pasta text, test text, boat text, duck text, how text, pool text, "
 					+ "tie text, boot text, face text, kiss text, seat text, tight text, caught text, far text, "
@@ -23,7 +23,8 @@ public class SaveAudioDAO {
 					+ "birthyear character varying(4000), gender character varying(4000), mothertoungedata character varying(4000), "
 					+ "ratefluency character varying(4000),  atwhatage character varying(4000),  emailaddress character varying(4000),  "
 					+ "town character varying(4000),  bornincanada character varying(4000), ifnotmothertounge character varying(4000),\"approvedBy\" character varying(4000),"
-					+ "status character varying(4000), " + "CONSTRAINT \"AudioRepo_pkey\" PRIMARY KEY (id) )");
+					+ "status character varying(4000),province character varying(4000), "
+					+ "CONSTRAINT \"AudioRepo_pkey\" PRIMARY KEY (id) )");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -35,7 +36,7 @@ public class SaveAudioDAO {
 		Statement statement = null;
 		try {
 			statement = connection.createStatement();
-			String sql = "select max(id) FROM \"AudioRepo\"";
+			String sql = "select max(id) FROM \"AudioSubmission_Details\"";
 			ResultSet rs = statement.executeQuery(sql);
 			while (rs.next()) {
 				result = rs.getInt(1);
@@ -43,7 +44,7 @@ public class SaveAudioDAO {
 			statement.close();
 		} catch (Exception e) {
 			System.err.println(e);
-		}finally{
+		} finally {
 			try {
 				connection.close();
 				connection = null;
@@ -63,11 +64,11 @@ public class SaveAudioDAO {
 		try {
 
 			statement = connection.prepareStatement(
-					"INSERT INTO \"AudioRepo\" ( id, bag, cot, gang, past, spa, band, deck, house, pasta, test, "
-					+ "boat, duck, how, pool, tie, boot, face, kiss, seat, tight, caught,   far, pack, sharp, "
-					+ "too, longitude, lattitude, birthyear, gender,   mothertoungedata, ratefluency, atwhatage, "
-					+ "emailaddress, town, bornincanada, ifnotmothertounge, status) "
-					+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,  ?, ?, ?, ?, ?,  ?, ?, ?) ");
+					"INSERT INTO \"AudioSubmission_Details\" ( id, bag, cot, gang, past, spa, band, deck, house, pasta, test, "
+							+ "boat, duck, how, pool, tie, boot, face, kiss, seat, tight, caught,   far, pack, sharp, "
+							+ "too, longitude, lattitude, birthyear, gender,   mothertoungedata, ratefluency, atwhatage, "
+							+ "emailaddress, town, bornincanada, ifnotmothertounge, status,province) "
+							+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,  ?, ?, ?, ?, ?,  ?, ?, ?,?) ");
 			int index = 1;
 			statement.setInt(index++, id);
 			statement.setString(index++, dto.getBag());
@@ -96,7 +97,7 @@ public class SaveAudioDAO {
 			statement.setString(index++, dto.getSharp());
 			statement.setString(index++, dto.getToo());
 			String location = dto.getLocation();
-			StringTokenizer token = new StringTokenizer(location," ");
+			StringTokenizer token = new StringTokenizer(location, " ");
 			statement.setString(index++, token.nextToken());
 			statement.setString(index++, token.nextToken());
 			statement.setString(index++, dto.getBirthYear());
@@ -109,11 +110,11 @@ public class SaveAudioDAO {
 			statement.setString(index++, dto.getBornInCanada());
 			statement.setString(index++, dto.getIfNotMotherTounge());
 			statement.setString(index++, "NOTAPPROVED");
-			
+			statement.setString(index++, dto.getProvince());
 			statement.executeUpdate();
 		} catch (Exception e) {
 			System.err.println(e);
-		} finally{
+		} finally {
 			try {
 				connection.close();
 				connection = null;

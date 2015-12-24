@@ -37,6 +37,7 @@ public class SaveAudioDTO {
 	private String atWhatAge;
 	private String town;
 	private String emailAddress;
+	private String province;
 
 	public String getLocation() {
 		return location;
@@ -316,6 +317,14 @@ public class SaveAudioDTO {
 
 	public void setEmailAddress(String emailAddress) {
 		this.emailAddress = emailAddress;
+	}
+
+	public String getProvince() {
+		return province;
+	}
+
+	public void setProvince(String province) {
+		this.province = province;
 	}
 
 }

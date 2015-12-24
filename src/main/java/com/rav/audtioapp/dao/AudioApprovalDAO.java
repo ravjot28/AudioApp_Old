@@ -11,7 +11,7 @@ public class AudioApprovalDAO {
 
 		try {
 			Statement stmt = DAOUtil.getInstance().getConnection().createStatement();
-			stmt.executeUpdate("CREATE TABLE IF NOT EXISTS \"AudioRepo\" "
+			stmt.executeUpdate("CREATE TABLE IF NOT EXISTS \"AudioSubmission_Details\" "
 					+ "(id numeric NOT NULL, bag text, cot text, gang text, past text, spa text, band text, "
 					+ "deck text, house text, pasta text, test text, boat text, duck text, how text, pool text, "
 					+ "tie text, boot text, face text, kiss text, seat text, tight text, caught text, far text, "
@@ -19,7 +19,8 @@ public class AudioApprovalDAO {
 					+ "birthyear character varying(4000), gender character varying(4000), mothertoungedata character varying(4000), "
 					+ "ratefluency character varying(4000),  atwhatage character varying(4000),  emailaddress character varying(4000),  "
 					+ "town character varying(4000),  bornincanada character varying(4000), ifnotmothertounge character varying(4000),\"approvedBy\" character varying(4000),"
-					+ "status character varying(4000), " + "CONSTRAINT \"AudioRepo_pkey\" PRIMARY KEY (id) )");
+					+ "status character varying(4000),province character varying(4000), "
+					+ "CONSTRAINT \"AudioRepo_pkey\" PRIMARY KEY (id) )");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -29,7 +30,7 @@ public class AudioApprovalDAO {
 		Connection connection = DAOUtil.getInstance().getConnection();
 		PreparedStatement statement = null;
 		try {
-			statement = connection.prepareStatement("update \"AudioRepo\" set status = ?,\"approvedBy\" =? where id = ?");
+			statement = connection.prepareStatement("update \"AudioSubmission_Details\" set status = ?,\"approvedBy\" =? where id = ?");
 			statement.setString(1, status);
 			statement.setString(2, approvalId);
 			statement.setInt(3, id);

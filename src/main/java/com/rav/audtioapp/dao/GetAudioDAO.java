@@ -14,7 +14,7 @@ public class GetAudioDAO {
 
 		try {
 			Statement stmt = DAOUtil.getInstance().getConnection().createStatement();
-			stmt.executeUpdate("CREATE TABLE IF NOT EXISTS \"AudioRepo\" "
+			stmt.executeUpdate("CREATE TABLE IF NOT EXISTS \"AudioSubmission_Details\" "
 					+ "(id numeric NOT NULL, bag text, cot text, gang text, past text, spa text, band text, "
 					+ "deck text, house text, pasta text, test text, boat text, duck text, how text, pool text, "
 					+ "tie text, boot text, face text, kiss text, seat text, tight text, caught text, far text, "
@@ -22,7 +22,8 @@ public class GetAudioDAO {
 					+ "birthyear character varying(4000), gender character varying(4000), mothertoungedata character varying(4000), "
 					+ "ratefluency character varying(4000),  atwhatage character varying(4000),  emailaddress character varying(4000),  "
 					+ "town character varying(4000),  bornincanada character varying(4000), ifnotmothertounge character varying(4000),\"approvedBy\" character varying(4000),"
-					+ "status character varying(4000), " + "CONSTRAINT \"AudioRepo_pkey\" PRIMARY KEY (id) )");
+					+ "status character varying(4000),province character varying(4000), "
+					+ "CONSTRAINT \"AudioRepo_pkey\" PRIMARY KEY (id) )");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -36,7 +37,7 @@ public class GetAudioDAO {
 			statement = connection.createStatement();
 			String sql = "select birthyear,longitude,lattitude,id,gender,ifnotmothertounge,mothertoungedata,atwhatage,bag, cot, gang, past, "
 					+ "spa, band, deck, house, pasta, test,boat, duck, how, pool, tie, boot, face, kiss, seat, tight, caught,  far, pack, "
-					+ "sharp, too FROM \"AudioRepo\" where status  ='NOTAPPROVED'";
+					+ "sharp, too FROM \"AudioSubmission_Details\" where status  ='NOTAPPROVED'";
 			ResultSet rs = statement.executeQuery(sql);
 			while (rs.next()) {
 				ResultSetMetaData rsmd = rs.getMetaData();
@@ -76,8 +77,8 @@ public class GetAudioDAO {
 			statement = connection.createStatement();
 			String sql = "select birthyear,longitude,lattitude,id,gender,ifnotmothertounge,mothertoungedata,atwhatage,bag, cot, gang, past, "
 					+ "spa, band, deck, house, pasta, test,boat, duck, how, pool, tie, boot, face, kiss, seat, tight, caught,  far, pack, "
-					+ "sharp, too FROM \"AudioRepo\" where status  ='APPROVED'";
-			System.out.println("select emailaddress,longitude,lattitude FROM \"AudioRepo\" where status  ='APPROVED'");
+					+ "sharp, too FROM \"AudioSubmission_Details\" where status  ='APPROVED'";
+			System.out.println("select emailaddress,longitude,lattitude FROM \"AudioSubmission_Details\" where status  ='APPROVED'");
 			ResultSet rs = statement.executeQuery(sql);
 			while (rs.next()) {
 				ResultSetMetaData rsmd = rs.getMetaData();
@@ -114,7 +115,7 @@ public class GetAudioDAO {
 		Statement statement = null;
 		try {
 			statement = connection.createStatement();
-			String sql = "select " + voice + " FROM \"AudioRepo\" where id = " + id ;
+			String sql = "select " + voice + " FROM \"AudioSubmission_Details\" where id = " + id ;
 			ResultSet rs = statement.executeQuery(sql);
 			while (rs.next()) {
 				result = rs.getString(1);

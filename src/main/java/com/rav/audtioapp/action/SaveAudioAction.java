@@ -76,6 +76,7 @@ public class SaveAudioAction {
 		dto.setToo(getValue(obj, "too"));
 		dto.setTown(getValue(obj, "town"));
 		dto.setIfNotMotherTounge(getValue(obj, "ifNotMotherTounge"));
+		dto.setProvince(getValue(obj, "province"));
 		return dto;
 	}
 

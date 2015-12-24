@@ -30,11 +30,12 @@ $.fn.wizard = function(config) {
 			var citizenYes = $("#citizenYes").is(":checked");
 			var citizenNo = $("#citizenNo").is(":checked");
 			var canadaage = $('#canadaage').find(":selected").text();
+			var province = $('#province').find(":selected").text();
 			var yearsspent = $('#yearsspent').val();
 			var emailAddress = $('#emailAddress').val();
 
 			if (age == 'Select your birth year'
-					|| gender == 'Select your gender'
+					|| gender == 'Select your gender' || province =='Select the province'
 					|| ((!langyes && !langno) && (langno && mothertounge.length == 0))
 					|| fluency == 'If not, how would you rate your fluency in English?'
 					|| ((!citizenYes && !citizenNo) && (canadaage == 'If no, at what age did you move to Canada?'))
@@ -162,6 +163,7 @@ $.fn.wizard = function(config) {
 						var citizenNo = $("#citizenNo").is(":checked");
 						var canadaage = $('#canadaage').find(":selected")
 								.text();
+						var province = $('#province').find(":selected").text();
 						var yearsspent = $('#yearsspent').val();
 						var emailAddress = $('#emailAddress').val();
 						var motherTounge1 = "false";
@@ -210,7 +212,8 @@ $.fn.wizard = function(config) {
 							"emailAddress" : emailAddress,
 							"town" : yearsspent,
 							"bornInCanada" : bornInCanada,
-							"ifNotMotherTounge" : mothertounge
+							"ifNotMotherTounge" : mothertounge,
+							"province":province
 						};
 
 						var ajaxData = {};

@@ -129,6 +129,7 @@
 						'If not, how would you rate your fluency in English?');
 				$('#canadaage').val(
 						'If no, at what age did you move to Canada?');
+				$('#province').val('Select the province');
 
 				$('#mothertounge').val('');
 				$('#yearsspent').val('');
@@ -527,8 +528,8 @@ a.button {
 					<div id="location" class="wizard-step">
 						<input type="hidden" id="locationCoordinates"
 							name="locationCoordinates" />
-						<p>Select your birth year:
-							<select class="form-control" id="age">
+						<p>
+							Select your birth year: <select class="form-control" id="age">
 								<option selected="selected">Select your birth year</option>
 								<option>before 1915</option>
 								<script>
@@ -541,8 +542,8 @@ a.button {
 							</select>
 						</p>
 
-						<p>Select your gender:
-							<select class="form-control" id="gender">
+						<p>
+							Select your gender: <select class="form-control" id="gender">
 								<option selected="selected">Select your gender</option>
 								<option>Male</option>
 								<option>Female</option>
@@ -566,8 +567,9 @@ a.button {
 							</label> <input type="text" class="form-control" id="mothertounge">
 						</p>
 
-						<p>How would you rate your fluency in English?:
-							<select class="form-control" id="fluency">
+						<p>
+							How would you rate your fluency in English?: <select
+								class="form-control" id="fluency">
 								<option selected="selected">How would you rate your
 									fluency in English?</option>
 								<option>native speaker</option>
@@ -584,8 +586,9 @@ a.button {
 							name="citizenNo">No
 						</label>
 
-						<p>If no, at what age did you move to Canada?:
-							<select class="form-control" id="canadaage">
+						<p>
+							If no, at what age did you move to Canada?: <select
+								class="form-control" id="canadaage">
 								<option selected="selected">If no, at what age did you
 									move to Canada?</option>
 								<option>I have never lived in Canada</option>
@@ -597,8 +600,31 @@ a.button {
 						</p>
 
 						<p>
-							<label for="comment">List the town and province where you
-								spent the majority of your years age 5-18. </label> <input type="text"
+							Select the province where you spent majority of your years age
+							5-18: <select class="form-control" id="province">
+								<option selected="selected">Select the province</option>
+								<script>
+									var states = new Array("Alberta",
+											"British Columbia", "Manitoba",
+											"New Brunswick",
+											"Newfoundland and Labrador",
+											"Northwest Territories",
+											"Nova Scotia", "Nunavut",
+											"Ontario", "Prince Edward Island",
+											"Quebec", "Saskatchewan",
+											"Yukon Territory");
+									for (var hi = 0; hi < states.length; hi++)
+										document
+												.write("<option value=\""+states[hi]+"\">"
+														+ states[hi]
+														+ "</option>");
+								</script>
+							</select>
+						</p>
+
+						<p>
+							<label for="comment">List the town where you spent the
+								majority of your years age 5-18. </label> <input type="text"
 								class="form-control" id="yearsspent">
 						</p>
 
