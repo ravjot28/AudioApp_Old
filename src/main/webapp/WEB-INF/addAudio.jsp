@@ -90,10 +90,7 @@
 		$('#alertMessageModal').on('hidden.bs.modal', function() {
 			clicked = "false";
 		});
-		
-		
 
-		
 		/* btnFinish.on("click", function() {
 			var hv = $('#location').val();
 			alert("Location Coordinates selected " + hv);
@@ -108,7 +105,7 @@
 		} else {
 			$('#alertBrowserMessageModal').modal('show');
 			$('#alertBrowserMessageModal').on('hidden.bs.modal', function() {
-				 history.back();
+				history.back();
 			});
 		}
 
@@ -458,7 +455,8 @@ a.button {
 					</p>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Go Back</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Go
+						Back</button>
 				</div>
 			</div>
 		</div>
@@ -613,7 +611,10 @@ a.button {
 					</div>
 
 					<div class="wizard-step">
-					<p><h2><font color="red">Alert!!</font></h2>
+						<p>
+						<h2>
+							<font color="red">Alert!!</font>
+						</h2>
 						<p>
 							Before you get started, make sure that your microphone is working
 							and that you are in a relatively quiet location. For some tips on
@@ -634,153 +635,202 @@ a.button {
 
 						<!-- <audio controls src="" id="audio"></audio> -->
 						<div style="margin: 10px;">
-							<p>Bag</p>
-							<button name="bag" id="record">Start Recording</button>
-							<button name="bag" id="stop">Stop</button>
+							<p>
+								Bag
+								<button name="bag" id="record">Start Recording</button>
+								<button name="bag" id="stop">Stop</button>
+							</p>
 
 						</div>
 
 						<div style="margin: 10px;">
-							<p>Cot</p>
-							<button name="cot" id="record">Start Recording</button>
-							<button name="cot" id="stop">Stop</button>
+							<p>
+								Cot
+								<button name="cot" id="record">Start Recording</button>
+								<button name="cot" id="stop">Stop</button>
+							</p>
 						</div>
 						<div style="margin: 10px;">
-							<p>Gang</p>
-							<button name="gang" id="record">Start Recording</button>
-							<button name="gang" id="stop">Stop</button>
-						</div>
-
-						<div style="margin: 10px;">
-							<p>Past</p>
-							<button name="past" id="record">Start Recording</button>
-							<button name="past" id="stop">Stop</button>
-						</div>
-						<div style="margin: 10px;">
-							<p>Spa</p>
-							<button name="spa" id="record">Start Recording</button>
-							<button name="spa" id="stop">Stop</button>
+							<p>
+								Gang
+								<button name="gang" id="record">Start Recording</button>
+								<button name="gang" id="stop">Stop</button>
+							</p>
 						</div>
 
 						<div style="margin: 10px;">
-							<p>Band</p>
-							<button name="band" id="record">Start Recording</button>
-							<button name="band" id="stop">Stop</button>
+							<p>
+								Past
+								<button name="past" id="record">Start Recording</button>
+								<button name="past" id="stop">Stop</button>
+							</p>
 						</div>
 						<div style="margin: 10px;">
-							<p>Deck</p>
-							<button name="deck" id="record">Start Recording</button>
-							<button name="deck" id="stop">Stop</button>
-
-						</div>
-
-						<div style="margin: 10px;">
-							<p>House</p>
-							<button name="house" id="record">Start Recording</button>
-							<button name="house" id="stop">Stop</button>
-						</div>
-						<div style="margin: 10px;">
-							<p>Pasta</p>
-							<button name="pasta" id="record">Start Recording</button>
-							<button name="pasta" id="stop">Stop</button>
-
+							<p>
+								Spa
+								<button name="spa" id="record">Start Recording</button>
+								<button name="spa" id="stop">Stop</button>
+							</p>
 						</div>
 
 						<div style="margin: 10px;">
-							<p>Test</p>
-							<button name="test" id="record">Start Recording</button>
-							<button name="test" id="stop">Stop</button>
-						</div>
-
-
-						<div style="margin: 10px;">
-							<p>Boat</p>
-							<button name="boat" id="record">Start Recording</button>
-							<button name="boat" id="stop">Stop</button>
+							<p>
+								Band
+								<button name="band" id="record">Start Recording</button>
+								<button name="band" id="stop">Stop</button>
+							</p>
 						</div>
 						<div style="margin: 10px;">
-							<p>Duck</p>
-							<button name="duck" id="record">Start Recording</button>
-							<button name="duck" id="stop">Stop</button>
+							<p>
+								Deck
+								<button name="deck" id="record">Start Recording</button>
+								<button name="deck" id="stop">Stop</button>
+							</p>
+						</div>
+
+						<div style="margin: 10px;">
+							<p>
+								House
+								<button name="house" id="record">Start Recording</button>
+								<button name="house" id="stop">Stop</button>
+							</p>
+						</div>
+						<div style="margin: 10px;">
+							<p>
+								Pasta
+								<button name="pasta" id="record">Start Recording</button>
+								<button name="pasta" id="stop">Stop</button>
+							</p>
 
 						</div>
 
 						<div style="margin: 10px;">
-							<p>How</p>
-							<button name="how" id="record">Start Recording</button>
-							<button name="how" id="stop">Stop</button>
+							<p>
+								Test
+								<button name="test" id="record">Start Recording</button>
+								<button name="test" id="stop">Stop</button>
+							</p>
+						</div>
+
+
+						<div style="margin: 10px;">
+							<p>
+								Boat
+								<button name="boat" id="record">Start Recording</button>
+								<button name="boat" id="stop">Stop</button>
+							</p>
 						</div>
 						<div style="margin: 10px;">
-							<p>Pool</p>
-							<button name="pool" id="record">Start Recording</button>
-							<button name="pool" id="stop">Stop</button>
+							<p>
+								Duck
+								<button name="duck" id="record">Start Recording</button>
+								<button name="duck" id="stop">Stop</button>
+							</p>
 
 						</div>
 
 						<div style="margin: 10px;">
-							<p>Tie</p>
-							<button name="tie" id="record">Start Recording</button>
-							<button name="tie" id="stop">Stop</button>
+							<p>
+								How
+								<button name="how" id="record">Start Recording</button>
+								<button name="how" id="stop">Stop</button>
+							</p>
 						</div>
 						<div style="margin: 10px;">
-							<p>Boot</p>
-							<button name="boot" id="record">Start Recording</button>
-							<button name="boot" id="stop">Stop</button>
+							<p>
+								Pool
+								<button name="pool" id="record">Start Recording</button>
+								<button name="pool" id="stop">Stop</button>
+							</p>
 
 						</div>
 
 						<div style="margin: 10px;">
-							<p>Face</p>
-							<button name="face" id="record">Start Recording</button>
-							<button name="face" id="stop">Stop</button>
+							<p>
+								Tie
+								<button name="tie" id="record">Start Recording</button>
+								<button name="tie" id="stop">Stop</button>
+							</p>
 						</div>
 						<div style="margin: 10px;">
-							<p>Kiss</p>
-							<button name="kiss" id="record">Start Recording</button>
-							<button name="kiss" id="stop">Stop</button>
+							<p>
+								Boot
+								<button name="boot" id="record">Start Recording</button>
+								<button name="boot" id="stop">Stop</button>
+							</p>
 
 						</div>
 
 						<div style="margin: 10px;">
-							<p>Seat</p>
-							<button name="seat" id="record">Start Recording</button>
-							<button name="seat" id="stop">Stop</button>
+							<p>
+								Face
+								<button name="face" id="record">Start Recording</button>
+								<button name="face" id="stop">Stop</button>
+							</p>
 						</div>
 						<div style="margin: 10px;">
-							<p>Tight</p>
-							<button name="tight" id="record">Start Recording</button>
-							<button name="tight" id="stop">Stop</button>
+							<p>
+								Kiss
+								<button name="kiss" id="record">Start Recording</button>
+								<button name="kiss" id="stop">Stop</button>
+							</p>
 
 						</div>
 
 						<div style="margin: 10px;">
-							<p>Caught</p>
-							<button name="caught" id="record">Start Recording</button>
-							<button name="caught" id="stop">Stop</button>
+							<p>
+								Seat
+								<button name="seat" id="record">Start Recording</button>
+								<button name="seat" id="stop">Stop</button>
+							</p>
 						</div>
 						<div style="margin: 10px;">
-							<p>Far</p>
-							<button name="far" id="record">Start Recording</button>
-							<button name="far" id="stop">Stop</button>
+							<p>
+								Tight
+								<button name="tight" id="record">Start Recording</button>
+								<button name="tight" id="stop">Stop</button>
+							</p>
 
 						</div>
 
 						<div style="margin: 10px;">
-							<p>Pack</p>
-							<button name="pack" id="record">Start Recording</button>
-							<button name="pack" id="stop">Stop</button>
+							<p>
+								Caught
+								<button name="caught" id="record">Start Recording</button>
+								<button name="caught" id="stop">Stop</button>
+							</p>
 						</div>
 						<div style="margin: 10px;">
-							<p>Sharp</p>
-							<button name="sharp" id="record">Start Recording</button>
-							<button name="sharp" id="stop">Stop</button>
+							<p>
+								Far
+								<button name="far" id="record">Start Recording</button>
+								<button name="far" id="stop">Stop</button>
+							</p>
 
 						</div>
 
 						<div style="margin: 10px;">
-							<p>Too</p>
-							<button name="too" id="record">Start Recording</button>
-							<button name="too" id="stop">Stop</button>
+							<p>
+								Pack
+								<button name="pack" id="record">Start Recording</button>
+								<button name="pack" id="stop">Stop</button>
+							</p>
+						</div>
+						<div style="margin: 10px;">
+							<p>
+								Sharp
+								<button name="sharp" id="record">Start Recording</button>
+								<button name="sharp" id="stop">Stop</button>
+							</p>
+
+						</div>
+
+						<div style="margin: 10px;">
+							<p>
+								Too
+								<button name="too" id="record">Start Recording</button>
+								<button name="too" id="stop">Stop</button>
+							</p>
 						</div>
 
 
