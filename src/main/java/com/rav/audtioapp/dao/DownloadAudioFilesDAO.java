@@ -78,7 +78,7 @@ public class DownloadAudioFilesDAO {
 								if (voices == null)
 									voices = new HashMap<String, String>();
 								voices.put("STRATHY-" + id + "_" + rsmd.getColumnName(j)+".wav",
-										voice.substring("data:audio/wav;base64,".length()).replace("\\",""));
+										voice.substring("data:audio/wav;base64,".length()).replace("\\","").trim());
 							}
 						}
 					}
