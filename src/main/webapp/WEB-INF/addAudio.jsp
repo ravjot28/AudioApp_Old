@@ -22,6 +22,9 @@
 	media="screen">
 <link rel="stylesheet" href="CSS/success.css" type="text/css"
 	media="screen">
+<link rel="stylesheet" href="CSS/bootstrap-multiselect.css"
+	type="text/css">
+<script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
 
 <script src="js/recorder.js"></script>
 <script src="js/Fr.voice.js"></script>
@@ -64,6 +67,8 @@
 
 	$(document).ready(function() {
 		google.maps.event.addDomListener(window, "load", initAutocomplete);
+		$('#genders').multiselect();
+		$('#words').multiselect();
 		/* microm = new Microm(); */
 		$("body").show();
 		$("#my").wizard();
@@ -938,6 +943,6 @@ a.button {
 	<input id="pac-input" class="controls" type="text"
 		placeholder="Search Box">
 	<div id="map"></div>
-	<%@include file="/WEB-INF/footer.html"%>
+	<%@include file="/WEB-INF/footer.jsp"%>
 </body>
 </html>

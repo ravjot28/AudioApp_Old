@@ -23,7 +23,7 @@ public class GetAudioDAO {
 					+ "ratefluency character varying(4000),  atwhatage character varying(4000),  emailaddress character varying(4000),  "
 					+ "town character varying(4000),  bornincanada character varying(4000), ifnotmothertounge character varying(4000),\"approvedBy\" character varying(4000),"
 					+ "status character varying(4000),province character varying(4000), "
-					+ "CONSTRAINT \"AudioRepo_pkey\" PRIMARY KEY (id) )");
+					+ "CONSTRAINT \"AudioSubmission_Details_pkey\" PRIMARY KEY (id) )");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -42,7 +42,7 @@ public class GetAudioDAO {
 			while (rs.next()) {
 				ResultSetMetaData rsmd = rs.getMetaData();
 				String voices = "";
-				for (int j = 9; j < rsmd.getColumnCount(); j++) {
+				for (int j = 9; j < rsmd.getColumnCount()+1; j++) {
 					if (rs.getString(rsmd.getColumnName(j)) != null) {
 						voices += rsmd.getColumnName(j) + "-";
 					}
@@ -83,7 +83,7 @@ public class GetAudioDAO {
 			while (rs.next()) {
 				ResultSetMetaData rsmd = rs.getMetaData();
 				String voices = "";
-				for (int j = 9; j < rsmd.getColumnCount(); j++) {
+				for (int j = 9; j < rsmd.getColumnCount()+1; j++) {
 					if (rs.getString(rsmd.getColumnName(j)) != null) {
 						voices += rsmd.getColumnName(j) + "-";
 					}

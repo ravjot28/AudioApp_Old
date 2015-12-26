@@ -19,11 +19,19 @@
 <link rel="stylesheet" href="/CSS/footer.css" type="text/css"
 	media="screen">
 
+<link rel="stylesheet" href="CSS/bootstrap-multiselect.css"
+	type="text/css">
+<script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
+
 
 <script type="text/javascript">
 	$(document).ready(function() {
 		//google.maps.event.addDomListener(window, "load", initAutocomplete);
-
+		
+		
+		$('#genders').multiselect();
+		$('#words').multiselect();
+		
 		var map;
 		$('.dropdown-menu').find('form').click(function(e) {
 			e.stopPropagation();
@@ -243,10 +251,29 @@
 																	+ jsonString
 																	+ "' download='"+id+"_"+voiceSelected++".wav'></a>")[0]
 																		.click(); */
-																		var a = document.createElement('a');
-																		$(a).attr('href',jsonString).attr('download',id+'_'+voiceSelected+'.wav').addClass('.voiceSelectedDownload').attr('id',id+'_'+voiceSelected).appendTo('body');
-																	
-																		$(a)[0].click();
+																var a = document
+																		.createElement('a');
+																$(a)
+																		.attr(
+																				'href',
+																				jsonString)
+																		.attr(
+																				'download',
+																				id
+																						+ '_'
+																						+ voiceSelected
+																						+ '.wav')
+																		.addClass(
+																				'.voiceSelectedDownload')
+																		.attr(
+																				'id',
+																				id
+																						+ '_'
+																						+ voiceSelected)
+																		.appendTo(
+																				'body');
+
+																$(a)[0].click();
 															},
 															complete : function(
 																	msg, a, b) {
@@ -455,6 +482,6 @@ html, body {
 	<input id="pac-input" class="controls" type="text"
 		placeholder="Search Box">
 	<div id="map"></div>
-	<%@include file="/WEB-INF/footer.html"%>
+	<%@include file="/WEB-INF/footer.jsp"%>
 </body>
 </html>

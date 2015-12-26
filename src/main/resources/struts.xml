@@ -17,11 +17,11 @@
 		<action name="strathyUnitLogin" class="com.rav.audtioapp.action.DummyAction">
 			<result name="success">WEB-INF/welcome_strathyUnit.jsp</result>
 		</action>
-		
+
 		<action name="strathyUnit" class="com.rav.audtioapp.action.DummyAction">
 			<result name="success">WEB-INF/welcome.jsp</result>
 		</action>
-		
+
 		<action name="strathyUnitAddAudio" class="com.rav.audtioapp.action.DummyAction">
 			<result name="success">WEB-INF/addAudio.jsp</result>
 		</action>
@@ -68,7 +68,7 @@
 				<param name="root">jsonString</param>
 			</result>
 		</action>
-		
+
 		<action name="getParticularAudio"
 			class="com.rav.audtioapp.action.GetParticularAudioAction">
 			<interceptor-ref name="jsonStack"></interceptor-ref>
@@ -95,6 +95,18 @@
 				<param name="excludeNullProperties">true</param>
 				<param name="root">jsonString</param>
 			</result>
+		</action>
+
+
+		<action name="downloadAudioFiles"
+			class="com.rav.audtioapp.action.DownloadAudioFilesAction">
+			<result name="success" type="stream">
+				<param name="contentType">application/octet-stream</param>
+				<param name="inputName">inputStream</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="bufferSize">4096</param>
+			</result>
+			<result name="invalidSelection">WEB-INF/welcome.jsp</result>
 		</action>
 
 	</package>

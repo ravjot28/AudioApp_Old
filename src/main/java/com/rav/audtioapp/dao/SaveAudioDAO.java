@@ -24,7 +24,7 @@ public class SaveAudioDAO {
 					+ "ratefluency character varying(4000),  atwhatage character varying(4000),  emailaddress character varying(4000),  "
 					+ "town character varying(4000),  bornincanada character varying(4000), ifnotmothertounge character varying(4000),\"approvedBy\" character varying(4000),"
 					+ "status character varying(4000),province character varying(4000), "
-					+ "CONSTRAINT \"AudioRepo_pkey\" PRIMARY KEY (id) )");
+					+ "CONSTRAINT \"AudioSubmission_Details_pkey\" PRIMARY KEY (id) )");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
