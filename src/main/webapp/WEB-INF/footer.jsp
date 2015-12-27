@@ -133,19 +133,22 @@
 
 
 <script>
-	$("#InfroTextSubmit").click(function(e) {
+	$("#InfroTextSubmit").click(
+			function(e) {
 				var wordsSelected = "";
 				$('#words :selected').each(function() {
 					wordsSelected += $(this).text() + ",";
 				});
-				
-
+				if (wordsSelected.length > 2)
+					wordsSelected = wordsSelected.substring(0,
+							wordsSelected.length - 1);
 				var gendersSelected = "";
 				$('#genders :selected').each(function() {
 					gendersSelected += $(this).text() + ",";
 				});
-				
-
+				if (gendersSelected.length > 2)
+					gendersSelected = gendersSelected.substring(0,
+							gendersSelected.length - 1);
 				$("#wordsSelected").val(wordsSelected);
 				$("#gendersSelected").val(gendersSelected);
 				$("#minimumAge").val($("#mAge").val());

@@ -39,8 +39,8 @@ public class DownloadAudioFilesDAO {
 		int minimumAge = getInt(dto.getMinimumAge());
 		int maximumAge = getInt(dto.getMaximumAge());
 
-		if (dto.getWordsSelected() != null && dto.getWordsSelected().trim().length()>2) {
-			String col = "id," + dto.getWordsSelected().substring(0, dto.getWordsSelected().length() - 1);
+		if (dto.getWordsSelected() != null && dto.getWordsSelected().trim().length() > 2) {
+			String col = "id," + dto.getWordsSelected();
 			if (col.trim().length() > 2) {
 				Connection connection = DAOUtil.getInstance().getConnection();
 				Statement statement = null;
@@ -48,7 +48,7 @@ public class DownloadAudioFilesDAO {
 					statement = connection.createStatement();
 					String sql = "select " + col + " FROM \"AudioSubmission_Details\" where status  ='APPROVED'";
 					if (dto.getGendersSelected() != null && dto.getGendersSelected().trim().length() > 2) {
-						String genders = dto.getGendersSelected().substring(0, dto.getGendersSelected().length() - 1);
+						String genders = dto.getGendersSelected();
 						StringTokenizer token = new StringTokenizer(genders, ",");
 						String gendersWhere = "";
 						while (token.hasMoreTokens()) {
@@ -77,8 +77,8 @@ public class DownloadAudioFilesDAO {
 							if (voice != null) {
 								if (voices == null)
 									voices = new HashMap<String, String>();
-								voices.put("STRATHY-" + id + "_" + rsmd.getColumnName(j)+".wav",
-										voice.substring("data:audio/wav;base64,".length()).replace("\\","").trim());
+								voices.put("STRATHY-" + id + "_" + rsmd.getColumnName(j) + ".wav",
+										voice.substring("data:audio/wav;base64,".length()).replace("\\", "").trim());
 							}
 						}
 					}

@@ -1,12 +1,12 @@
 package com.rav.audtioapp.action;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 import com.rav.audtioapp.dto.DownloadAudioFilesDTO;
 import com.rav.audtioapp.service.DownloadAudioFilesService;
+import com.rav.audtioapp.util.DownloadInputStream;
 
 public class DownloadAudioFilesAction {
 
@@ -20,6 +20,7 @@ public class DownloadAudioFilesAction {
 
 	public String execute() throws FileNotFoundException {
 		DownloadAudioFilesDTO dto = new DownloadAudioFilesDTO();
+
 		dto.setGendersSelected(gendersSelected);
 		dto.setMaximumAge(maximumAge);
 		dto.setMinimumAge(minimumAge);
@@ -28,13 +29,13 @@ public class DownloadAudioFilesAction {
 		String fName = new DownloadAudioFilesService().process(dto);
 		if (fName != null) {
 			File fileToDownload = new File(fName);
-			inputStream = new FileInputStream(fileToDownload);
+			inputStream = new DownloadInputStream(fileToDownload);
 			fileName = fileToDownload.getName();
 			contentLength = fileToDownload.length();
 			return "success";
 		}
 		return "invalidSelection";
-		
+
 	}
 
 	public String getWordsSelected() {
