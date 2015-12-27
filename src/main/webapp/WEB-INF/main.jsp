@@ -552,7 +552,7 @@ html, body {
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#" data-toggle="modal"
+						<li><a href="strathyUnitLogin" data-toggle="modal"
 							data-target="#login-modal">Logout</a></li>
 
 					</ul>
