@@ -69,6 +69,7 @@
 		google.maps.event.addDomListener(window, "load", initAutocomplete);
 		$('#genders').multiselect();
 		$('#words').multiselect();
+		$('#nativeLanguageSelection').multiselect();
 		/* microm = new Microm(); */
 		$("body").show();
 		$("#my").wizard();

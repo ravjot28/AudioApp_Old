@@ -31,6 +31,7 @@
 		
 		$('#genders').multiselect();
 		$('#words').multiselect();
+		$('#nativeLanguageSelection').multiselect();
 		
 		var map;
 		$('.dropdown-menu').find('form').click(function(e) {

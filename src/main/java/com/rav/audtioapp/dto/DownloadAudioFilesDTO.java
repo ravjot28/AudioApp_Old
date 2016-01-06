@@ -6,6 +6,15 @@ public class DownloadAudioFilesDTO {
 	private String gendersSelected;
 	private String minimumAge;
 	private String maximumAge;
+	private String nativeLanguageSelected;
+
+	public String getNativeLanguageSelected() {
+		return nativeLanguageSelected;
+	}
+
+	public void setNativeLanguageSelected(String nativeLanguageSelected) {
+		this.nativeLanguageSelected = nativeLanguageSelected;
+	}
 
 	public String getWordsSelected() {
 		return wordsSelected;

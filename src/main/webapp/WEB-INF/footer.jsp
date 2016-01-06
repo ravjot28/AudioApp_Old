@@ -56,12 +56,14 @@
 
 			<!-- Modal Body -->
 			<div class="modal-body">
-				<s:form action="downloadAudioFiles.action" method="post" role="form"
+				<form action="downloadAudioFiles.action" method="post" role="form"
 					id="target">
-					<s:hidden id="wordsSelected" name="wordsSelected" value="" />
-					<s:hidden id="gendersSelected" name="gendersSelected" value="" />
-					<s:hidden id="minimumAge" name="minimumAge" value="" />
-					<s:hidden id="maximumAge" name="maximumAge" value="" />
+					<input type="hidden" id="wordsSelected" name="wordsSelected"
+						value="" /> <input type="hidden" id="gendersSelected"
+						name="gendersSelected" value="" /> <input type="hidden"
+						id="minimumAge" name="minimumAge" value="" /> <input
+						type="hidden" id="maximumAge" name="maximumAge" value="" /> <input
+						type="hidden" id="nativeLanguage" name="nativeLanguage" value="" />
 
 					<div class="form-group">
 						<label for="exampleInputEmail1">Select the word(s) to be
@@ -107,6 +109,16 @@
 							<option value="Other">Other</option>
 						</select>
 					</div>
+					
+					<div class="form-group">
+						<label for="nativeLanguageSelect">Fluency in English</label> <select
+							id="nativeLanguageSelection" class="form-control" multiple="multiple">
+							<option>native speaker</option>
+							<option>highly fluent</option>
+							<option>intermediate level of fluency</option>
+							<option>beginner</option>
+						</select>
+					</div>
 
 					<div class="form-group">
 						<label for="exampleInputPassword1">Select minimum age</label> <input
@@ -117,7 +129,7 @@
 							placeholder="Enter maximum age" />
 					</div>
 
-				</s:form>
+				</form>
 			</div>
 
 			<!-- Modal Footer -->
@@ -153,6 +165,13 @@
 				$("#gendersSelected").val(gendersSelected);
 				$("#minimumAge").val($("#mAge").val());
 				$("#maximumAge").val($("#maAge").val());
+				
+				var nativeLanguageSelected = "";
+				$('#nativeLanguageSelection :selected').each(function() {
+					nativeLanguageSelected += $(this).text() + ",";
+				});
+				
+				$("#nativeLanguage").val(nativeLanguageSelected);
 
 				$("#target").submit();
 

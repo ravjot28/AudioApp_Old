@@ -17,14 +17,18 @@ public class DownloadAudioFilesAction {
 	private String gendersSelected;
 	private String minimumAge;
 	private String maximumAge;
+	private String nativeLanguage;
 
 	public String execute() throws FileNotFoundException {
+		
+		System.out.println(nativeLanguage);
 		DownloadAudioFilesDTO dto = new DownloadAudioFilesDTO();
 
 		dto.setGendersSelected(gendersSelected);
 		dto.setMaximumAge(maximumAge);
 		dto.setMinimumAge(minimumAge);
 		dto.setWordsSelected(wordsSelected);
+		dto.setNativeLanguageSelected(nativeLanguage);
 
 		String fName = new DownloadAudioFilesService().process(dto);
 		if (fName != null) {
@@ -92,5 +96,13 @@ public class DownloadAudioFilesAction {
 
 	public InputStream getInputStream() {
 		return inputStream;
+	}
+
+	public String getNativeLanguage() {
+		return nativeLanguage;
+	}
+
+	public void setNativeLanguage(String nativeLanguage) {
+		this.nativeLanguage = nativeLanguage;
 	}
 }

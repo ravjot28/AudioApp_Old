@@ -59,6 +59,25 @@ public class DownloadAudioFilesDAO {
 
 						sql += " and gender in (" + gendersWhere + ")";
 					}
+					
+					if (dto.getNativeLanguageSelected()!= null && dto.getNativeLanguageSelected().trim().length() > 2) {
+						
+						String nativeLanguages = dto.getNativeLanguageSelected();
+						
+						StringTokenizer token = new StringTokenizer(nativeLanguages, ",");
+						String nativeLanguagesWhere = "";
+						
+						while (token.hasMoreTokens()) {
+							nativeLanguagesWhere += "'" + token.nextToken() + "',";
+						}
+
+						nativeLanguagesWhere = nativeLanguagesWhere.substring(0, nativeLanguagesWhere.length() - 1);
+
+						sql += " and ratefluency in (" + nativeLanguagesWhere + ")";
+					}
+					
+					
+					
 					if (minimumAge > 0) {
 						int year = Calendar.getInstance().get(Calendar.YEAR);
 						sql += " and cast(birthyear as int)  <=" + (year - minimumAge);
