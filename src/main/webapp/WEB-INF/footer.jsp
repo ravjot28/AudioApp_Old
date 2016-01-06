@@ -111,12 +111,10 @@
 					</div>
 					
 					<div class="form-group">
-						<label for="nativeLanguageSelect">Fluency in English</label> <select
+						<label for="nativeLanguageSelect">English as mother tongue</label> <select
 							id="nativeLanguageSelection" class="form-control" multiple="multiple">
-							<option>native speaker</option>
-							<option>highly fluent</option>
-							<option>intermediate level of fluency</option>
-							<option>beginner</option>
+							<option>Yes</option>
+							<option>No</option>
 						</select>
 					</div>
 

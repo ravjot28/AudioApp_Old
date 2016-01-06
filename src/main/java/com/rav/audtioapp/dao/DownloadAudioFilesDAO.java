@@ -68,12 +68,16 @@ public class DownloadAudioFilesDAO {
 						String nativeLanguagesWhere = "";
 						
 						while (token.hasMoreTokens()) {
-							nativeLanguagesWhere += "'" + token.nextToken() + "',";
+							String temp = token.nextToken();
+							if(temp.equals("Yes"))
+								nativeLanguagesWhere += "'true',";
+							if(temp.equals("No"))
+								nativeLanguagesWhere += "'false',";
 						}
 
 						nativeLanguagesWhere = nativeLanguagesWhere.substring(0, nativeLanguagesWhere.length() - 1);
 
-						sql += " and ratefluency in (" + nativeLanguagesWhere + ")";
+						sql += " and mothertoungedata in (" + nativeLanguagesWhere + ")";
 					}
 					
 					
