@@ -107,7 +107,7 @@ public class DownloadAudioFilesDAO {
 					}
 					statement.close();
 				} catch (Exception e) {
-					System.err.println(e);
+					e.printStackTrace();
 				} finally {
 					try {
 						connection.close();
