@@ -5,38 +5,61 @@
 		<li><a href="strathyUnitAddAudio">Add Audio</a></li>
 		<li><a data-toggle="modal" href="#downloadForm">Download
 				Audio</a></li>
-		<li><a href="#" class="drop">About</a>
 
+
+		<li><a href="#">About Us</a>
 			<div class="one_column_layout">
 				<div>
-					<h2>About this website</h2>
+					<h2>About Us</h2>
 				</div>
 
 				<div class="clear"></div>
-
-				<div>
-					<p class="black_box">This website records the voices and also
-						allows user to hear the voices which are persisted in the
-						application</p>
-				</div>
-				<div class="clear"></div>
-
-				<div>
-					<h2>Developer Profile</h2>
-				</div>
-
-				<div>
-					<!-- Examples of paragraphs with side images -->
+				<div class="col_1">
 					<p>
-						<img
-							src="https://s-media-cache-ak0.pinimg.com/236x/60/b0/bb/60b0bb993c54a65281b56d0543faefa6.jpg"
-							class="img_left whiteBorder" alt="" /> <a
-							style="display: inline; font-weight: bold; color: white;">Ravjot
-							Singh</a> <a href="http://cultofprogramming.blogspot.ca">Read
-							more...</a>
+						<strong>Canadian English Voice Map</strong>
+					<p>is an interactive map that allows you to listen to sound
+						samples submitted by users around the country as well as submit
+						your own samples. The purpose of the map is to explore dialect
+						variation throughout the country. Users also have the option of
+						downloading files for their own analysis.</p>
+					<br /> <br />
+					<p>
+						The map was created by the Strathy Language Unit <a
+							href="http://www.queensu.ca/strathy/" target="_blank"
+							rel="noreferrer">at Queen's University</a>.
 					</p>
+					<p>
+						We welcome your feedback. Please contact us at <a
+							href="mailto:CVM@queensu.ca" target="_blank" rel="noreferrer">CVM@queensu.ca</a>
+					</p>
+					<p>
+						How do I use the map?<br /> To listen to a recording, simply
+						click on a marker to reveal a pop-up box with information on the
+						speaker and an option to play or download a word. To zoom into a
+						dense area, you can type an address/city/region into the search
+						box. To add your own voice or download a set of files, click on
+						the relevant tab and follow the instructions. Note that the "Add
+						your voice" function only works with Chrome as your search engine.
+					</p>
+
+					<p>
+						Why did you choose these words?<br /> The words in the recording
+						list were chosen to highlight different areas of possible dialect
+						variation.
+					</p>
+					<br />
+
 				</div>
+
 			</div></li>
+	</ul>
+
+	<ul id="notifications">
+		<li><a href="#" class="notificationIcons"><img
+				src='../images/facebook-icon.png' alt="" /></a></li>
+		<li><a href="#" class="notificationIcons"><img
+				src='../images/Twitter_logo_blue_48.png' alt="" /></a></li>
+
 	</ul>
 </div>
 
@@ -109,10 +132,11 @@
 							<option value="Other">Other</option>
 						</select>
 					</div>
-					
+
 					<div class="form-group">
-						<label for="nativeLanguageSelect">English as mother tongue</label> <select
-							id="nativeLanguageSelection" class="form-control" multiple="multiple">
+						<label for="nativeLanguageSelect">English as mother tongue</label>
+						<select id="nativeLanguageSelection" class="form-control"
+							multiple="multiple">
 							<option>Yes</option>
 							<option>No</option>
 						</select>
@@ -163,12 +187,12 @@
 				$("#gendersSelected").val(gendersSelected);
 				$("#minimumAge").val($("#mAge").val());
 				$("#maximumAge").val($("#maAge").val());
-				
+
 				var nativeLanguageSelected = "";
 				$('#nativeLanguageSelection :selected').each(function() {
 					nativeLanguageSelected += $(this).text() + ",";
 				});
-				
+
 				$("#nativeLanguage").val(nativeLanguageSelected);
 
 				$("#target").submit();
