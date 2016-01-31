@@ -8,6 +8,10 @@
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script
+	src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initAutocomplete"
+	async defer></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
@@ -300,9 +304,6 @@
 	}
 </script>
 
-<script
-	src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initAutocomplete"
-	async defer></script>
 
 <style>
 html, body {
