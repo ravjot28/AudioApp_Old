@@ -52,6 +52,32 @@
 				</div>
 
 			</div></li>
+
+
+		<li><a href="#">Credits</a>
+			<div class="one_column_layout">
+				<div>
+					<h2>Credits</h2>
+				</div>
+
+				<div class="clear"></div>
+				<div class="col_1">
+					<p>
+						<strong>Canadian English Voice Map</strong>
+					<p>
+						iCanadian English Voice Map is a product of the Strathy Language
+						Unit <a href="http://www.queensu.ca/strathy/" target="_blank"
+							rel="noreferrer">at Queen's University</a>
+						<br />It was launched in April 2016. 
+						<br />Project Director: Anastasia Riehl, Queen's University 
+						<br />Project Partner: Charles Boberg, McGill
+						<br />University Program Developer: Ravjot Singh
+					</p>
+
+
+				</div>
+
+			</div></li>
 	</ul>
 
 	<ul id="notifications">
