@@ -106,7 +106,7 @@
 
 	function initAutocomplete() {
 		var sUsrAg = navigator.userAgent;
-		if (sUsrAg.indexOf("Chrome") > -1) {
+		if (sUsrAg.indexOf("Chrome") > -1 || sUsrAg.indexOf("Firefox") > -1) {
 			$('#alertMessageModal').modal('show');
 		} else {
 			$('#alertBrowserMessageModal').modal('show');
@@ -454,11 +454,15 @@ a.button {
 				</div>
 				<div class="modal-body">
 					<p>The recording functionality is available for only Google
-						Chrome browser. Please open the website using Google Chrome
-						Browser.</p>
+						Chrome and Firefox browser. Please open the website using Google
+						Chrome or Firefox Browser.</p>
 					<p>
 						You can download Google Chrome by clicking <a target="_blank"
 							href="https://www.google.com/chrome/browser/desktop/">here</a>
+					</p>
+					<p>
+						You can download Firefox by clicking <a target="_blank"
+							href="https://www.mozilla.org/en-US/firefox/new/">here</a>
 					</p>
 				</div>
 				<div class="modal-footer">
