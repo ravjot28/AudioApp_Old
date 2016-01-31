@@ -293,13 +293,13 @@
 			map : map,
 			draggable : DragAble,
 			animation : google.maps.Animation.DROP,
-			title : "Hello World!",
+			title : MapTitle,
 			icon : iconPath
 		});
 
 		var contentString = $('<div class="marker-info-win">'
 				+ '<div class="marker-inner-win"><span class="info-content">'
-				+ '<h1 class="marker-heading">' + MapTitle + '</h1>' + MapDesc
+				+ '<h4 class="marker-heading">' + MapTitle + '</h4>' + MapDesc
 				+ '</span>' + '</div></div>');
 
 		var infowindow = new google.maps.InfoWindow();
