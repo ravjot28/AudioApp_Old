@@ -143,7 +143,7 @@
 											false,
 											false,
 											false,
-											"https://lit-journey-6254.herokuapp.com/icons/pin_strathyunit.png",
+											"../icons/pin_strathyunit.png",
 											id);
 
 								}
@@ -552,7 +552,7 @@ html, body {
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="strathyUnitLogin" >Logout</a></li>
+						<li><a href="strathyUnitLogin">Logout</a></li>
 
 					</ul>
 				</div>

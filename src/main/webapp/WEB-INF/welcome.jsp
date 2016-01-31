@@ -143,7 +143,7 @@
 													+ '<button class="'+id+'" id="downloadVoice">Download</button>'
 													+ '</div>', false, false,
 											false,
-											"https://lit-journey-6254.herokuapp.com/icons/pin.png");
+											"../icons/pin.png");
 								}
 								//Do something
 							}

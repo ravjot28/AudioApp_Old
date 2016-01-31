@@ -26,7 +26,7 @@
 					<p>
 						The map was created by the Strathy Language Unit <a
 							href="http://www.queensu.ca/strathy/" target="_blank"
-							rel="noreferrer">at Queen's University</a>.
+							rel="noreferrer">at Queen's University</a>
 					</p>
 					<p>
 						We welcome your feedback. Please contact us at <a

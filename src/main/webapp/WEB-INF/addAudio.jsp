@@ -236,7 +236,7 @@
 						replaceWin.html(data); //replace info window with new html
 						Marker.setDraggable(false); //set marker to fixed
 						Marker
-								.setIcon('https://lit-journey-6254.herokuapp.com/icons/pin.png'); //replace icon
+								.setIcon('../icons/pin.png'); //replace icon
 					},
 					error : function(xhr, ajaxOptions, thrownError) {
 						alert(thrownError); //throw any errors
