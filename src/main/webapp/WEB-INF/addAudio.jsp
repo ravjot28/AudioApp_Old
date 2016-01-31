@@ -227,21 +227,19 @@
 			type : mType
 		}; //post variables
 		console.log(replaceWin);
-		$
-				.ajax({
-					type : "POST",
-					url : "map.action",
-					data : myData,
-					success : function(data) {
-						replaceWin.html(data); //replace info window with new html
-						Marker.setDraggable(false); //set marker to fixed
-						Marker
-								.setIcon('../icons/pin.png'); //replace icon
-					},
-					error : function(xhr, ajaxOptions, thrownError) {
-						alert(thrownError); //throw any errors
-					}
-				});
+		$.ajax({
+			type : "POST",
+			url : "map.action",
+			data : myData,
+			success : function(data) {
+				replaceWin.html(data); //replace info window with new html
+				Marker.setDraggable(false); //set marker to fixed
+				Marker.setIcon('../icons/pin.png'); //replace icon
+			},
+			error : function(xhr, ajaxOptions, thrownError) {
+				alert(thrownError); //throw any errors
+			}
+		});
 	}
 
 	//############### Remove Marker Function ##############
@@ -486,22 +484,22 @@ a.button {
 					<h4 class="modal-title" id="myModalLabel">Add Audio</h4>
 				</div>
 
-
 				<div class="modal-body wizard-content">
 					<div id="agreement" class="wizard-step">
 						<div id="concsent"
 							style="overflow-y: scroll; overflow-x: hidden; height: 400px;">
 							<p>Thank you for your interest in being a part of our voice
-								map. Before we get started recording your audio, please read the
-								following information and answer the question related to
-								consent. Once you click "Next", you will proceed to a brief
-								questionnaire about you and then to the recording portion.</p>
+								map! Before we record your voice, please read the following
+								information about the project and your consent to participate.
+								Once you click"Next", you will proceed to a brief questionnaire
+								and then to the recording task.</p>
 							<p>
 								<strong>Canadian Voices Map</strong> is an interactive digital
 								map with structured audio samples from around the country. The
 								goal of the project is to explore dialect diversity in Canadian
 								English. Users can listen to samples, download audio files and
 								contribute their own voices.
+
 							</p>
 							<p>On the following screens, you will be asked to answer some
 								background questions about yourself and then to record yourself
@@ -515,18 +513,19 @@ a.button {
 								data will therefore be anonymous and your confidentiality
 								protected. However, given that your voice could be recognized by
 								others, you should be aware that it may be possible for some
-								users to identify your data. If your audio samples are displayed
-								on the map and you later change your mind about your
-								participation, please contact us and we will remove the data.</p>
+								users to identify your data. If you complete the recording task
+								but later decide you donot want your audio included, please
+								contact us and we will remove the data.</p>
 							<p>
 								Any questions about study participation may be directed to the
-								Strathy Language Unit at strathy@queenus.ca. Any ethical
-								concerns about the study may be directed to the Chair of the
-								General Research Ethics Board at <a
+								Strathy Language Unit at <a href="mailto:strathy@queenus.ca">strathy@queenus.ca</a>
+								. Any ethical concerns may be directed to the Chair of the
+								General Research Ethics Board at Queen's University at <a
 									href="mailto:chair.GREB@queensu.ca">chair.GREB@queensu.ca</a>
 								or 613-533-6081. This study has been granted clearance according
 								to the recommended principles of Canadian ethics guidelines, and
-								Queen's policies.
+								Queen's University policies.
+
 							</p>
 							<p>By clicking "Next" below, you acknowledge the following:</p>
 							<p>1. You have read and understand the above Letter of
