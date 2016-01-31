@@ -946,7 +946,7 @@ a.button {
 	<!-- <div align="center">Right Click to Drop a New Marker</div> -->
 
 	<input id="pac-input" class="controls" type="text"
-		placeholder="Search Box">
+		placeholder="Enter the Location">
 	<div id="map"></div>
 	<%@include file="/WEB-INF/footer.jsp"%>
 </body>

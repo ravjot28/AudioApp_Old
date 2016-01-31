@@ -481,7 +481,7 @@ html, body {
 		</div>
 	</div>
 	<input id="pac-input" class="controls" type="text"
-		placeholder="Search Box">
+		placeholder="Enter the Location">
 	<div id="map"></div>
 	<%@include file="/WEB-INF/footer.jsp"%>
 </body>

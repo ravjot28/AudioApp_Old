@@ -562,7 +562,7 @@ html, body {
 	</div>
 
 	<input id="pac-input" class="controls" type="text"
-		placeholder="Search Box">
+		placeholder="Enter the Location">
 	<div id="map"></div>
 
 </body>
