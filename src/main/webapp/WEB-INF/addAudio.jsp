@@ -555,8 +555,8 @@ a.button {
 						<p>
 							Select your gender: <select class="form-control" id="gender">
 								<option selected="selected">Select your gender</option>
-								<option>Male</option>
 								<option>Female</option>
+								<option>Male</option>
 								<option>Other</option>
 								<option>Prefer not to disclose</option>
 							</select>
