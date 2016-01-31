@@ -11,16 +11,16 @@ public class SaveAudioService {
 		int id = dao.insertNewAudio(dto);
 
 		new Thread(new SendMailCommunication("riehla@queensu.ca",
-				"Canadian English Voice Map user " + "STRATHY-" + id + " is ready for review.",
-				"New audio submission " + "STRATHY-" + id)).start();
+				"Canadian English Voice Map user " + "CVMX-" + id + " is ready for review.",
+				"New audio submission " + "CVMX-" + id)).start();
 
 		new Thread(new SendMailCommunication(dto.getEmailAddress(),
-				"Thank you for participating in the Canadian English Voice Map! Your reference number is " + "STRATHY-"
+				"Thank you for participating in the Canadian English Voice Map! Your reference number is " + "CVMX-"
 						+ id
 						+ ".\n If you have any questions about your submission, please contact CEVM@queensu.ca.\n\n- The Strathy Language Unit",
-				"Your reference number is:" + "STRATHY-" + id)).start();
+				"Your reference number is:" + "CVMX-" + id)).start();
 
-		return "STRATHY-" + id;
+		return "CVMX-" + id;
 	}
 
 }

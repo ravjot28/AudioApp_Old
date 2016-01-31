@@ -49,7 +49,7 @@ public class GetAudioDAO {
 				}
 				voices = voices.substring(0, voices.length() - 1);
 				result.add("{" + rs.getString(1) + "}" + "{" + rs.getString(2) + "}" + "{" + rs.getString(3) + "}"
-						+ "{STRATHY-" + rs.getInt(4) + "}" + "{" + rs.getString(5) + "}" + "{" + rs.getString(6) + "}"
+						+ "{CVMX-" + rs.getInt(4) + "}" + "{" + rs.getString(5) + "}" + "{" + rs.getString(6) + "}"
 						+ "{" + rs.getString(7) + "}" + "{" + rs.getString(8) + "}" + "{" + voices + "}");
 
 			}
@@ -90,7 +90,7 @@ public class GetAudioDAO {
 				}
 				voices = voices.substring(0, voices.length() - 1);
 				result.add("{" + rs.getString(1) + "}" + "{" + rs.getString(2) + "}" + "{" + rs.getString(3) + "}"
-						+ "{STRATHY-" + rs.getInt(4) + "}" + "{" + rs.getString(5) + "}" + "{" + rs.getString(6) + "}"
+						+ "{CVMX-" + rs.getInt(4) + "}" + "{" + rs.getString(5) + "}" + "{" + rs.getString(6) + "}"
 						+ "{" + rs.getString(7) + "}" + "{" + rs.getString(8) + "}" + "{" + voices + "}");
 			}
 			statement.close();

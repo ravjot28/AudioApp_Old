@@ -100,7 +100,7 @@ public class DownloadAudioFilesDAO {
 							if (voice != null) {
 								if (voices == null)
 									voices = new HashMap<String, String>();
-								voices.put("STRATHY-" + id + "_" + rsmd.getColumnName(j) + ".wav",
+								voices.put("CVMX-" + id + "_" + rsmd.getColumnName(j) + ".wav",
 										voice.substring("data:audio/wav;base64,".length()).replace("\\", "").trim());
 							}
 						}
