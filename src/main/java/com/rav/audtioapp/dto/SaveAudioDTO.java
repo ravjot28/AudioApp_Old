@@ -35,9 +35,7 @@ public class SaveAudioDTO {
 	private String rateFluency;
 	private String bornInCanada;
 	private String atWhatAge;
-	private String town;
 	private String emailAddress;
-	private String province;
 
 	public String getLocation() {
 		return location;
@@ -303,28 +301,12 @@ public class SaveAudioDTO {
 		this.atWhatAge = atWhatAge;
 	}
 
-	public String getTown() {
-		return town;
-	}
-
-	public void setTown(String town) {
-		this.town = town;
-	}
-
 	public String getEmailAddress() {
 		return emailAddress;
 	}
 
 	public void setEmailAddress(String emailAddress) {
 		this.emailAddress = emailAddress;
-	}
-
-	public String getProvince() {
-		return province;
-	}
-
-	public void setProvince(String province) {
-		this.province = province;
 	}
 
 }

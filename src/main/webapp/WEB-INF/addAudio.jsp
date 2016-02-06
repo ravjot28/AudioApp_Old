@@ -139,10 +139,8 @@
 						'If not, how would you rate your fluency in English?');
 				$('#canadaage').val(
 						'If no, at what age did you move to Canada?');
-				$('#province').val('Select the province');
-
+				
 				$('#mothertounge').val('');
-				$('#yearsspent').val('');
 				$('#emailAddress').val('');
 
 				$("#langyes").prop('checked', false);
@@ -160,7 +158,6 @@
 				var citizenYes = $("#citizenYes").is(":checked");
 				var citizenNo = $("#citizenNo").is(":checked");
 				var canadaage = $('#canadaage').find(":selected").text();
-				var yearsspent = $('#yearsspent').val();
 				var emailAddress = $('#emailAddress').val();
 
 				if (age == 'Select your birth year'
@@ -168,7 +165,7 @@
 						|| ((!langyes && !langno) && (langno && mothertounge.length == 0) )
 						|| fluency == 'If not, how would you rate your fluency in English?'
 						|| ((!citizenYes && !citizenNo) && (canadaage == 'If no, at what age did you move to Canada?'))
-						|| emailAddress.length == 0 || yearsspent.length == 0) {
+						|| emailAddress.length == 0 ) {
 					return false;
 				}*/
 				var myLatLng = event.latLng;
@@ -607,35 +604,6 @@ a.button {
 								<option>between 13 and 20</option>
 								<option>age 21 or older</option>
 							</select>
-						</p>
-
-						<p>
-							Select the province where you spent majority of your years age
-							5-18: <select class="form-control" id="province">
-								<option selected="selected">Select the province</option>
-								<script>
-									var states = new Array("Alberta",
-											"British Columbia", "Manitoba",
-											"New Brunswick",
-											"Newfoundland and Labrador",
-											"Northwest Territories",
-											"Nova Scotia", "Nunavut",
-											"Ontario", "Prince Edward Island",
-											"Quebec", "Saskatchewan",
-											"Yukon Territory");
-									for (var hi = 0; hi < states.length; hi++)
-										document
-												.write("<option value=\""+states[hi]+"\">"
-														+ states[hi]
-														+ "</option>");
-								</script>
-							</select>
-						</p>
-
-						<p>
-							<label for="comment">List the town where you spent the
-								majority of your years age 5-18. </label> <input type="text"
-								class="form-control" id="yearsspent">
 						</p>
 
 						<p>

@@ -22,8 +22,8 @@ public class SaveAudioDAO {
 					+ "pack text, sharp text, too text, longitude character varying(4000), lattitude character varying(4000), "
 					+ "birthyear character varying(4000), gender character varying(4000), mothertoungedata character varying(4000), "
 					+ "ratefluency character varying(4000),  atwhatage character varying(4000),  emailaddress character varying(4000),  "
-					+ "town character varying(4000),  bornincanada character varying(4000), ifnotmothertounge character varying(4000),\"approvedBy\" character varying(4000),"
-					+ "status character varying(4000),province character varying(4000), "
+					+ "  bornincanada character varying(4000), ifnotmothertounge character varying(4000),\"approvedBy\" character varying(4000),"
+					+ "status character varying(4000), "
 					+ "CONSTRAINT \"AudioSubmission_Details_pkey\" PRIMARY KEY (id) )");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -67,8 +67,8 @@ public class SaveAudioDAO {
 					"INSERT INTO \"AudioSubmission_Details\" ( id, bag, cot, gang, past, spa, band, deck, house, pasta, test, "
 							+ "boat, duck, how, pool, tie, boot, face, kiss, seat, tight, caught,   far, pack, sharp, "
 							+ "too, longitude, lattitude, birthyear, gender,   mothertoungedata, ratefluency, atwhatage, "
-							+ "emailaddress, town, bornincanada, ifnotmothertounge, status,province) "
-							+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,  ?, ?, ?, ?, ?,  ?, ?, ?,?) ");
+							+ "emailaddress, bornincanada, ifnotmothertounge, status) "
+							+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,  ?, ?, ?, ?, ?,  ?, ?) ");
 			int index = 1;
 			statement.setInt(index++, id);
 			statement.setString(index++, dto.getBag());
@@ -106,11 +106,9 @@ public class SaveAudioDAO {
 			statement.setString(index++, dto.getRateFluency());
 			statement.setString(index++, dto.getAtWhatAge());
 			statement.setString(index++, dto.getEmailAddress());
-			statement.setString(index++, dto.getTown());
 			statement.setString(index++, dto.getBornInCanada());
 			statement.setString(index++, dto.getIfNotMotherTounge());
 			statement.setString(index++, "NOTAPPROVED");
-			statement.setString(index++, dto.getProvince());
 			statement.executeUpdate();
 		} catch (Exception e) {
 			System.err.println(e);

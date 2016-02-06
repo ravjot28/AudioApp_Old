@@ -30,16 +30,14 @@ $.fn.wizard = function(config) {
 			var citizenYes = $("#citizenYes").is(":checked");
 			var citizenNo = $("#citizenNo").is(":checked");
 			var canadaage = $('#canadaage').find(":selected").text();
-			var province = $('#province').find(":selected").text();
-			var yearsspent = $('#yearsspent').val();
 			var emailAddress = $('#emailAddress').val();
 
 			if (age == 'Select your birth year'
-					|| gender == 'Select your gender' || province =='Select the province'
+					|| gender == 'Select your gender' 
 					|| ((!langyes && !langno) && (langno && mothertounge.length == 0))
 					|| fluency == 'If not, how would you rate your fluency in English?'
 					|| ((!citizenYes && !citizenNo) && (canadaage == 'If no, at what age did you move to Canada?'))
-					|| emailAddress.length == 0 || yearsspent.length == 0) {
+					|| emailAddress.length == 0 ) {
 				return false;
 			} else {
 				var hv = $('#location').val();
@@ -163,8 +161,6 @@ $.fn.wizard = function(config) {
 						var citizenNo = $("#citizenNo").is(":checked");
 						var canadaage = $('#canadaage').find(":selected")
 								.text();
-						var province = $('#province').find(":selected").text();
-						var yearsspent = $('#yearsspent').val();
 						var emailAddress = $('#emailAddress').val();
 						var motherTounge1 = "false";
 						var bornInCanada = "false";
@@ -210,10 +206,8 @@ $.fn.wizard = function(config) {
 							"rateFluency" : fluency,
 							"atWhatAge" : canadaage,
 							"emailAddress" : emailAddress,
-							"town" : yearsspent,
 							"bornInCanada" : bornInCanada,
-							"ifNotMotherTounge" : mothertounge,
-							"province":province
+							"ifNotMotherTounge" : mothertounge
 						};
 
 						var ajaxData = {};
