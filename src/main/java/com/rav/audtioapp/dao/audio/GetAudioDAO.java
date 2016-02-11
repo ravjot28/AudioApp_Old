@@ -1,4 +1,4 @@
-package com.rav.audtioapp.dao;
+package com.rav.audtioapp.dao.audio;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.rav.audtioapp.dao.DAOUtil;
 
 public class GetAudioDAO {
 

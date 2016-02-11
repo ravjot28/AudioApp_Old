@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
-import com.rav.audtioapp.dao.DownloadAudioFilesDAO;
+import com.rav.audtioapp.dao.audio.DownloadAudioFilesDAO;
 import com.rav.audtioapp.dto.DownloadAudioFilesDTO;
 
 public class DownloadAudioFilesService {

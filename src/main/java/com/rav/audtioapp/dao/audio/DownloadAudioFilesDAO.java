@@ -1,4 +1,4 @@
-package com.rav.audtioapp.dao;
+package com.rav.audtioapp.dao.audio;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
 
+import com.rav.audtioapp.dao.DAOUtil;
 import com.rav.audtioapp.dto.DownloadAudioFilesDTO;
 
 public class DownloadAudioFilesDAO {

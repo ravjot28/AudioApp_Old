@@ -2,7 +2,7 @@ package com.rav.audtioapp.service;
 
 import java.util.List;
 
-import com.rav.audtioapp.dao.GetAudioDAO;
+import com.rav.audtioapp.dao.audio.GetAudioDAO;
 
 public class GetAudioService {
 

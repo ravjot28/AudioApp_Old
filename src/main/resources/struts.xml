@@ -16,6 +16,7 @@
 
 		<action name="strathyUnitLogin" class="com.rav.audtioapp.action.DummyAction">
 			<result name="success">WEB-INF/welcome_strathyUnit.jsp</result>
+
 		</action>
 
 		<action name="strathyUnit" class="com.rav.audtioapp.action.DummyAction">
@@ -32,6 +33,7 @@
 		<action name="login" class="com.rav.audtioapp.action.LoginAction">
 			<result name="success">WEB-INF/main.jsp</result>
 			<result name="input">welcome.jsp</result>
+			<result name="admin">WEB-INF/welcome_strathyUnit_admin.jsp</result>
 		</action>
 		<action name="register" class="com.rav.audtioapp.action.RegisterationAction">
 			<result name="success">welcome.jsp</result>
@@ -107,6 +109,20 @@
 				<param name="bufferSize">4096</param>
 			</result>
 			<result name="invalidSelection" type="redirect">strathyUnitLogin</result>
+		</action>
+
+		<action name="updateParameter" class="com.rav.audtioapp.action.UpdateParameterAction">
+			<result name="success">WEB-INF/welcome_strathyUnit_admin.jsp</result>
+		</action>
+
+
+		<action name="getParameters" class="com.rav.audtioapp.action.GetParameterAction">
+			<interceptor-ref name="jsonStack"></interceptor-ref>
+			<result type="json">
+				<param name="noCache">true</param>
+				<param name="excludeNullProperties">true</param>
+				<param name="root">jsonString</param>
+			</result>
 		</action>
 
 	</package>

@@ -1,4 +1,6 @@
 
+
+
 <div id="footer">
 	<ul id="footer_menu">
 		<li><a href="strathyUnit">Home</a></li>
@@ -15,7 +17,12 @@
 
 				<div class="clear"></div>
 				<div class="col_1">
-					<p>
+				
+				
+				<%= tc.getParamValue(ParamConstants.ABOUT_US)  %>
+				
+				
+					<!-- <p>
 						<strong>Canadian English Voice Map</strong>
 					<p>is an interactive map that allows you to listen to sound
 						samples submitted by users around the country as well as submit
@@ -46,8 +53,7 @@
 						Why did you choose these words?<br /> The words in the recording
 						list were chosen to highlight different areas of possible dialect
 						variation.
-					</p>
-					<br />
+					</p> -->
 
 				</div>
 
@@ -62,7 +68,8 @@
 
 				<div class="clear"></div>
 				<div class="col_1">
-					<p>
+				<%= tc.getParamValue(ParamConstants.CREDITS)  %>
+					<!-- <p>
 						<strong>Canadian English Voice Map</strong>
 					<p>
 						iCanadian English Voice Map is a product of the Strathy Language
@@ -72,7 +79,7 @@
 						<br />Project Director: Anastasia Riehl, Queen's University 
 						<br />Project Partner: Charles Boberg, McGill
 						<br />University Program Developer: Ravjot Singh
-					</p>
+					</p> -->
 
 
 				</div>
@@ -100,7 +107,8 @@
 				<button type="button" class="close" data-dismiss="modal">
 					<span aria-hidden="true">&times;</span> <span class="sr-only">Close</span>
 				</button>
-				<h4 class="modal-title" id="myModalLabel">Download Voices</h4>
+				<h4 class="modal-title" id="myModalLabel"><%= tc.getParamValue(ParamConstants.DOWNLOAD_AUDIO_HEAD)  %></h4>
+				<!-- Download Voices -->
 			</div>
 
 			<!-- Modal Body -->
@@ -115,8 +123,8 @@
 						type="hidden" id="nativeLanguage" name="nativeLanguage" value="" />
 
 					<div class="form-group">
-						<label for="exampleInputEmail1">Select the word(s) to be
-							downloaded</label> <select id="words" class="form-control"
+						<label for="exampleInputEmail1"><%= tc.getParamValue(ParamConstants.DOWNLOAD_AUDIO_SELECT_WORD)  %> <!-- Select the word(s) to be
+							downloaded --></label> <select id="words" class="form-control"
 							multiple="multiple">
 							<option value="bag">bag</option>
 							<option value="cot">cot</option>
@@ -151,16 +159,16 @@
 
 					</div>
 					<div class="form-group">
-						<label for="exampleInputPassword1">Select Gender(s)</label> <select
+						<label for="exampleInputPassword1"><%= tc.getParamValue(ParamConstants.DOWNLOAD_AUDIO_SELECT_GENDER)  %><!-- Select Gender(s) --></label> <select
 							id="genders" class="form-control" multiple="multiple">
-							<option value="Male">Male</option>
 							<option value="Female">Female</option>
+							<option value="Male">Male</option>
 							<option value="Other">Other</option>
 						</select>
 					</div>
 
 					<div class="form-group">
-						<label for="nativeLanguageSelect">English as mother tongue</label>
+						<label for="nativeLanguageSelect"><%= tc.getParamValue(ParamConstants.DOWNLOAD_AUDIO_SELECT_MOTHER_TOUNGE)  %> <!-- English as mother tongue --></label>
 						<select id="nativeLanguageSelection" class="form-control"
 							multiple="multiple">
 							<option>Yes</option>
@@ -169,10 +177,10 @@
 					</div>
 
 					<div class="form-group">
-						<label for="exampleInputPassword1">Select minimum age</label> <input
+						<label for="exampleInputPassword1"><%= tc.getParamValue(ParamConstants.DOWNLOAD_AUDIO_SELECT_MINIMUM_AGE)  %><!-- Select minimum age --></label> <input
 							type="text" class="form-control" id="mAge"
 							placeholder="Enter minimum age" /> <label
-							for="exampleInputPassword3">Select maximum age</label> <input
+							for="exampleInputPassword3"><%= tc.getParamValue(ParamConstants.DOWNLOAD_AUDIO_SELECT_MAXIMUM_AGE)  %> <!-- Select maximum age --></label> <input
 							type="text" class="form-control" id="maAge"
 							placeholder="Enter maximum age" />
 					</div>

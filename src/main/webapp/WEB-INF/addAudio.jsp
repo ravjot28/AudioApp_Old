@@ -3,6 +3,10 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%@taglib uri="/struts-jquery-tags" prefix="sj"%>
+<%@page import="com.rav.audtioapp.constants.param.ParamConstants"%>
+<%@page import="com.rav.audtioapp.dao.param.ParamsDAO"%>
+<% ParamsDAO tc = new ParamsDAO ();%>
+
 <html>
 <head>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
@@ -420,13 +424,14 @@ a.button {
 					<h4 class="modal-title" id="myModalLabel">Welcome!</h4>
 				</div>
 				<div class="modal-body">
-					<p>To choose your location:</p>
+				<%= tc.getParamValue(ParamConstants.ADD_AUDIO_PAGE_WELCOME)  %>
+					<!-- <p>To choose your location:</p>
 					<p>If you lived in Canada as a child, select the location where
 						you spent the majority of your time between ages five and
 						eighteen.</p>
 					<p>If you came to Canada as an adult, select the location where
 						you have spent the majority of your time since arriving. Zoom in
-						to get as precise a location as you can!</p>
+						to get as precise a location as you can!</p> -->
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Proceed</button>
@@ -449,7 +454,8 @@ a.button {
 					</h4>
 				</div>
 				<div class="modal-body">
-					<p>The recording functionality is available for only Google
+				<%= tc.getParamValue(ParamConstants.ADD_AUDIO_PAGE_WELCOME_NON_BROWSER)  %>
+					<!-- <p>The recording functionality is available for only Google
 						Chrome and Firefox browser. Please open the website using Google
 						Chrome or Firefox Browser.</p>
 					<p>
@@ -459,7 +465,7 @@ a.button {
 					<p>
 						You can download Firefox by clicking <a target="_blank"
 							href="https://www.mozilla.org/en-US/firefox/new/">here</a>
-					</p>
+					</p> -->
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Go
@@ -479,14 +485,15 @@ a.button {
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title" id="myModalLabel">Add Audio</h4>
+					<h4 class="modal-title" id="myModalLabel"><%= tc.getParamValue(ParamConstants.ADD_AUDIO_PAGE_HEADING)  %><!-- Add Audio --></h4>
 				</div>
 
 				<div class="modal-body wizard-content">
 					<div id="agreement" class="wizard-step">
 						<div id="concsent"
 							style="overflow-y: scroll; overflow-x: hidden; height: 400px;">
-							<p>Thank you for your interest in being a part of our voice
+							<%= tc.getParamValue(ParamConstants.ADD_AUDIO_PAGE_1)  %>
+							<%-- <p>Thank you for your interest in being a part of our voice
 								map! Before we record your voice, please read the following
 								information about the project and your consent to participate.
 								Once you click"Next", you will proceed to a brief questionnaire
@@ -529,14 +536,14 @@ a.button {
 							<p>1. You have read and understand the above Letter of
 								Information.</p>
 							<p>2. You understand that the audio files and background
-								information you submit will be available on a public website.</p>
+								information you submit will be available on a public website.</p> --%>
 						</div>
 					</div>
 					<div id="location" class="wizard-step">
 						<input type="hidden" id="locationCoordinates"
 							name="locationCoordinates" />
-						<p>
-							Select your birth year: <select class="form-control" id="age">
+						<p><%= tc.getParamValue(ParamConstants.ADD_AUDIO_PAGE_2_BIRTH_YEAR_TITLE)  %>
+							<!-- Select your birth year:  --><select class="form-control" id="age">
 								<option selected="selected">Select your birth year</option>
 								<option>before 1915</option>
 								<script>
@@ -549,8 +556,8 @@ a.button {
 							</select>
 						</p>
 
-						<p>
-							Select your gender: <select class="form-control" id="gender">
+						<p><%= tc.getParamValue(ParamConstants.ADD_AUDIO_PAGE_2_GENDER_TITLE)  %>
+							<!-- Select your gender: --> <select class="form-control" id="gender">
 								<option selected="selected">Select your gender</option>
 								<option>Female</option>
 								<option>Male</option>
@@ -560,8 +567,8 @@ a.button {
 						</p>
 
 
-						<p>Do you consider English your mother tongue (the language
-							you learned first as a child and still use/understand)?</p>
+						<p><%= tc.getParamValue(ParamConstants.ADD_AUDIO_PAGE_2_MOTHER_TOUNGE_TITLE)  %><!-- Do you consider English your mother tongue (the language
+							you learned first as a child and still use/understand)? --></p>
 						<label class="radio-inline"> <input id="langyes"
 							type="radio" name="optradio">Yes
 						</label> <label class="radio-inline"> <input id="langno"
@@ -574,8 +581,8 @@ a.button {
 							</label> <input type="text" class="form-control" id="mothertounge">
 						</p>
 
-						<p>
-							How would you rate your fluency in English?: <select
+						<p><%= tc.getParamValue(ParamConstants.ADD_AUDIO_PAGE_2_FLUENCY_TITLE)  %>
+							<!-- How would you rate your fluency in English?: --> <select
 								class="form-control" id="fluency">
 								<option selected="selected">How would you rate your
 									fluency in English?</option>
@@ -586,15 +593,15 @@ a.button {
 							</select>
 						</p>
 
-						<p>Were you born in Canada?</p>
+						<p><%= tc.getParamValue(ParamConstants.ADD_AUDIO_PAGE_2_BORN_CANADA_TITLE)  %> <!-- Were you born in Canada? --></p>
 						<label class="radio-inline"> <input type="radio"
 							name="citizenYes">Yes
 						</label> <label class="radio-inline"> <input type="radio"
 							name="citizenNo">No
 						</label>
 
-						<p>
-							If no, at what age did you move to Canada?: <select
+						<p><%= tc.getParamValue(ParamConstants.ADD_AUDIO_PAGE_2_WHAT_AGE_MOVE_IN_TITLE)  %>
+							<!-- If no, at what age did you move to Canada?: --> <select
 								class="form-control" id="canadaage">
 								<option selected="selected">If no, at what age did you
 									move to Canada?</option>
@@ -607,15 +614,16 @@ a.button {
 						</p>
 
 						<p>
-							<label for="comment">Is there an email address where we
-								can contact you about your participation if necessary? </label> <input
+							<label for="comment"><%= tc.getParamValue(ParamConstants.ADD_AUDIO_PAGE_2_EMAIL_ADDRESS_TITLE)  %><!-- Is there an email address where we
+								can contact you about your participation if necessary? --> </label> <input
 								type="text" class="form-control" id="emailAddress">
 						</p>
 
 					</div>
 
 					<div class="wizard-step">
-						<p>
+					<%= tc.getParamValue(ParamConstants.ADD_AUDIO_PAGE_3)  %>
+						<!-- <p>
 						<h2>
 							<font color="red">Alert!!</font>
 						</h2>
@@ -630,7 +638,7 @@ a.button {
 						<p>To record, click on the "start recording" button and then
 							say the word in a natural, casual manner. Press "stop" when you
 							are done. To re-record a word, simply do it again and the
-							previous version will be erased.</p>
+							previous version will be erased.</p> -->
 
 					</div>
 					<div class="wizard-step">
@@ -840,7 +848,7 @@ a.button {
 
 
 					</div>
-					<div class="wizard-step">Do you want to submit the details?</div>
+					<div class="wizard-step"><%= tc.getParamValue(ParamConstants.ADD_AUDIO_PAGE_5)  %><!-- Do you want to submit the details? --></div>
 				</div>
 				<div class="modal-footer wizard-buttons">
 					<!-- The wizard button will be inserted here. -->

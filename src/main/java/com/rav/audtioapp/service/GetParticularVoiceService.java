@@ -1,6 +1,6 @@
 package com.rav.audtioapp.service;
 
-import com.rav.audtioapp.dao.GetAudioDAO;
+import com.rav.audtioapp.dao.audio.GetAudioDAO;
 import com.rav.audtioapp.dto.GetParticularAudioDTO;
 
 public class GetParticularVoiceService {

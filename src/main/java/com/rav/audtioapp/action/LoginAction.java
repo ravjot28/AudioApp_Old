@@ -1,6 +1,8 @@
 package com.rav.audtioapp.action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.rav.audtioapp.constants.param.ParamConstants;
+import com.rav.audtioapp.dao.param.ParamsDAO;
 import com.rav.audtioapp.dto.LoginDTO;
 import com.rav.audtioapp.service.LoginService;
 
@@ -27,9 +29,20 @@ public class LoginAction extends ActionSupport {
 
 	public String execute() {
 		LoginService service = new LoginService();
-		if (service.processRequest(createDTO()))
+		LoginDTO dto = createDTO();
+		if (service.processRequest(dto)) {
+
+			try {
+				if (dto.getUserName().equals(new ParamsDAO().getParamValue(ParamConstants.STRATHY_ADMIN))) {
+					return "admin";
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 			return "success";
-		else {
+		} else {
 			addActionError(service.getMessage());
 			return "input";
 		}
