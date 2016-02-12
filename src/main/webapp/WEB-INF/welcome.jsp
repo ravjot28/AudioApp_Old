@@ -413,7 +413,7 @@ html, body {
 	font-weight: 300;
 }
 </style>
-<title><%=tc.getParamValue(ParamConstants.STRATHY_WEBSITE_HEADING)%> <!-- Strathy Language --></title>
+<title><%=tc.getParamValue(ParamConstants.STRATHY_WEBSITE_HEADING)%> </title>
 <style>
 #target {
 	width: 345px;
