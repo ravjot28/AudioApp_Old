@@ -1,5 +1,7 @@
 package com.rav.audtioapp.action;
 
+import java.util.StringTokenizer;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.rav.audtioapp.constants.param.ParamConstants;
 import com.rav.audtioapp.dao.param.ParamsDAO;
@@ -33,8 +35,16 @@ public class LoginAction extends ActionSupport {
 		if (service.processRequest(dto)) {
 
 			try {
-				if (dto.getUserName().equals(new ParamsDAO().getParamValue(ParamConstants.STRATHY_ADMIN))) {
-					return "admin";
+				String admins = new ParamsDAO().getParamValue(ParamConstants.STRATHY_ADMIN);
+				if (admins != null && admins.trim().length() > 0) {
+					StringTokenizer token = new StringTokenizer(admins, ",");
+
+					while (token.hasMoreTokens()) {
+						if (dto.getUserName().equals(token.nextToken())) {
+							return "admin";
+						}
+					}
+
 				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
