@@ -3,6 +3,11 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%@taglib uri="/struts-jquery-tags" prefix="sj"%>
+<%@page import="com.rav.audtioapp.constants.param.ParamConstants"%>
+<%@page import="com.rav.audtioapp.dao.param.ParamsDAO"%>
+<%
+	ParamsDAO tc = new ParamsDAO();
+%>
 <html>
 <head>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
@@ -572,7 +577,7 @@ html, body {
 	font-weight: 300;
 }
 </style>
-<title>Strathy Language</title>
+<title><%=tc.getParamValue(ParamConstants.STRATHY_WEBSITE_HEADING)%><!-- Strathy Language --></title>
 <style>
 #target {
 	width: 345px;
@@ -612,7 +617,7 @@ html, body {
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="strathyUnit">Strathy Language</a>
+					<a class="navbar-brand" href="strathyUnit"><%=tc.getParamValue(ParamConstants.STRATHY_WEBSITE_HEADING)%><!-- Strathy Language --></a>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse"

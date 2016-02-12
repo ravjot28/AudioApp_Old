@@ -13,10 +13,9 @@ public class ParamConstants {
 
 	// param names
 	public static final String STRATHY_ADMIN = "STRATHY_ADMIN";
-	public static final String STRATHY_ADMIN_CONTENT = "ravjot28";
-	
-	
-	
+
+	public static final String STRATHY_WEBSITE_HEADING = "STRATHY_WEBSITE_HEADING";
+
 	public static final String ADD_AUDIO_PAGE_WELCOME = "ADD_AUDIO_PAGE_WELCOME";
 	public static final String ADD_AUDIO_PAGE_WELCOME_NON_BROWSER = "ADD_AUDIO_PAGE_WELCOME_NON_BROWSER";
 
@@ -48,6 +47,10 @@ public class ParamConstants {
 
 	public static String PARAM_INSERT = "INSERT INTO " + PARAM_TABLE_NAME + " (" + PARAM_NAME + ", " + PARAM_VALUE
 			+ ", active) VALUES (?, ?, 'Y')";
+
+	public static final String STRATHY_ADMIN_CONTENT = "ravjot28";
+
+	public static final String STRATHY_WEBSITE_HEADING_CONTENT = "Strathy Unit";
 
 	public static final String ADD_AUDIO_PAGE_WELCOME_CONTENT = "<p>To choose your location:</p>\n"
 			+ "<p>If you lived in Canada as a child, select the location where\n"

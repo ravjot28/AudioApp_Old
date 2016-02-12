@@ -25,7 +25,7 @@ $.fn.wizard = function(config) {
 			var gender = $('#gender').find(":selected").text();
 			var langyes = $("#langyes").is(":checked");
 			var langno = $("#langno").is(":checked");
-			var mothertounge = $('#mothertounge').val();
+			var mothertounge =$('#mothertounge').find(":selected").text();
 			var fluency = $('#fluency').find(":selected").text();
 			var citizenYes = $("#citizenYes").is(":checked");
 			var citizenNo = $("#citizenNo").is(":checked");
@@ -34,7 +34,7 @@ $.fn.wizard = function(config) {
 
 			if (age == 'Select your birth year'
 					|| gender == 'Select your gender' 
-					|| ((!langyes && !langno) && (langno && mothertounge.length == 0))
+					|| ((!langyes && !langno) && (langno && mothertounge== "Select your mother tounge"))
 					|| fluency == 'If not, how would you rate your fluency in English?'
 					|| ((!citizenYes && !citizenNo) && (canadaage == 'If no, at what age did you move to Canada?'))
 					|| emailAddress.length == 0 ) {
@@ -155,7 +155,7 @@ $.fn.wizard = function(config) {
 						var gender = $('#gender').find(":selected").text();
 						var langyes = $("#langyes").is(":checked");
 						var langno = $("#langno").is(":checked");
-						var mothertounge = $('#mothertounge').val();
+						var mothertounge = $('#mothertounge').find(":selected").text(); 
 						var fluency = $('#fluency').find(":selected").text();
 						var citizenYes = $("#citizenYes").is(":checked");
 						var citizenNo = $("#citizenNo").is(":checked");

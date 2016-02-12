@@ -413,7 +413,7 @@ html, body {
 	font-weight: 300;
 }
 </style>
-<title>Strathy Language</title>
+<title><%=tc.getParamValue(ParamConstants.STRATHY_WEBSITE_HEADING)%> <!-- Strathy Language --></title>
 <style>
 #target {
 	width: 345px;
@@ -453,7 +453,7 @@ html, body {
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#">Strathy Language</a>
+					<a class="navbar-brand" href="#"><%=tc.getParamValue(ParamConstants.STRATHY_WEBSITE_HEADING)%> <!-- Strathy Language --></a>
 				</div>
 				</nav>
 			</div>
