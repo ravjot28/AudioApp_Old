@@ -60,9 +60,8 @@ public class ParamsDAO {
 			initializeParameter(ParamConstants.ADD_AUDIO_PAGE_WELCOME_NON_BROWSER,
 					ParamConstants.ADD_AUDIO_PAGE_WELCOME_NON_BROWSER_CONTENT);
 
-			initializeParameter(ParamConstants.STRATHY_ADMIN, ParamConstants.STRATHY_ADMIN_CONTENT);*/
-			
-			initializeParameter(ParamConstants.STRATHY_WEBSITE_HEADING, ParamConstants.STRATHY_WEBSITE_HEADING_CONTENT);
+			initializeParameter(ParamConstants.STRATHY_ADMIN, ParamConstants.STRATHY_ADMIN_CONTENT);
+			initializeParameter(ParamConstants.STRATHY_WEBSITE_HEADING, ParamConstants.STRATHY_WEBSITE_HEADING_CONTENT);*/
 
 		} catch (Exception e) {
 			e.printStackTrace();
