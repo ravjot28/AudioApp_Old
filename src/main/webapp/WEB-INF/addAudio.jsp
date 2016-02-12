@@ -242,7 +242,7 @@
 				Marker.setIcon('../icons/pin.png'); //replace icon
 			},
 			error : function(xhr, ajaxOptions, thrownError) {
-				alert(thrownError); //throw any errors
+				//alert(thrownError); //throw any errors
 			}
 		});
 	}
@@ -266,10 +266,10 @@
 				data : myData,
 				success : function(data) {
 					Marker.setMap(null);
-					alert(data);
+					//alert(data);
 				},
 				error : function(xhr, ajaxOptions, thrownError) {
-					alert(thrownError); //throw any errors
+					//alert(thrownError); //throw any errors
 				}
 			});
 		}

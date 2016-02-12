@@ -64,9 +64,9 @@
 						$("#myoptions").find(':selected').text());
 				$("#parameterValue").val($("#paramContent").val());
 
-				alert($("#myoptions").find(':selected').text());
+				//alert($("#myoptions").find(':selected').text());
 
-				alert($("#paramContent").val());
+				//alert($("#paramContent").val());
 				
 				
 				
