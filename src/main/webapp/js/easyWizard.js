@@ -32,11 +32,11 @@ $.fn.wizard = function(config) {
 			var canadaage = $('#canadaage').find(":selected").text();
 			var emailAddress = $('#emailAddress').val();
 
-			if (age == 'Select your birth year'
-					|| gender == 'Select your gender' 
-					|| ((!langyes && !langno) && (langno && mothertounge== "Select your mother tounge"))
-					|| fluency == 'If not, how would you rate your fluency in English?'
-					|| ((!citizenYes && !citizenNo) && (canadaage == 'If no, at what age did you move to Canada?'))
+			if (age.length == 0
+					|| gender.length == 0
+					|| ((!langyes && !langno) && (langno && mothertounge.length == 0))
+					|| fluency.length == 0
+					|| ((!citizenYes && !citizenNo) && (canadaage.length == 0))
 					|| emailAddress.length == 0 ) {
 				return false;
 			} else {

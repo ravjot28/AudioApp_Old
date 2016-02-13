@@ -140,14 +140,19 @@
 			if (clicked == "false") {
 				event = event1;
 
-				$('#age').val('Select your birth year');
-				$('#gender').val('Select your gender');
-				$('#fluency').val(
-						'If not, how would you rate your fluency in English?');
-				$('#canadaage').val(
-						'If no, at what age did you move to Canada?');
+				/* $('#age').val('Select your birth year'); */
+				$("#age").val($("#age option:first").val());
 
-				$('#mothertounge').val('Select your mother tounge');
+				/* $('#gender').val('Select your gender'); */
+				$("#gender").val($("#gender option:first").val());
+				/* $('#fluency').val(
+						'If not, how would you rate your fluency in English?'); */
+				$("#fluency").val($("#fluency option:first").val());
+				/* $('#canadaage').val(
+						'If no, at what age did you move to Canada?'); */
+				$("#canadaage").val($("#canadaage option:first").val());
+				/* $('#mothertounge').val('Select your mother tounge'); */
+				$("#mothertounge").val($("#mothertounge option:first").val());
 				$('#emailAddress').val('');
 
 				$("#langyes").prop('checked', false);
@@ -549,8 +554,8 @@ a.button {
 						<p><%=tc.getParamValue(ParamConstants.ADD_AUDIO_PAGE_2_BIRTH_YEAR_TITLE)%>
 							<!-- Select your birth year:  -->
 							<select class="form-control" id="age">
-								<option selected="selected">Select your birth year</option>
-								<option>before 1915</option>
+								<!-- <option selected="selected">Select your birth year</option> -->
+								<option selected="selected">before 1915</option>
 								<script>
 									for (i = 1916; i < 1998; i++) {
 										document.write('<option>' + i
@@ -564,8 +569,8 @@ a.button {
 						<p><%=tc.getParamValue(ParamConstants.ADD_AUDIO_PAGE_2_GENDER_TITLE)%>
 							<!-- Select your gender: -->
 							<select class="form-control" id="gender">
-								<option selected="selected">Select your gender</option>
-								<option>Female</option>
+								<!-- <option selected="selected">Select your gender</option> -->
+								<option selected="selected">Female</option>
 								<option>Male</option>
 								<option>Other</option>
 								<option>Prefer not to disclose</option>
@@ -596,9 +601,9 @@ a.button {
 
 								var select = document
 										.getElementById('mothertounge');
-								select.options[0] = new Option(
-										"Select your mother tounge", "Select your mother tounge");
-								for (var i = 1; i <= options.length; i++) {
+								/* select.options[0] = new Option(
+										"Select your mother tounge", "Select your mother tounge"); */
+								for (var i = 0; i <= options.length; i++) {
 
 									select.options[i] = new Option(options[i],
 											options[i]);
@@ -618,9 +623,9 @@ a.button {
 						<p><%=tc.getParamValue(ParamConstants.ADD_AUDIO_PAGE_2_FLUENCY_TITLE)%>
 							<!-- How would you rate your fluency in English?: -->
 							<select class="form-control" id="fluency">
-								<option selected="selected">How would you rate your
-									fluency in English?</option>
-								<option>native speaker</option>
+								<!-- <option selected="selected">How would you rate your
+									fluency in English?</option> -->
+								<option selected="selected">native speaker</option>
 								<option>highly fluent</option>
 								<option>intermediate level of fluency</option>
 								<option>beginner</option>
@@ -639,9 +644,9 @@ a.button {
 						<p><%=tc.getParamValue(ParamConstants.ADD_AUDIO_PAGE_2_WHAT_AGE_MOVE_IN_TITLE)%>
 							<!-- If no, at what age did you move to Canada?: -->
 							<select class="form-control" id="canadaage">
-								<option selected="selected">If no, at what age did you
-									move to Canada?</option>
-								<option>before age 5</option>
+								<!-- <option selected="selected">If no, at what age did you
+									move to Canada?</option> -->
+								<option selected="selected">before age 5</option>
 								<option>between 5 and 12</option>
 								<option>between 13 and 20</option>
 								<option>age 21 or older</option>
