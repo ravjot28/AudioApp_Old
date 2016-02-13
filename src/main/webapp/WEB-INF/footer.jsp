@@ -18,11 +18,11 @@
 
 				<div class="clear"></div>
 				<div class="col_1">
-				
-				
-				<%= tc.getParamValue(ParamConstants.ABOUT_US)  %>
-				
-				
+
+
+					<%=tc.getParamValue(ParamConstants.ABOUT_US)%>
+
+
 					<!-- <p>
 						<strong>Canadian English Voice Map</strong>
 					<p>is an interactive map that allows you to listen to sound
@@ -69,7 +69,7 @@
 
 				<div class="clear"></div>
 				<div class="col_1">
-				<%= tc.getParamValue(ParamConstants.CREDITS)  %>
+					<%=tc.getParamValue(ParamConstants.CREDITS)%>
 					<!-- <p>
 						<strong>Canadian English Voice Map</strong>
 					<p>
@@ -89,6 +89,10 @@
 	</ul>
 
 	<ul id="notifications">
+
+		<li><a target="_blank" href="http://www.queensu.ca/strathy/home" class="notificationIcons"><img
+				src='../images/queens_logo.png' alt="" /></a></li>
+
 		<li><a href="#" class="notificationIcons"><img
 				src='../images/facebook-icon.png' alt="" /></a></li>
 		<li><a href="#" class="notificationIcons"><img
@@ -108,7 +112,7 @@
 				<button type="button" class="close" data-dismiss="modal">
 					<span aria-hidden="true">&times;</span> <span class="sr-only">Close</span>
 				</button>
-				<h4 class="modal-title" id="myModalLabel"><%= tc.getParamValue(ParamConstants.DOWNLOAD_AUDIO_HEAD)  %></h4>
+				<h4 class="modal-title" id="myModalLabel"><%=tc.getParamValue(ParamConstants.DOWNLOAD_AUDIO_HEAD)%></h4>
 				<!-- Download Voices -->
 			</div>
 
@@ -124,7 +128,8 @@
 						type="hidden" id="nativeLanguage" name="nativeLanguage" value="" />
 
 					<div class="form-group">
-						<label for="exampleInputEmail1"><%= tc.getParamValue(ParamConstants.DOWNLOAD_AUDIO_SELECT_WORD)  %> <!-- Select the word(s) to be
+						<label for="exampleInputEmail1"><%=tc.getParamValue(ParamConstants.DOWNLOAD_AUDIO_SELECT_WORD)%>
+							<!-- Select the word(s) to be
 							downloaded --></label> <select id="words" class="form-control"
 							multiple="multiple">
 							<option value="bag">bag</option>
@@ -160,8 +165,8 @@
 
 					</div>
 					<div class="form-group">
-						<label for="exampleInputPassword1"><%= tc.getParamValue(ParamConstants.DOWNLOAD_AUDIO_SELECT_GENDER)  %><!-- Select Gender(s) --></label> <select
-							id="genders" class="form-control" multiple="multiple">
+						<label for="exampleInputPassword1"><%=tc.getParamValue(ParamConstants.DOWNLOAD_AUDIO_SELECT_GENDER)%><!-- Select Gender(s) --></label>
+						<select id="genders" class="form-control" multiple="multiple">
 							<option value="Female">Female</option>
 							<option value="Male">Male</option>
 							<option value="Other">Other</option>
@@ -169,8 +174,9 @@
 					</div>
 
 					<div class="form-group">
-						<label for="nativeLanguageSelect"><%= tc.getParamValue(ParamConstants.DOWNLOAD_AUDIO_SELECT_MOTHER_TOUNGE)  %> <!-- English as mother tongue --></label>
-						<select id="nativeLanguageSelection" class="form-control"
+						<label for="nativeLanguageSelect"><%=tc.getParamValue(ParamConstants.DOWNLOAD_AUDIO_SELECT_MOTHER_TOUNGE)%>
+							<!-- English as mother tongue --></label> <select
+							id="nativeLanguageSelection" class="form-control"
 							multiple="multiple">
 							<option>Yes</option>
 							<option>No</option>
@@ -178,12 +184,12 @@
 					</div>
 
 					<div class="form-group">
-						<label for="exampleInputPassword1"><%= tc.getParamValue(ParamConstants.DOWNLOAD_AUDIO_SELECT_MINIMUM_AGE)  %><!-- Select minimum age --></label> <input
-							type="text" class="form-control" id="mAge"
+						<label for="exampleInputPassword1"><%=tc.getParamValue(ParamConstants.DOWNLOAD_AUDIO_SELECT_MINIMUM_AGE)%><!-- Select minimum age --></label>
+						<input type="text" class="form-control" id="mAge"
 							placeholder="Enter minimum age" /> <label
-							for="exampleInputPassword3"><%= tc.getParamValue(ParamConstants.DOWNLOAD_AUDIO_SELECT_MAXIMUM_AGE)  %> <!-- Select maximum age --></label> <input
-							type="text" class="form-control" id="maAge"
-							placeholder="Enter maximum age" />
+							for="exampleInputPassword3"><%=tc.getParamValue(ParamConstants.DOWNLOAD_AUDIO_SELECT_MAXIMUM_AGE)%>
+							<!-- Select maximum age --></label> <input type="text"
+							class="form-control" id="maAge" placeholder="Enter maximum age" />
 					</div>
 
 				</form>

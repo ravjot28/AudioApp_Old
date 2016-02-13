@@ -6,7 +6,18 @@
 		<li><a data-toggle="modal" href="#downloadForm">Update
 				Parameters</a></li>
 	</ul>
+	<ul id="notifications">
+		<li>Strathy Language Unit</li>
+		<li><a target="_blank" href="http://www.queensu.ca/strathy/home"
+			class="notificationIcons"><img src='../images/queens_logo.png'
+				alt="" /></a></li>
 
+		<li><a href="#" class="notificationIcons"><img
+				src='../images/facebook-icon.png' alt="" /></a></li>
+		<li><a href="#" class="notificationIcons"><img
+				src='../images/Twitter_logo_blue_48.png' alt="" /></a></li>
+
+	</ul>
 
 </div>
 
@@ -67,9 +78,6 @@
 				//alert($("#myoptions").find(':selected').text());
 
 				//alert($("#paramContent").val());
-				
-				
-				
 
 				if (new String($("#myoptions").find(':selected').val())
 						.valueOf() == new String($("#paramContent").val())
