@@ -318,7 +318,7 @@ html, body {
 
 #map {
 	width: 100%;
-	height: 88%;
+	height: 88.9%;
 	margin-top: 0px;
 	margin-left: auto;
 	margin-right: auto;
