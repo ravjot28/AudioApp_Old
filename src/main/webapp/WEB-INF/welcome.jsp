@@ -5,7 +5,9 @@
 <%@taglib uri="/struts-jquery-tags" prefix="sj"%>
 <%@page import="com.rav.audtioapp.constants.param.ParamConstants"%>
 <%@page import="com.rav.audtioapp.dao.param.ParamsDAO"%>
-<% ParamsDAO tc = new ParamsDAO ();%>
+<%
+	ParamsDAO tc = new ParamsDAO();
+%>
 <html>
 <head>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
@@ -30,12 +32,11 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		//google.maps.event.addDomListener(window, "load", initAutocomplete);
-		
-		
+
 		$('#genders').multiselect();
 		$('#words').multiselect();
 		$('#nativeLanguageSelection').multiselect();
-		
+
 		var map;
 		$('.dropdown-menu').find('form').click(function(e) {
 			e.stopPropagation();
@@ -144,9 +145,9 @@
 													+ '<p><audio id="audio" > <source src = ""/> </audio></p>'
 													+ '<button class="'+id+'" id="playVoice">Play</button>'
 													+ '<button class="'+id+'" id="downloadVoice">Download</button>'
+													+ '<button class="'+id+'" id="downloadAllVoice">Download All</button>'
 													+ '</div>', false, false,
-											false,
-											"../icons/pin.png");
+											false, "../icons/pin.png");
 								}
 								//Do something
 							}
@@ -296,6 +297,14 @@
 											});
 						});
 
+		$(document).on("click", "#downloadAllVoice", function() {
+			id = $(this).attr('class');
+			$("#id").val(id);
+
+			$("#downloadAll").submit();
+
+		});
+
 		var input = document.getElementById('pac-input');
 		var searchBox = new google.maps.places.SearchBox(input);
 		map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
@@ -413,7 +422,8 @@ html, body {
 	font-weight: 300;
 }
 </style>
-<title><%=tc.getParamValue(ParamConstants.STRATHY_WEBSITE_HEADING)%> </title>
+<title><%=tc.getParamValue(ParamConstants.STRATHY_WEBSITE_HEADING)%>
+</title>
 <style>
 #target {
 	width: 345px;
@@ -442,7 +452,7 @@ html, body {
 
 	</s:if>
 
-	<div class="container">
+	<div class="container-fullwidth">
 		<div class="row">
 			<div class="col-md-12">
 				<nav class="navbar navbar-default" role="navigation"> <!-- Brand and toggle get grouped for better mobile display -->
@@ -453,12 +463,19 @@ html, body {
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#"><%=tc.getParamValue(ParamConstants.STRATHY_WEBSITE_HEADING)%> <!-- Strathy Language --></a>
+					<a class="navbar-brand" href="#"><%=tc.getParamValue(ParamConstants.STRATHY_WEBSITE_HEADING)%>
+						<!-- Strathy Language --></a>
 				</div>
 				</nav>
 			</div>
 		</div>
 	</div>
+
+
+	<form action="downloadAllAudioFiles.action" method="post" role="form"
+		id="downloadAll">
+		<input type="hidden" id="id" name="id" value="" />
+	</form>
 
 
 	<div class="modal fade" id="login-modal" tabindex="-1" role="dialog"

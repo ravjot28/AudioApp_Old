@@ -22,9 +22,20 @@ public class DownloadAudioFilesService {
 		return fileName;
 	}
 
+	public String downloadAllVoices(String id) {
+
+		Map<String, String> voices = null;
+		int id1 = Integer.parseInt(id.replaceAll("CVMX-", ""));
+		voices = new DownloadAudioFilesDAO().getAllVoices(id1);
+		String fileName = null;
+		if (voices != null)
+			fileName = createZipFile(voices);
+
+		return fileName;
+	}
+
 	private String createZipFile(Map<String, String> voices) {
-		
-		
+
 		String fname = null;
 		try {
 			fname = "Words" + System.currentTimeMillis() + ".zip";
@@ -54,7 +65,7 @@ public class DownloadAudioFilesService {
 		try {
 			bytes = Base64.getDecoder().decode(content);
 		} catch (Exception r) {
-			System.out.println(fName+" "+content);
+			System.out.println(fName + " " + content);
 			r.printStackTrace();
 		}
 		return bytes;

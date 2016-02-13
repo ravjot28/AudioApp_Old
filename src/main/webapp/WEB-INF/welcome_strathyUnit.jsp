@@ -133,12 +133,13 @@
 													+ atwhatage
 													+ '</p>'
 													+ '<p>Choose Word:</p>'
-													+ s+'<p><audio id="audio" > <source src = ""/> </audio></p>'
+													+ s
+													+ '<p><audio id="audio" > <source src = ""/> </audio></p>'
 													+ '<button class="'+id+'" id="playVoice">Play</button>'
 													+ '<button class="'+id+'" id="downloadVoice">Download</button>'
+													+ '<button class="'+id+'" id="downloadAllVoice">Download All</button>'
 													+ '</div>', false, false,
-											false,
-											"../icons/pin.png");
+											false, "../icons/pin.png");
 								}
 								//Do something
 							}
@@ -155,112 +156,146 @@
 							//	"https://lit-journey-6254.herokuapp.com/icons/pin.png");
 							//        create_marker(point, name, address, false, false, false, "https://lit-journey-6254.herokuapp.com/icons/pin.png");
 							// });
-							
-							$(document).on(
-									"click",
-									"#playVoice",
+
+							$(document).on("click", "#downloadAllVoice",
 									function() {
 										id = $(this).attr('class');
+										$("#id").val(id);
 
-										var voiceSelected = $('#' + id + '')
-												.find(":selected").text();
-										
-										
-										var request = {
-												"id" : id,
-												"voice" : voiceSelected
-											};
-											var ajaxData = {};
-											ajaxData["array"] = [ JSON
-													.stringify(request)
-													.replace(',', ', ')
-													.replace('[', '')
-													.replace(']', '') ];
-											$
-													.ajax({
-														"dataType" : 'json',
-														"type" : "POST",
-														"url" : 'getParticularAudio.action',
-														"data" : JSON
-																.stringify(ajaxData),
-														contentType : "application/json; charset=utf-8",
-														async : false,
-														success : function(
-																jsonString) {
-															$("#audio").attr("src", jsonString);
-															$("#audio")[0].play();
-														},
-														complete : function(
-																msg, a, b) {
-															console
-																	.log('complete :'
-																			+ msg);
-														},
-														error : function(
-																msg, a, b) {
-															console
-																	.log('error:'
-																			+ msg);
-														}
-													});
+										$("#downloadAll").submit();
 
 									});
 
-							$(document).on(
-									"click",
-									"#downloadVoice",
-									function() {
-										id = $(this).attr('class');
+							$(document)
+									.on(
+											"click",
+											"#playVoice",
+											function() {
+												id = $(this).attr('class');
 
-										var voiceSelected = $('#' + id + '')
-												.find(":selected").text();
-										
-										
-										var request = {
-												"id" : id,
-												"voice" : voiceSelected
-											};
-											var ajaxData = {};
-											ajaxData["array"] = [ JSON
-													.stringify(request)
-													.replace(',', ', ')
-													.replace('[', '')
-													.replace(']', '') ];
-											$
-													.ajax({
-														"dataType" : 'json',
-														"type" : "POST",
-														"url" : 'getParticularAudio.action',
-														"data" : JSON
-																.stringify(ajaxData),
-														contentType : "application/json; charset=utf-8",
-														async : false,
-														success : function(
-																jsonString) {
-															/* $("<a href='"
+												var voiceSelected = $(
+														'#' + id + '').find(
+														":selected").text();
+
+												var request = {
+													"id" : id,
+													"voice" : voiceSelected
+												};
+												var ajaxData = {};
+												ajaxData["array"] = [ JSON
+														.stringify(request)
+														.replace(',', ', ')
+														.replace('[', '')
+														.replace(']', '') ];
+												$
+														.ajax({
+															"dataType" : 'json',
+															"type" : "POST",
+															"url" : 'getParticularAudio.action',
+															"data" : JSON
+																	.stringify(ajaxData),
+															contentType : "application/json; charset=utf-8",
+															async : false,
+															success : function(
+																	jsonString) {
+																$("#audio")
+																		.attr(
+																				"src",
+																				jsonString);
+																$("#audio")[0]
+																		.play();
+															},
+															complete : function(
+																	msg, a, b) {
+																console
+																		.log('complete :'
+																				+ msg);
+															},
+															error : function(
+																	msg, a, b) {
+																console
+																		.log('error:'
+																				+ msg);
+															}
+														});
+
+											});
+
+							$(document)
+									.on(
+											"click",
+											"#downloadVoice",
+											function() {
+												id = $(this).attr('class');
+
+												var voiceSelected = $(
+														'#' + id + '').find(
+														":selected").text();
+
+												var request = {
+													"id" : id,
+													"voice" : voiceSelected
+												};
+												var ajaxData = {};
+												ajaxData["array"] = [ JSON
+														.stringify(request)
+														.replace(',', ', ')
+														.replace('[', '')
+														.replace(']', '') ];
+												$
+														.ajax({
+															"dataType" : 'json',
+															"type" : "POST",
+															"url" : 'getParticularAudio.action',
+															"data" : JSON
+																	.stringify(ajaxData),
+															contentType : "application/json; charset=utf-8",
+															async : false,
+															success : function(
+																	jsonString) {
+																/* $("<a href='"
 																	+ jsonString
 																	+ "' download='"+id+"_"+voiceSelected++".wav'></a>")[0]
-																	.click(); */
-																		var a = document.createElement('a');
-																		$(a).attr('href',jsonString).attr('download',id+'_'+voiceSelected+'.wav').addClass('.voiceSelectedDownload').attr('id',id+'_'+voiceSelected).appendTo('body');
-																	
-																		$(a)[0].click();
-														},
-														complete : function(
-																msg, a, b) {
-															console
-																	.log('complete :'
-																			+ msg);
-														},
-														error : function(
-																msg, a, b) {
-															console
-																	.log('error:'
-																			+ msg);
-														}
-													});
+																		.click(); */
+																var a = document
+																		.createElement('a');
+																$(a)
+																		.attr(
+																				'href',
+																				jsonString)
+																		.attr(
+																				'download',
+																				id
+																						+ '_'
+																						+ voiceSelected
+																						+ '.wav')
+																		.addClass(
+																				'.voiceSelectedDownload')
+																		.attr(
+																				'id',
+																				id
+																						+ '_'
+																						+ voiceSelected)
+																		.appendTo(
+																				'body');
 
-									});
+																$(a)[0].click();
+															},
+															complete : function(
+																	msg, a, b) {
+																console
+																		.log('complete :'
+																				+ msg);
+															},
+															error : function(
+																	msg, a, b) {
+																console
+																		.log('error:'
+																				+ msg);
+															}
+														});
+
+											});
 						});
 
 		var input = document.getElementById('pac-input');
@@ -380,7 +415,8 @@ html, body {
 	font-weight: 300;
 }
 </style>
-<title><%=tc.getParamValue(ParamConstants.STRATHY_WEBSITE_HEADING)%> </title>
+<title><%=tc.getParamValue(ParamConstants.STRATHY_WEBSITE_HEADING)%>
+</title>
 <style>
 #target {
 	width: 345px;
@@ -409,7 +445,7 @@ html, body {
 
 	</s:if>
 
-	<div class="container">
+	<div class="container-fullwidth">
 		<div class="row">
 			<div class="col-md-12">
 				<nav class="navbar navbar-default" role="navigation"> <!-- Brand and toggle get grouped for better mobile display -->
@@ -420,7 +456,8 @@ html, body {
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#"><%=tc.getParamValue(ParamConstants.STRATHY_WEBSITE_HEADING)%> <!-- Strathy Language --></a>
+					<a class="navbar-brand" href="#"><%=tc.getParamValue(ParamConstants.STRATHY_WEBSITE_HEADING)%>
+						<!-- Strathy Language --></a>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse"
@@ -463,6 +500,11 @@ html, body {
 			</div>
 		</div>
 	</div>
+
+	<form action="downloadAllAudioFiles.action" method="post" role="form"
+		id="downloadAll">
+		<input type="hidden" id="id" name="id" value="" />
+	</form>
 
 
 	<div class="modal fade" id="login-modal" tabindex="-1" role="dialog"

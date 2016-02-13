@@ -24,44 +24,66 @@ public class ParamsDAO {
 
 			conn.close();
 
-			/*initializeParameter(ParamConstants.ABOUT_US, ParamConstants.ABOUT_US_CONTENT);
-			initializeParameter(ParamConstants.CREDITS, ParamConstants.CREDITS_CONTENT);
-			initializeParameter(ParamConstants.ADD_AUDIO_PAGE_HEADING, ParamConstants.ADD_AUDIO_PAGE_HEADING_CONTENT);
-			initializeParameter(ParamConstants.ADD_AUDIO_PAGE_1, ParamConstants.ADD_AUDIO_PAGE_1_CONTENT);
-			initializeParameter(ParamConstants.ADD_AUDIO_PAGE_2_BIRTH_YEAR_TITLE,
-					ParamConstants.ADD_AUDIO_PAGE_2_BIRTH_YEAR_TITLE_CONTENT);
-			initializeParameter(ParamConstants.ADD_AUDIO_PAGE_2_BORN_CANADA_TITLE,
-					ParamConstants.ADD_AUDIO_PAGE_2_BORN_CANADA_TITLE_CONTENT);
-			initializeParameter(ParamConstants.ADD_AUDIO_PAGE_2_EMAIL_ADDRESS_TITLE,
-					ParamConstants.ADD_AUDIO_PAGE_2_EMAIL_ADDRESS_TITLE_CONTENT);
-			initializeParameter(ParamConstants.ADD_AUDIO_PAGE_2_FLUENCY_TITLE,
-					ParamConstants.ADD_AUDIO_PAGE_2_FLUENCY_TITLE_CONTENT);
-			initializeParameter(ParamConstants.ADD_AUDIO_PAGE_2_GENDER_TITLE,
-					ParamConstants.ADD_AUDIO_PAGE_2_GENDER_TITLE_CONTENT);
-			initializeParameter(ParamConstants.ADD_AUDIO_PAGE_2_MOTHER_TOUNGE_TITLE,
-					ParamConstants.ADD_AUDIO_PAGE_2_MOTHER_TOUNGE_TITLE_CONTENT);
-			initializeParameter(ParamConstants.ADD_AUDIO_PAGE_2_WHAT_AGE_MOVE_IN_TITLE,
-					ParamConstants.ADD_AUDIO_PAGE_2_WHAT_AGE_MOVE_IN_TITLE_CONTENT);
-			initializeParameter(ParamConstants.ADD_AUDIO_PAGE_3, ParamConstants.ADD_AUDIO_PAGE_3_CONTENT);
-			initializeParameter(ParamConstants.ADD_AUDIO_PAGE_5, ParamConstants.ADD_AUDIO_PAGE_5_CONTENT);
-			initializeParameter(ParamConstants.DOWNLOAD_AUDIO_HEAD, ParamConstants.DOWNLOAD_AUDIO_HEAD_CONTENT);
-			initializeParameter(ParamConstants.DOWNLOAD_AUDIO_SELECT_GENDER,
-					ParamConstants.DOWNLOAD_AUDIO_SELECT_GENDER_CONTENT);
-			initializeParameter(ParamConstants.DOWNLOAD_AUDIO_SELECT_MAXIMUM_AGE,
-					ParamConstants.DOWNLOAD_AUDIO_SELECT_MAXIMUM_AGE_CONTENT);
-			initializeParameter(ParamConstants.DOWNLOAD_AUDIO_SELECT_MINIMUM_AGE,
-					ParamConstants.DOWNLOAD_AUDIO_SELECT_MINIMUM_AGE_CONTENT);
-			initializeParameter(ParamConstants.DOWNLOAD_AUDIO_SELECT_MOTHER_TOUNGE,
-					ParamConstants.DOWNLOAD_AUDIO_SELECT_MOTHER_TOUNGE_CONTENT);
-			initializeParameter(ParamConstants.DOWNLOAD_AUDIO_SELECT_WORD,
-					ParamConstants.DOWNLOAD_AUDIO_SELECT_WORD_CONTENT);
-
-			initializeParameter(ParamConstants.ADD_AUDIO_PAGE_WELCOME, ParamConstants.ADD_AUDIO_PAGE_WELCOME_CONTENT);
-			initializeParameter(ParamConstants.ADD_AUDIO_PAGE_WELCOME_NON_BROWSER,
-					ParamConstants.ADD_AUDIO_PAGE_WELCOME_NON_BROWSER_CONTENT);
-
-			initializeParameter(ParamConstants.STRATHY_ADMIN, ParamConstants.STRATHY_ADMIN_CONTENT);
-			initializeParameter(ParamConstants.STRATHY_WEBSITE_HEADING, ParamConstants.STRATHY_WEBSITE_HEADING_CONTENT);*/
+			/*
+			 * initializeParameter(ParamConstants.ABOUT_US,
+			 * ParamConstants.ABOUT_US_CONTENT);
+			 * initializeParameter(ParamConstants.CREDITS,
+			 * ParamConstants.CREDITS_CONTENT);
+			 * initializeParameter(ParamConstants.ADD_AUDIO_PAGE_HEADING,
+			 * ParamConstants.ADD_AUDIO_PAGE_HEADING_CONTENT);
+			 * initializeParameter(ParamConstants.ADD_AUDIO_PAGE_1,
+			 * ParamConstants.ADD_AUDIO_PAGE_1_CONTENT);
+			 * initializeParameter(ParamConstants.
+			 * ADD_AUDIO_PAGE_2_BIRTH_YEAR_TITLE,
+			 * ParamConstants.ADD_AUDIO_PAGE_2_BIRTH_YEAR_TITLE_CONTENT);
+			 * initializeParameter(ParamConstants.
+			 * ADD_AUDIO_PAGE_2_BORN_CANADA_TITLE,
+			 * ParamConstants.ADD_AUDIO_PAGE_2_BORN_CANADA_TITLE_CONTENT);
+			 * initializeParameter(ParamConstants.
+			 * ADD_AUDIO_PAGE_2_EMAIL_ADDRESS_TITLE,
+			 * ParamConstants.ADD_AUDIO_PAGE_2_EMAIL_ADDRESS_TITLE_CONTENT);
+			 * initializeParameter(ParamConstants.
+			 * ADD_AUDIO_PAGE_2_FLUENCY_TITLE,
+			 * ParamConstants.ADD_AUDIO_PAGE_2_FLUENCY_TITLE_CONTENT);
+			 * initializeParameter(ParamConstants.ADD_AUDIO_PAGE_2_GENDER_TITLE,
+			 * ParamConstants.ADD_AUDIO_PAGE_2_GENDER_TITLE_CONTENT);
+			 * initializeParameter(ParamConstants.
+			 * ADD_AUDIO_PAGE_2_MOTHER_TOUNGE_TITLE,
+			 * ParamConstants.ADD_AUDIO_PAGE_2_MOTHER_TOUNGE_TITLE_CONTENT);
+			 * initializeParameter(ParamConstants.
+			 * ADD_AUDIO_PAGE_2_WHAT_AGE_MOVE_IN_TITLE,
+			 * ParamConstants.ADD_AUDIO_PAGE_2_WHAT_AGE_MOVE_IN_TITLE_CONTENT);
+			 * initializeParameter(ParamConstants.ADD_AUDIO_PAGE_3,
+			 * ParamConstants.ADD_AUDIO_PAGE_3_CONTENT);
+			 * initializeParameter(ParamConstants.ADD_AUDIO_PAGE_5,
+			 * ParamConstants.ADD_AUDIO_PAGE_5_CONTENT);
+			 * initializeParameter(ParamConstants.DOWNLOAD_AUDIO_HEAD,
+			 * ParamConstants.DOWNLOAD_AUDIO_HEAD_CONTENT);
+			 * initializeParameter(ParamConstants.DOWNLOAD_AUDIO_SELECT_GENDER,
+			 * ParamConstants.DOWNLOAD_AUDIO_SELECT_GENDER_CONTENT);
+			 * initializeParameter(ParamConstants.
+			 * DOWNLOAD_AUDIO_SELECT_MAXIMUM_AGE,
+			 * ParamConstants.DOWNLOAD_AUDIO_SELECT_MAXIMUM_AGE_CONTENT);
+			 * initializeParameter(ParamConstants.
+			 * DOWNLOAD_AUDIO_SELECT_MINIMUM_AGE,
+			 * ParamConstants.DOWNLOAD_AUDIO_SELECT_MINIMUM_AGE_CONTENT);
+			 * initializeParameter(ParamConstants.
+			 * DOWNLOAD_AUDIO_SELECT_MOTHER_TOUNGE,
+			 * ParamConstants.DOWNLOAD_AUDIO_SELECT_MOTHER_TOUNGE_CONTENT);
+			 * initializeParameter(ParamConstants.DOWNLOAD_AUDIO_SELECT_WORD,
+			 * ParamConstants.DOWNLOAD_AUDIO_SELECT_WORD_CONTENT);
+			 * 
+			 * initializeParameter(ParamConstants.ADD_AUDIO_PAGE_WELCOME,
+			 * ParamConstants.ADD_AUDIO_PAGE_WELCOME_CONTENT);
+			 * initializeParameter(ParamConstants.
+			 * ADD_AUDIO_PAGE_WELCOME_NON_BROWSER,
+			 * ParamConstants.ADD_AUDIO_PAGE_WELCOME_NON_BROWSER_CONTENT);
+			 * 
+			 * initializeParameter(ParamConstants.STRATHY_ADMIN,
+			 * ParamConstants.STRATHY_ADMIN_CONTENT);
+			 * initializeParameter(ParamConstants.STRATHY_WEBSITE_HEADING,
+			 * ParamConstants.STRATHY_WEBSITE_HEADING_CONTENT);
+			 */
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -93,8 +115,8 @@ public class ParamsDAO {
 		}
 
 	}
-	
-	public void insertParam(String param_name, String param_value){
+
+	public void insertParam(String param_name, String param_value) {
 
 		try {
 			Connection conn = DAOUtil.getInstance().getConnection();
@@ -108,7 +130,7 @@ public class ParamsDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	
+
 	}
 
 	public String getParamValue(String paramName) throws Exception {
@@ -150,7 +172,8 @@ public class ParamsDAO {
 		Connection conn = DAOUtil.getInstance().getConnection();
 		try {
 			String sql = "select distinct " + ParamConstants.PARAM_NAME + "," + ParamConstants.PARAM_VALUE + " FROM "
-					+ ParamConstants.PARAM_TABLE_NAME + "   where " + GeneralConstants.ACTIVE + " ='Y'";
+					+ ParamConstants.PARAM_TABLE_NAME + "   where " + GeneralConstants.ACTIVE + " ='Y' order by "
+					+ ParamConstants.PARAM_NAME;
 
 			statement = conn.prepareStatement(sql);
 			ResultSet rs = statement.executeQuery();

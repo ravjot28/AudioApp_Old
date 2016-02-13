@@ -35,6 +35,45 @@ public class DownloadAudioFilesDAO {
 
 	}
 
+	public Map<String, String> getAllVoices(int id) {
+		Map<String, String> voices = null;
+		Connection connection = DAOUtil.getInstance().getConnection();
+		Statement statement = null;
+		try {
+			statement = connection.createStatement();
+			String sql = "select bag, cot, gang, past, "
+					+ "spa, band, deck, house, pasta, test,boat, duck, how, pool, tie, boot, face, kiss, seat, tight, caught,  far, pack, "
+					+ "sharp, too FROM \"AudioSubmission_Details\" where id = " + id;
+			ResultSet rs = statement.executeQuery(sql);
+			while (rs.next()) {
+				ResultSetMetaData rsmd = rs.getMetaData();
+
+				for (int j = 1; j < rsmd.getColumnCount() + 1; j++) {
+					String voice = rs.getString(rsmd.getColumnName(j));
+					if (voice != null) {
+						if (voices == null)
+							voices = new HashMap<String, String>();
+						voices.put("CVMX-" + id + "_" + rsmd.getColumnName(j) + ".wav",
+								voice.substring("data:audio/wav;base64,".length()).replace("\\", "").trim());
+					}
+				}
+
+			}
+			statement.close();
+		} catch (Exception e) {
+			System.err.println(e);
+		} finally {
+			try {
+				connection.close();
+				connection = null;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return voices;
+	}
+
 	public Map<String, String> getVoices(DownloadAudioFilesDTO dto) {
 		Map<String, String> voices = null;
 		int minimumAge = getInt(dto.getMinimumAge());
@@ -60,19 +99,20 @@ public class DownloadAudioFilesDAO {
 
 						sql += " and gender in (" + gendersWhere + ")";
 					}
-					
-					if (dto.getNativeLanguageSelected()!= null && dto.getNativeLanguageSelected().trim().length() > 2) {
-						
+
+					if (dto.getNativeLanguageSelected() != null
+							&& dto.getNativeLanguageSelected().trim().length() > 2) {
+
 						String nativeLanguages = dto.getNativeLanguageSelected();
-						
+
 						StringTokenizer token = new StringTokenizer(nativeLanguages, ",");
 						String nativeLanguagesWhere = "";
-						
+
 						while (token.hasMoreTokens()) {
 							String temp = token.nextToken();
-							if(temp.equals("Yes"))
+							if (temp.equals("Yes"))
 								nativeLanguagesWhere += "'true',";
-							if(temp.equals("No"))
+							if (temp.equals("No"))
 								nativeLanguagesWhere += "'false',";
 						}
 
@@ -80,9 +120,7 @@ public class DownloadAudioFilesDAO {
 
 						sql += " and mothertoungedata in (" + nativeLanguagesWhere + ")";
 					}
-					
-					
-					
+
 					if (minimumAge > 0) {
 						int year = Calendar.getInstance().get(Calendar.YEAR);
 						sql += " and cast(birthyear as int)  <=" + (year - minimumAge);

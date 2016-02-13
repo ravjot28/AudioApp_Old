@@ -111,6 +111,19 @@
 			<result name="invalidSelection" type="redirect">strathyUnitLogin</result>
 		</action>
 
+		<action name="downloadAllAudioFiles"
+			class="com.rav.audtioapp.action.DownloadAllAudioFilesAction">
+			<result name="success" type="stream">
+				<param name="contentType">application/octet-stream</param>
+				<param name="inputName">inputStream</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="bufferSize">4096</param>
+			</result>
+			<result name="invalidSelection" type="redirect">strathyUnit</result>
+		</action>
+
+
+
 		<action name="updateParameter" class="com.rav.audtioapp.action.UpdateParameterAction">
 			<result name="success">WEB-INF/welcome_strathyUnit_admin.jsp</result>
 		</action>
