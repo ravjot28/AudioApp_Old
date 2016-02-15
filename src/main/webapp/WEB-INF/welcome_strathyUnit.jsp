@@ -642,15 +642,8 @@ html, body {
 												0,
 												timeInCanadaSelectedFilter.length - 1);
 
-							alert(genderFilterSelected);
-							alert(nativeSpeakerFilterSelected);
-							alert(timeInCanadaSelectedFilter);
-							alert($("#filterMinimumAge").val());
-							alert($("#filterMaximumAge").val());
-
 							for (var i = 0; i < markers.length; i++) {
-								alert(markers[i].getMap());
-								
+									
 								
 								genderCheck = false;
 								nativeCheck = false;
@@ -713,13 +706,16 @@ html, body {
 								if(genderCheck && nativeCheck && timeInCheck && ageCheck){
 									if(markers[i].getMap() == null){
 										markers[i].setMap(map);
+										markers.splice(
+												i,
+												0);
 									}
 								}else{
 									markers[i]
 									.setMap(null);
-									//markers.splice(
-										//	i,
-											//1);
+									markers.splice(
+											i,
+											1);
 								}
 							}
 
