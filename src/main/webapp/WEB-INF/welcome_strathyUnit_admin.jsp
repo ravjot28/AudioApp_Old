@@ -816,6 +816,6 @@ html, body {
 		document.body.appendChild(d);
 	</script>
 
-	<%@include file="/WEB-INF/footer.jsp"%>
+	<%@include file="/WEB-INF/footer_admin.jsp"%>
 </body>
 </html>
