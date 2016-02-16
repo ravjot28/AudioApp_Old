@@ -32,12 +32,12 @@
 
 		<action name="login" class="com.rav.audtioapp.action.LoginAction">
 			<result name="success">WEB-INF/main.jsp</result>
-			<result name="input">welcome.jsp</result>
+			<result name="input">WEB-INF/welcome.jsp</result>
 			<result name="admin">WEB-INF/welcome_strathyUnit_admin.jsp</result>
 		</action>
 		<action name="register" class="com.rav.audtioapp.action.RegisterationAction">
-			<result name="success">welcome.jsp</result>
-			<result name="input">welcome.jsp</result>
+			<result name="success">WEB-INF/welcome.jsp</result>
+			<result name="input">WEB-INF/welcome.jsp</result>
 		</action>
 	</package>
 
