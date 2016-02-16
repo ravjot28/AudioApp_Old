@@ -706,16 +706,10 @@ html, body {
 								if(genderCheck && nativeCheck && timeInCheck && ageCheck){
 									if(markers[i].getMap() == null){
 										markers[i].setMap(map);
-										markers.splice(
-												i,
-												0);
 									}
 								}else{
 									markers[i]
 									.setMap(null);
-									markers.splice(
-											i,
-											1);
 								}
 							}
 
