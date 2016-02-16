@@ -662,7 +662,7 @@ a.button {
 
 					</div>
 
-					<%-- <div class="wizard-step">
+					 <div class="wizard-step">
 						<%=tc.getParamValue(ParamConstants.ADD_AUDIO_PAGE_3)%>
 						<!-- <p>
 						<h2>
@@ -681,7 +681,7 @@ a.button {
 							are done. To re-record a word, simply do it again and the
 							previous version will be erased.</p> -->
 
-					</div> --%>
+					</div> 
 					<div class="wizard-step">
 
 						<table>
