@@ -576,14 +576,15 @@ html, body {
 		var maxAge = '<input  size="17px" type="text" id="filterMaximumAge" name="filterMaximumAge" placeholder="Maximum Age">';
 
 		var nativeSpeaker = '<select id="nativeSpeakerFilter" class="form-control" multiple="multiple">'
-				+ '<option value="">Native Speaker?</option>'
-				+ '<option value="Male">Male</option>'
-				+ '<option value="Other">Other</option>' + '</select>';
-
-		var timeInCanada = '<select id="timeInCanadaFilter" class="form-control" multiple="multiple">'
-				+ '<option value="">Time in Canada</option>'
-				+ '<option value="Male">Male</option>'
-				+ '<option value="Other">Other</option>' + '</select>';
+			+ '<option value="true">true</option>'
+			+ '<option value="false">false</option>' + '</select>';
+			
+	var timeInCanada = '<select id="timeInCanadaFilter" class="form-control" multiple="multiple">'
+			+ '<option value="before age 5">before age 5</option>'
+			+ '<option value="between 5 and 12">between 5 and 12</option>'
+			+ '<option value="between 13 and 20">between 13 and 20</option>'
+			+ '<option value="age 21 or older">age 21 or older</option>'
+			+ '<option value="I have never lived in Canada">I have never lived in Canada</option>' + '</select>';
 
 		d.innerHTML = '<table>'
 				+ '<tr><td>Gender</td><td>'
