@@ -55,9 +55,9 @@ public class DAOUtil {
 
 				}
 
-				connectionPool.setInitialSize(100);
-				connectionPool.setMaxTotal(20);
-				connectionPool.setMaxIdle(20);
+				connectionPool.setInitialSize(15);
+				connectionPool.setMaxTotal(15);
+				connectionPool.setMaxIdle(15);
 				connection = connectionPool.getConnection();
 			}
 		} catch (Exception e) {
