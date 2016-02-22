@@ -31,14 +31,13 @@ $.fn.wizard = function(config) {
 			var citizenNo = $("#citizenNo").is(":checked");
 			var canadaage = $('#canadaage').find(":selected").text();
 			var emailAddress = $('#emailAddress').val();
-
 			var re = /\S+@\S+\.\S+/;
 			if (age.length == 0
 					|| gender.length == 0
 					|| ((!langyes && !langno) && (langno && mothertounge.length == 0))
 					|| fluency.length == 0
 					|| ((!citizenYes && !citizenNo) && (canadaage.length == 0))
-					|| emailAddress.length == 0 || !re.test(re)) {
+					|| emailAddress.length == 0 || !re.test(emailAddress)) {
 				return false;
 			} else {
 				var hv = $('#location').val();
