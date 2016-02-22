@@ -85,6 +85,8 @@ public class ParamsDAO {
 			 * ParamConstants.STRATHY_WEBSITE_HEADING_CONTENT);
 			 */
 
+			initializeParameter(ParamConstants.STRATHY_ENTER_LOCATION_SEARCH_BAR, ParamConstants.STRATHY_ENTER_LOCATION_SEARCH_BAR_CONTENT);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

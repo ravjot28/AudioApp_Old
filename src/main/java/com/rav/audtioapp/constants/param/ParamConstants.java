@@ -15,6 +15,8 @@ public class ParamConstants {
 	public static final String STRATHY_ADMIN = "STRATHY_ADMIN";
 
 	public static final String STRATHY_WEBSITE_HEADING = "STRATHY_WEBSITE_HEADING";
+	
+	public static final String STRATHY_ENTER_LOCATION_SEARCH_BAR = "STRATHY_ENTER_LOCATION_SEARCH_BAR";
 
 	public static final String ADD_AUDIO_PAGE_WELCOME = "ADD_AUDIO_PAGE_WELCOME";
 	public static final String ADD_AUDIO_PAGE_WELCOME_NON_BROWSER = "ADD_AUDIO_PAGE_WELCOME_NON_BROWSER";
@@ -49,6 +51,8 @@ public class ParamConstants {
 			+ ", active) VALUES (?, ?, 'Y')";
 
 	public static final String STRATHY_ADMIN_CONTENT = "ravjot28";
+	
+	public static final String STRATHY_ENTER_LOCATION_SEARCH_BAR_CONTENT = "Enter Location";
 
 	public static final String STRATHY_WEBSITE_HEADING_CONTENT = "Strathy Unit";
 

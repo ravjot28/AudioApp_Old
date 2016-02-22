@@ -649,7 +649,7 @@ html, body {
 	</div>
 
 	<input id="pac-input" class="controls" type="text"
-		placeholder="Enter the Location">
+		placeholder="<%=tc.getParamValue(ParamConstants.STRATHY_ENTER_LOCATION_SEARCH_BAR)%>">
 	<div id="map"></div>
 
 	<script type="text/javascript">

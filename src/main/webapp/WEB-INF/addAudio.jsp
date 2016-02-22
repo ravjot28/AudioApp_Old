@@ -1031,7 +1031,7 @@ a.button {
 	<!-- <div align="center">Right Click to Drop a New Marker</div> -->
 
 	<input id="pac-input" class="controls" type="text"
-		placeholder="Enter the Location">
+		placeholder="<%=tc.getParamValue(ParamConstants.STRATHY_ENTER_LOCATION_SEARCH_BAR)%>">
 	<div id="map"></div>
 	<%@include file="/WEB-INF/footer.jsp"%>
 </body>
