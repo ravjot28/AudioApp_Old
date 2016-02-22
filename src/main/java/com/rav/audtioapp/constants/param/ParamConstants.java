@@ -15,8 +15,25 @@ public class ParamConstants {
 	public static final String STRATHY_ADMIN = "STRATHY_ADMIN";
 
 	public static final String STRATHY_WEBSITE_HEADING = "STRATHY_WEBSITE_HEADING";
-	
+
 	public static final String STRATHY_ENTER_LOCATION_SEARCH_BAR = "STRATHY_ENTER_LOCATION_SEARCH_BAR";
+
+	public static final String STRATHY_EMAIL_ADDRESS = "STRATHY_EMAIL_ADDRESS";
+	public static final String STRATHY_EMAIL_ADDRESS_CONTENT = "riehla@queensu.ca";
+
+	public static final String STRATHY_EMAIL_SUBJECT = "STRATHY_EMAIL_SUBJECT";
+	public static final String STRATHY_EMAIL_SUBJECT_CONTENT = "New audio submission $ID$";
+
+	public static final String STRATHY_EMAIL_BODY = "STRATHY_EMAIL_BODY";
+	public static final String STRATHY_EMAIL_BODY_CONTENT = "Canadian English Voice Map user $ID$ is ready for review.";
+
+	public static final String STRATHY_EMAIL_SUBJECT_TO_END_USER = "STRATHY_EMAIL_SUBJECT_TO_END_USER";
+	public static final String STRATHY_EMAIL_SUBJECT_TO_END_USER_CONTENT = "Your reference number is: $ID$";
+
+	public static final String STRATHY_EMAIL_TO_END_USER = "STRATHY_EMAIL_TO_END_USER";
+	public static final String STRATHY_EMAIL_TO_END_USER_CONTENT = "Thank you for participating in the Canadian English Voice Map! Your reference number is "
+			+ "$ID$"
+			+ ".\n If you have any questions about your submission, please contact CEVM@queensu.ca.\n\n- The Strathy Language Unit";
 
 	public static final String ADD_AUDIO_PAGE_WELCOME = "ADD_AUDIO_PAGE_WELCOME";
 	public static final String ADD_AUDIO_PAGE_WELCOME_NON_BROWSER = "ADD_AUDIO_PAGE_WELCOME_NON_BROWSER";
@@ -51,7 +68,7 @@ public class ParamConstants {
 			+ ", active) VALUES (?, ?, 'Y')";
 
 	public static final String STRATHY_ADMIN_CONTENT = "ravjot28";
-	
+
 	public static final String STRATHY_ENTER_LOCATION_SEARCH_BAR_CONTENT = "Enter Location";
 
 	public static final String STRATHY_WEBSITE_HEADING_CONTENT = "Strathy Unit";

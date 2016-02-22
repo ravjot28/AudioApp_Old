@@ -85,7 +85,13 @@ public class ParamsDAO {
 			 * ParamConstants.STRATHY_WEBSITE_HEADING_CONTENT);
 			 */
 
-			initializeParameter(ParamConstants.STRATHY_ENTER_LOCATION_SEARCH_BAR, ParamConstants.STRATHY_ENTER_LOCATION_SEARCH_BAR_CONTENT);
+			initializeParameter(ParamConstants.STRATHY_EMAIL_ADDRESS, ParamConstants.STRATHY_EMAIL_ADDRESS_CONTENT);
+			initializeParameter(ParamConstants.STRATHY_EMAIL_SUBJECT, ParamConstants.STRATHY_EMAIL_SUBJECT_CONTENT);
+			initializeParameter(ParamConstants.STRATHY_EMAIL_BODY, ParamConstants.STRATHY_EMAIL_BODY_CONTENT);
+			initializeParameter(ParamConstants.STRATHY_EMAIL_SUBJECT_TO_END_USER,
+					ParamConstants.STRATHY_EMAIL_SUBJECT_TO_END_USER_CONTENT);
+			initializeParameter(ParamConstants.STRATHY_EMAIL_TO_END_USER,
+					ParamConstants.STRATHY_EMAIL_TO_END_USER_CONTENT);
 
 		} catch (Exception e) {
 			e.printStackTrace();
