@@ -533,7 +533,7 @@ html, body {
 		d.id = 'panelSide';
 		d.style.position = 'fixed';
 		d.style.padding = '10px';
-		d.style.right = '0px';
+		d.style.left = '0px';
 		d.style.top = '40vh';
 		d.style.backgroundColor = 'rgba(265,0,0,0.5)';
 		d.style.border = '1px solid black';
@@ -557,7 +557,7 @@ html, body {
 			+ '<option value="age 21 or older">age 21 or older</option>'
 			+ '<option value="I have never lived in Canada">I have never lived in Canada</option>' + '</select>';
 
-		d.innerHTML = '<table>'
+		d.innerHTML = '<table><tr><td>Filter results</td><td></td></tr>'
 				+ '<tr><td>Gender</td><td>'
 				+ gender
 				+ '</td></tr>'
@@ -567,13 +567,13 @@ html, body {
 				+ '<tr><td>Maximum Age</td><td>'
 				+ maxAge
 				+ '</td></tr>'
-				+ '<tr><td>Native Speaker</td><td>'
+				+ '<tr><td>Native Canadian English Speaker</td><td>'
 				+ nativeSpeaker
 				+ '</td></tr>'
 				+ '<tr><td>Time in Canada</td><td>'
 				+ timeInCanada
 				+ '</td></tr>'
-				+ '<tr><td></td><td><button id="filterSubmit" type="button" class="btn btn-default">Filter</button> </td></tr></table>';
+				+ '<tr><td></td><td><button id="filterSubmit" type="button" class="btn btn-default">Apply</button> </td></tr></table>';
 
 		$(document)
 				.on(
