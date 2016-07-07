@@ -49,15 +49,15 @@ public class DAOUtil {
 					}
 					connectionPool.setUrl(dbUrl);
 				} else {
-					connectionPool.setUsername("postgres");
-					connectionPool.setPassword("admin");
+					connectionPool.setUsername("14rs22");
+					connectionPool.setPassword("Apple%3401");
 					connectionPool.setUrl("jdbc:postgresql://localhost:5432/AudioApp");
 
 				}
 
 				connectionPool.setInitialSize(15);
-				connectionPool.setMaxTotal(15);
-				connectionPool.setMaxIdle(15);
+				connectionPool.setMaxTotal(150);
+				connectionPool.setMaxIdle(150);
 				connection = connectionPool.getConnection();
 			}
 		} catch (Exception e) {

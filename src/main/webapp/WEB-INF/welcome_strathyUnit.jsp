@@ -389,7 +389,7 @@ html, body {
 #map {
 	width: 100%;
 	height: 95%;
-	margin-top: 0px;
+	margin-top: 50px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -469,7 +469,7 @@ html, body {
 	<div class="container-fullwidth">
 		<div class="row">
 			<div class="col-md-12">
-				<nav class="navbar navbar-default" role="navigation"> <!-- Brand and toggle get grouped for better mobile display -->
+				<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation"> <!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse"
 						data-target="#bs-example-navbar-collapse-1">
