@@ -728,8 +728,9 @@ a.button {
 	<input id="pac-input" class="controls" type="text"
 		placeholder="<%=tc.getParamValue(ParamConstants.STRATHY_ENTER_LOCATION_SEARCH_BAR)%>">
 	<div id="map"></div>
-	<%@include file="/WEB-INF/footer.jsp"%>
+
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<%@include file="/WEB-INF/footer.jsp"%>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
