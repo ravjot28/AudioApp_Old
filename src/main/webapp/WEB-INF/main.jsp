@@ -142,169 +142,7 @@ html, body {
 		placeholder="<%=tc.getParamValue(ParamConstants.STRATHY_ENTER_LOCATION_SEARCH_BAR)%>">
 	<div id="map"></div>
 
-	<script type="text/javascript">
-		var d = document.createElement('div');
-		//var b = document.createElement('button');
-		//var s = document.createElement('select');
 
-		d.id = 'panelSide';
-		d.style.position = 'fixed';
-		d.style.padding = '10px';
-		d.style.right = '0px';
-		d.style.top = '40vh';
-		d.style.backgroundColor = 'rgba(265,0,0,0.5)';
-		d.style.border = '1px solid black';
-
-		var gender = '<select id="filterGeneder" class="form-control" multiple="multiple">'
-				+ '<option value="Female">Female</option>'
-				+ '<option value="Male">Male</option>'
-				+ '<option value="Other">Other</option>' + '</select>';
-
-		var minAge = '<input size="17px" type="text" id="filterMinimumAge" name="filterMinimumAge" placeholder="Minimum Age">';
-		var maxAge = '<input  size="17px" type="text" id="filterMaximumAge" name="filterMaximumAge" placeholder="Maximum Age">';
-
-		var nativeSpeaker = '<select id="nativeSpeakerFilter" class="form-control" multiple="multiple">'
-				+ '<option value="true">true</option>'
-				+ '<option value="false">false</option>' + '</select>';
-				
-		var timeInCanada = '<select id="timeInCanadaFilter" class="form-control" multiple="multiple">'
-				+ '<option value="before age 5">before age 5</option>'
-				+ '<option value="between 5 and 12">between 5 and 12</option>'
-				+ '<option value="between 13 and 20">between 13 and 20</option>'
-				+ '<option value="age 21 or older">age 21 or older</option>'
-				+ '<option value="I have never lived in Canada">I have never lived in Canada</option>' + '</select>';
-
-		d.innerHTML = '<table>'
-				+ '<tr><td>Gender</td><td>'
-				+ gender
-				+ '</td></tr>'
-				+ '<tr><td>Minimum Age</td><td>'
-				+ minAge
-				+ '</td></tr>'
-				+ '<tr><td>Maximum Age</td><td>'
-				+ maxAge
-				+ '</td></tr>'
-				+ '<tr><td>Native Speaker</td><td>'
-				+ nativeSpeaker
-				+ '</td></tr>'
-				+ '<tr><td>Time in Canada</td><td>'
-				+ timeInCanada
-				+ '</td></tr>'
-				+ '<tr><td></td><td><button id="filterSubmit" type="button" class="btn btn-default">Filter</button> </td></tr></table>';
-
-		$(document)
-				.on(
-						"click",
-						"#filterSubmit",
-						function() {
-
-							var genderFilterSelected = "";
-							$('#filterGeneder :selected').each(function() {
-								genderFilterSelected += $(this).text() + ",";
-							});
-							if (genderFilterSelected.length > 2)
-								genderFilterSelected = genderFilterSelected
-										.substring(0,
-												genderFilterSelected.length - 1);
-							var nativeSpeakerFilterSelected = "";
-							$('#nativeSpeakerFilter :selected').each(
-									function() {
-										nativeSpeakerFilterSelected += $(this)
-												.text()
-												+ ",";
-									});
-							if (nativeSpeakerFilterSelected.length > 2)
-								nativeSpeakerFilterSelected = nativeSpeakerFilterSelected
-										.substring(
-												0,
-												nativeSpeakerFilterSelected.length - 1);
-							var timeInCanadaSelectedFilter = "";
-							$('#timeInCanadaFilter :selected').each(
-									function() {
-										timeInCanadaSelectedFilter += $(this)
-												.text()
-												+ ",";
-									});
-							if (timeInCanadaSelectedFilter.length > 2)
-								timeInCanadaSelectedFilter = timeInCanadaSelectedFilter
-										.substring(
-												0,
-												timeInCanadaSelectedFilter.length - 1);
-
-								for (var i = 0; i < markers.length; i++) {
-									
-								genderCheck = false;
-								nativeCheck = false;
-								timeInCheck = false;
-								ageCheck = false;
-
-								min = 0;
-								max = 999999;
-
-								if ($("#filterMinimumAge").val() > 0) {
-									min = $("#filterMinimumAge").val();
-								}
-
-								if ($("#filterMaximumAge").val() > 0) {
-									max = $("#filterMaximumAge").val();
-								}
-								
-								
-								if(markers[i].age <=max && markers[i].age>=min){
-									ageCheck=true;
-								}
-								
-
-								if (genderFilterSelected.length > 0) {
-									temp = genderFilterSelected.split(',');
-									for (var j = 0; j <= temp.length; j++) {
-										if(temp[j] == markers[i].gender){
-											genderCheck = true;
-											break;
-										}
-									}
-								}else{
-									genderCheck = true;
-								}
-								
-								if (nativeSpeakerFilterSelected.length > 0) {
-									temp = nativeSpeakerFilterSelected.split(',');
-									for (var j = 0; j <= temp.length; j++) {
-										if(temp[j] == markers[i].nativeLang){
-											nativeCheck = true;
-											break;
-										}
-									}
-								}else{
-									nativeCheck = true;
-								}
-
-								if (timeInCanadaSelectedFilter.length > 0) {
-									temp = timeInCanadaSelectedFilter.split(',');
-									for (var j = 0; j <= temp.length; j++) {
-										if(temp[j] == markers[i].atwhatage){
-											timeInCheck = true;
-											break;
-										}
-									}
-								}else{
-									timeInCheck = true;
-								}
-								
-								if(genderCheck && nativeCheck && timeInCheck && ageCheck){
-									if(markers[i].getMap() == null){
-										markers[i].setMap(map);
-									}
-								}else{
-									markers[i]
-									.setMap(null);
-								}
-							}
-
-						});
-
-		document.body.appendChild(d);
-	</script>
 
 	<%@include file="/WEB-INF/footer.jsp"%>
 
@@ -755,5 +593,169 @@ html, body {
 		markers.push(marker);
 	}
 </script>
+
+	<script type="text/javascript">
+		var d = document.createElement('div');
+		//var b = document.createElement('button');
+		//var s = document.createElement('select');
+
+		d.id = 'panelSide';
+		d.style.position = 'fixed';
+		d.style.padding = '10px';
+		d.style.right = '0px';
+		d.style.top = '40vh';
+		d.style.backgroundColor = 'rgba(265,0,0,0.5)';
+		d.style.border = '1px solid black';
+
+		var gender = '<select id="filterGeneder" class="form-control" multiple="multiple">'
+				+ '<option value="Female">Female</option>'
+				+ '<option value="Male">Male</option>'
+				+ '<option value="Other">Other</option>' + '</select>';
+
+		var minAge = '<input size="17px" type="text" id="filterMinimumAge" name="filterMinimumAge" placeholder="Minimum Age">';
+		var maxAge = '<input  size="17px" type="text" id="filterMaximumAge" name="filterMaximumAge" placeholder="Maximum Age">';
+
+		var nativeSpeaker = '<select id="nativeSpeakerFilter" class="form-control" multiple="multiple">'
+				+ '<option value="true">true</option>'
+				+ '<option value="false">false</option>' + '</select>';
+				
+		var timeInCanada = '<select id="timeInCanadaFilter" class="form-control" multiple="multiple">'
+				+ '<option value="before age 5">before age 5</option>'
+				+ '<option value="between 5 and 12">between 5 and 12</option>'
+				+ '<option value="between 13 and 20">between 13 and 20</option>'
+				+ '<option value="age 21 or older">age 21 or older</option>'
+				+ '<option value="I have never lived in Canada">I have never lived in Canada</option>' + '</select>';
+
+		d.innerHTML = '<table>'
+				+ '<tr><td>Gender</td><td>'
+				+ gender
+				+ '</td></tr>'
+				+ '<tr><td>Minimum Age</td><td>'
+				+ minAge
+				+ '</td></tr>'
+				+ '<tr><td>Maximum Age</td><td>'
+				+ maxAge
+				+ '</td></tr>'
+				+ '<tr><td>Native Speaker</td><td>'
+				+ nativeSpeaker
+				+ '</td></tr>'
+				+ '<tr><td>Time in Canada</td><td>'
+				+ timeInCanada
+				+ '</td></tr>'
+				+ '<tr><td></td><td><button id="filterSubmit" type="button" class="btn btn-default">Filter</button> </td></tr></table>';
+
+		$(document)
+				.on(
+						"click",
+						"#filterSubmit",
+						function() {
+
+							var genderFilterSelected = "";
+							$('#filterGeneder :selected').each(function() {
+								genderFilterSelected += $(this).text() + ",";
+							});
+							if (genderFilterSelected.length > 2)
+								genderFilterSelected = genderFilterSelected
+										.substring(0,
+												genderFilterSelected.length - 1);
+							var nativeSpeakerFilterSelected = "";
+							$('#nativeSpeakerFilter :selected').each(
+									function() {
+										nativeSpeakerFilterSelected += $(this)
+												.text()
+												+ ",";
+									});
+							if (nativeSpeakerFilterSelected.length > 2)
+								nativeSpeakerFilterSelected = nativeSpeakerFilterSelected
+										.substring(
+												0,
+												nativeSpeakerFilterSelected.length - 1);
+							var timeInCanadaSelectedFilter = "";
+							$('#timeInCanadaFilter :selected').each(
+									function() {
+										timeInCanadaSelectedFilter += $(this)
+												.text()
+												+ ",";
+									});
+							if (timeInCanadaSelectedFilter.length > 2)
+								timeInCanadaSelectedFilter = timeInCanadaSelectedFilter
+										.substring(
+												0,
+												timeInCanadaSelectedFilter.length - 1);
+
+								for (var i = 0; i < markers.length; i++) {
+									
+								genderCheck = false;
+								nativeCheck = false;
+								timeInCheck = false;
+								ageCheck = false;
+
+								min = 0;
+								max = 999999;
+
+								if ($("#filterMinimumAge").val() > 0) {
+									min = $("#filterMinimumAge").val();
+								}
+
+								if ($("#filterMaximumAge").val() > 0) {
+									max = $("#filterMaximumAge").val();
+								}
+								
+								
+								if(markers[i].age <=max && markers[i].age>=min){
+									ageCheck=true;
+								}
+								
+
+								if (genderFilterSelected.length > 0) {
+									temp = genderFilterSelected.split(',');
+									for (var j = 0; j <= temp.length; j++) {
+										if(temp[j] == markers[i].gender){
+											genderCheck = true;
+											break;
+										}
+									}
+								}else{
+									genderCheck = true;
+								}
+								
+								if (nativeSpeakerFilterSelected.length > 0) {
+									temp = nativeSpeakerFilterSelected.split(',');
+									for (var j = 0; j <= temp.length; j++) {
+										if(temp[j] == markers[i].nativeLang){
+											nativeCheck = true;
+											break;
+										}
+									}
+								}else{
+									nativeCheck = true;
+								}
+
+								if (timeInCanadaSelectedFilter.length > 0) {
+									temp = timeInCanadaSelectedFilter.split(',');
+									for (var j = 0; j <= temp.length; j++) {
+										if(temp[j] == markers[i].atwhatage){
+											timeInCheck = true;
+											break;
+										}
+									}
+								}else{
+									timeInCheck = true;
+								}
+								
+								if(genderCheck && nativeCheck && timeInCheck && ageCheck){
+									if(markers[i].getMap() == null){
+										markers[i].setMap(map);
+									}
+								}else{
+									markers[i]
+									.setMap(null);
+								}
+							}
+
+						});
+
+		document.body.appendChild(d);
+	</script>
 </body>
 </html>
