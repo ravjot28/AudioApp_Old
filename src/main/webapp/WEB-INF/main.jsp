@@ -144,7 +144,7 @@ html, body {
 
 
 
-	
+
 
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	<%@include file="/WEB-INF/footer.jsp"%>
@@ -153,24 +153,12 @@ html, body {
 	<script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
 
 
-	<script
+	<%-- <script
 		src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initAutocomplete"
-		async defer></script>
-	<script type="text/javascript">
+		async defer></script> --%>
+	<script>
 	var markers = [];
 	var uniqueId = 1;
-	$(document).ready(function() {
-		//google.maps.event.addDomListener(window, "load", initAutocomplete);
-		$('#filterGeneder').multiselect();
-		$('#nativeSpeakerFilter').multiselect();
-		$('#timeInCanadaFilter').multiselect();
-
-		var map;
-		$('.dropdown-menu').find('form').click(function(e) {
-			e.stopPropagation();
-		});
-
-	});
 	function initAutocomplete() {
 		map = new google.maps.Map(document.getElementById('map'), {
 			center : {
@@ -593,6 +581,26 @@ html, body {
 		}
 		markers.push(marker);
 	}
+	</script>
+
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGLwCkDXVFyy0ryStEIONSMkMrWk3z4a4&libraries=places&callback=initAutocomplete"
+		async defer></script>
+	<script type="text/javascript">
+	
+	$(document).ready(function() {
+		//google.maps.event.addDomListener(window, "load", initAutocomplete);
+		$('#filterGeneder').multiselect();
+		$('#nativeSpeakerFilter').multiselect();
+		$('#timeInCanadaFilter').multiselect();
+
+		var map;
+		$('.dropdown-menu').find('form').click(function(e) {
+			e.stopPropagation();
+		});
+
+	});
+	
 </script>
 
 	<script type="text/javascript">

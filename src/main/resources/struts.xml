@@ -19,6 +19,7 @@
 
 		</action>
 
+
 		<action name="strathyUnit" class="com.rav.audtioapp.action.DummyAction">
 			<result name="success">WEB-INF/welcome.jsp</result>
 		</action>

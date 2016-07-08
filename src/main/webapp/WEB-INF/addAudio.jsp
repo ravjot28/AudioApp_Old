@@ -14,15 +14,9 @@
 <head>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 
-
-
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
 <link rel="stylesheet" href="CSS/easyWizard.css">
-
-
-
 <link rel="stylesheet" href="CSS/style.css" type="text/css"
 	media="screen">
 <link rel="stylesheet" href="/CSS/footer.css" type="text/css"
@@ -31,10 +25,6 @@
 	media="screen">
 <link rel="stylesheet" href="CSS/bootstrap-multiselect.css"
 	type="text/css">
-
-
-
-
 <style>
 html, body {
 	height: 100%;
@@ -734,8 +724,212 @@ a.button {
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
-	<script
+	<%-- <script
 		src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initAutocomplete"
+		async defer></script> --%>
+	<script>
+	function initAutocomplete() {
+		var sUsrAg = navigator.userAgent;
+		if (sUsrAg.indexOf("Chrome") > -1 || sUsrAg.indexOf("Firefox") > -1) {
+			$('#alertMessageModal').modal('show');
+		} else {
+			$('#alertBrowserMessageModal').modal('show');
+			$('#alertBrowserMessageModal').on('hidden.bs.modal',
+					function() {
+						history.back();
+					});
+		}
+
+		map = new google.maps.Map(document.getElementById("map"), {
+			center : {
+				lat : 59.723705,
+				lng : -110.7155106
+			},
+			zoom : 4,
+			mapTypeId : google.maps.MapTypeId.ROADMAP,
+			streetViewControl : false
+		});
+
+		google.maps.event.addListener(map, 'click', function(event1) {
+			if (clicked == "false") {
+				event = event1;
+
+				/* $('#age').val('Select your birth year'); */
+				$("#age").val($("#age option:first").val());
+
+				/* $('#gender').val('Select your gender'); */
+				$("#gender").val($("#gender option:first").val());
+				/* $('#fluency').val(
+						'If not, how would you rate your fluency in English?'); */
+				$("#fluency").val($("#fluency option:first").val());
+				/* $('#canadaage').val(
+						'If no, at what age did you move to Canada?'); */
+				$("#canadaage").val($("#canadaage option:first").val());
+				$('#mothertounge').val('');
+
+				$('#emailAddress').val('');
+
+				$("#langyes").prop('checked', false);
+				$("#langno").prop('checked', false);
+				$("#citizenYes").prop('checked', false);
+				$("#citizenNo").prop('checked', false);
+				$("#locationCoordinates").val('');
+
+				/*var age = $('#age').find(":selected").text();
+				var gender = $('#gender').find(":selected").text();
+				var langyes = $("#langyes").is(":checked");
+				var langno = $("#langno").is(":checked");
+				var mothertounge = $('#mothertounge').val();
+				var fluency = $('#fluency').find(":selected").text();
+				var citizenYes = $("#citizenYes").is(":checked");
+				var citizenNo = $("#citizenNo").is(":checked");
+				var canadaage = $('#canadaage').find(":selected").text();
+				var emailAddress = $('#emailAddress').val();
+
+				if (age == 'Select your birth year'
+						|| gender == 'Select your gender'
+						|| ((!langyes && !langno) && (langno && mothertounge.length == 0) )
+						|| fluency == 'If not, how would you rate your fluency in English?'
+						|| ((!citizenYes && !citizenNo) && (canadaage == 'If no, at what age did you move to Canada?'))
+						|| emailAddress.length == 0 ) {
+					return false;
+				}*/
+				var myLatLng = event.latLng;
+				var lat = myLatLng.lat();
+				var lng = myLatLng.lng();
+				$("#locationCoordinates").val(lat + " " + lng);
+				$('#my').modal('show');
+				clicked = "true";
+			}
+			//document.getElementById("location").innerHTML = event1.latLng;
+			/* var audioForm = '<audio controls src="" id="audio"></audio>'
+					+ '<div style="margin: 10px;">'
+					+ '<a class="button" id="record">Start Recording</a>'
+					+ '<a class="button disabled one" id="stop">Reset</a>'
+					+ '<a class="button disabled one" id="play">Play</a> '
+					+ '<a class="button disabled one" id="base64">Submit</a>'
+					+ '</div>';
+
+			create_marker(event.latLng, 'Record Sound',
+					audioForm, true, true, true,
+					"https://lit-journey-6254.herokuapp.com/icons/pin.png"); */
+
+		});
+
+		var input = document.getElementById('pac-input');
+		var searchBox = new google.maps.places.SearchBox(input);
+		map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+		map.addListener('bounds_changed', function() {
+			searchBox.setBounds(map.getBounds());
+		});
+
+		searchBox.addListener('places_changed', function() {
+			var places = searchBox.getPlaces();
+
+			if (places.length == 0) {
+				return;
+			}
+
+			var bounds = new google.maps.LatLngBounds();
+			places.forEach(function(place) {
+				if (place.geometry.viewport) {
+					bounds.union(place.geometry.viewport);
+				} else {
+					bounds.extend(place.geometry.location);
+				}
+			});
+			map.fitBounds(bounds);
+		});
+	}
+
+	//############### Save Marker Function ##############
+	function save_marker(Marker, mName, mAddress, mType, replaceWin) {
+		//Save new marker using jQuery Ajax
+		var mLatLang = Marker.getPosition().toUrlValue(); //get marker position
+		var myData = {
+			name : mName,
+			address : mAddress,
+			latlang : mLatLang,
+			type : mType
+		}; //post variables
+		console.log(replaceWin);
+		$.ajax({
+			type : "POST",
+			url : "map.action",
+			data : myData,
+			success : function(data) {
+				replaceWin.html(data); //replace info window with new html
+				Marker.setDraggable(false); //set marker to fixed
+				Marker.setIcon('../icons/pin.png'); //replace icon
+			},
+			error : function(xhr, ajaxOptions, thrownError) {
+				//alert(thrownError); //throw any errors
+			}
+		});
+	}
+
+	//############### Remove Marker Function ##############
+	function remove_marker(Marker) {
+		/* determine whether marker is draggable 
+		new markers are draggable and saved markers are fixed */
+		if (Marker.getDraggable()) {
+			Marker.setMap(null); //just remove new marker
+		} else {
+			//Remove saved marker from DB and map using jQuery Ajax
+			var mLatLang = Marker.getPosition().toUrlValue(); //get marker position
+			var myData = {
+				del : 'true',
+				latlang : mLatLang
+			}; //post variables
+			$.ajax({
+				type : "POST",
+				url : "map.action",
+				data : myData,
+				success : function(data) {
+					Marker.setMap(null);
+					//alert(data);
+				},
+				error : function(xhr, ajaxOptions, thrownError) {
+					//alert(thrownError); //throw any errors
+				}
+			});
+		}
+	}
+
+	function create_marker(MapPos, MapTitle, MapDesc, InfoOpenDefault,
+			DragAble, Removable, iconPath) {
+		//new marker
+		var marker = new google.maps.Marker({
+			position : MapPos,
+			map : map,
+			draggable : DragAble,
+			animation : google.maps.Animation.DROP,
+			title : MapTitle,
+			icon : iconPath
+		});
+
+		var contentString = $('<div class="marker-info-win">'
+				+ '<div class="marker-inner-win"><span class="info-content">'
+				+ '<h4 class="marker-heading">' + MapTitle + '</h4>'
+				+ MapDesc + '</span>' + '</div></div>');
+
+		var infowindow = new google.maps.InfoWindow();
+		infowindow.setContent(contentString[0]);
+
+		google.maps.event.addListener(marker, 'click', function() {
+			infowindow.open(map, marker);
+		});
+
+		if (InfoOpenDefault) {
+			infowindow.open(map, marker);
+		}
+	}
+	</script>
+
+
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGLwCkDXVFyy0ryStEIONSMkMrWk3z4a4&libraries=places&callback=initAutocomplete"
 		async defer></script>
 
 	<script src="js/easyWizard.js"></script>
@@ -781,8 +975,8 @@ a.button {
 
 		$(document).ready(
 				function() {
-					google.maps.event.addDomListener(window, "load",
-							initAutocomplete);
+					/* google.maps.event.addDomListener(window, "load",
+							initAutocomplete); */
 					$('#genders').multiselect();
 					$('#words').multiselect();
 					$('#nativeLanguageSelection').multiselect();
@@ -823,203 +1017,7 @@ a.button {
 
 				});
 
-		function initAutocomplete() {
-			var sUsrAg = navigator.userAgent;
-			if (sUsrAg.indexOf("Chrome") > -1 || sUsrAg.indexOf("Firefox") > -1) {
-				$('#alertMessageModal').modal('show');
-			} else {
-				$('#alertBrowserMessageModal').modal('show');
-				$('#alertBrowserMessageModal').on('hidden.bs.modal',
-						function() {
-							history.back();
-						});
-			}
-
-			map = new google.maps.Map(document.getElementById("map"), {
-				center : {
-					lat : 59.723705,
-					lng : -110.7155106
-				},
-				zoom : 4,
-				mapTypeId : google.maps.MapTypeId.ROADMAP,
-				streetViewControl : false
-			});
-
-			google.maps.event.addListener(map, 'click', function(event1) {
-				if (clicked == "false") {
-					event = event1;
-
-					/* $('#age').val('Select your birth year'); */
-					$("#age").val($("#age option:first").val());
-
-					/* $('#gender').val('Select your gender'); */
-					$("#gender").val($("#gender option:first").val());
-					/* $('#fluency').val(
-							'If not, how would you rate your fluency in English?'); */
-					$("#fluency").val($("#fluency option:first").val());
-					/* $('#canadaage').val(
-							'If no, at what age did you move to Canada?'); */
-					$("#canadaage").val($("#canadaage option:first").val());
-					$('#mothertounge').val('');
-
-					$('#emailAddress').val('');
-
-					$("#langyes").prop('checked', false);
-					$("#langno").prop('checked', false);
-					$("#citizenYes").prop('checked', false);
-					$("#citizenNo").prop('checked', false);
-					$("#locationCoordinates").val('');
-
-					/*var age = $('#age').find(":selected").text();
-					var gender = $('#gender').find(":selected").text();
-					var langyes = $("#langyes").is(":checked");
-					var langno = $("#langno").is(":checked");
-					var mothertounge = $('#mothertounge').val();
-					var fluency = $('#fluency').find(":selected").text();
-					var citizenYes = $("#citizenYes").is(":checked");
-					var citizenNo = $("#citizenNo").is(":checked");
-					var canadaage = $('#canadaage').find(":selected").text();
-					var emailAddress = $('#emailAddress').val();
-
-					if (age == 'Select your birth year'
-							|| gender == 'Select your gender'
-							|| ((!langyes && !langno) && (langno && mothertounge.length == 0) )
-							|| fluency == 'If not, how would you rate your fluency in English?'
-							|| ((!citizenYes && !citizenNo) && (canadaage == 'If no, at what age did you move to Canada?'))
-							|| emailAddress.length == 0 ) {
-						return false;
-					}*/
-					var myLatLng = event.latLng;
-					var lat = myLatLng.lat();
-					var lng = myLatLng.lng();
-					$("#locationCoordinates").val(lat + " " + lng);
-					$('#my').modal('show');
-					clicked = "true";
-				}
-				//document.getElementById("location").innerHTML = event1.latLng;
-				/* var audioForm = '<audio controls src="" id="audio"></audio>'
-						+ '<div style="margin: 10px;">'
-						+ '<a class="button" id="record">Start Recording</a>'
-						+ '<a class="button disabled one" id="stop">Reset</a>'
-						+ '<a class="button disabled one" id="play">Play</a> '
-						+ '<a class="button disabled one" id="base64">Submit</a>'
-						+ '</div>';
-
-				create_marker(event.latLng, 'Record Sound',
-						audioForm, true, true, true,
-						"https://lit-journey-6254.herokuapp.com/icons/pin.png"); */
-
-			});
-
-			var input = document.getElementById('pac-input');
-			var searchBox = new google.maps.places.SearchBox(input);
-			map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-			map.addListener('bounds_changed', function() {
-				searchBox.setBounds(map.getBounds());
-			});
-
-			searchBox.addListener('places_changed', function() {
-				var places = searchBox.getPlaces();
-
-				if (places.length == 0) {
-					return;
-				}
-
-				var bounds = new google.maps.LatLngBounds();
-				places.forEach(function(place) {
-					if (place.geometry.viewport) {
-						bounds.union(place.geometry.viewport);
-					} else {
-						bounds.extend(place.geometry.location);
-					}
-				});
-				map.fitBounds(bounds);
-			});
-		}
-
-		//############### Save Marker Function ##############
-		function save_marker(Marker, mName, mAddress, mType, replaceWin) {
-			//Save new marker using jQuery Ajax
-			var mLatLang = Marker.getPosition().toUrlValue(); //get marker position
-			var myData = {
-				name : mName,
-				address : mAddress,
-				latlang : mLatLang,
-				type : mType
-			}; //post variables
-			console.log(replaceWin);
-			$.ajax({
-				type : "POST",
-				url : "map.action",
-				data : myData,
-				success : function(data) {
-					replaceWin.html(data); //replace info window with new html
-					Marker.setDraggable(false); //set marker to fixed
-					Marker.setIcon('../icons/pin.png'); //replace icon
-				},
-				error : function(xhr, ajaxOptions, thrownError) {
-					//alert(thrownError); //throw any errors
-				}
-			});
-		}
-
-		//############### Remove Marker Function ##############
-		function remove_marker(Marker) {
-			/* determine whether marker is draggable 
-			new markers are draggable and saved markers are fixed */
-			if (Marker.getDraggable()) {
-				Marker.setMap(null); //just remove new marker
-			} else {
-				//Remove saved marker from DB and map using jQuery Ajax
-				var mLatLang = Marker.getPosition().toUrlValue(); //get marker position
-				var myData = {
-					del : 'true',
-					latlang : mLatLang
-				}; //post variables
-				$.ajax({
-					type : "POST",
-					url : "map.action",
-					data : myData,
-					success : function(data) {
-						Marker.setMap(null);
-						//alert(data);
-					},
-					error : function(xhr, ajaxOptions, thrownError) {
-						//alert(thrownError); //throw any errors
-					}
-				});
-			}
-		}
-
-		function create_marker(MapPos, MapTitle, MapDesc, InfoOpenDefault,
-				DragAble, Removable, iconPath) {
-			//new marker
-			var marker = new google.maps.Marker({
-				position : MapPos,
-				map : map,
-				draggable : DragAble,
-				animation : google.maps.Animation.DROP,
-				title : MapTitle,
-				icon : iconPath
-			});
-
-			var contentString = $('<div class="marker-info-win">'
-					+ '<div class="marker-inner-win"><span class="info-content">'
-					+ '<h4 class="marker-heading">' + MapTitle + '</h4>'
-					+ MapDesc + '</span>' + '</div></div>');
-
-			var infowindow = new google.maps.InfoWindow();
-			infowindow.setContent(contentString[0]);
-
-			google.maps.event.addListener(marker, 'click', function() {
-				infowindow.open(map, marker);
-			});
-
-			if (InfoOpenDefault) {
-				infowindow.open(map, marker);
-			}
-		}
+		
 	</script>
 </body>
 </html>

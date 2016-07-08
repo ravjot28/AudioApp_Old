@@ -200,7 +200,7 @@ html, body {
 
 
 
-	
+
 
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	<%@include file="/WEB-INF/footer.jsp"%>
@@ -208,12 +208,351 @@ html, body {
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
 
-	<script
+	<%-- <script
 		src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initAutocomplete"
-		async defer></script>
-	<script type="text/javascript">
+		async defer></script> --%>
+
+	<script>
 	var markers = [];
 	var uniqueId = 1;
+		function initAutocomplete() {
+			map = new google.maps.Map(document.getElementById('map'), {
+				center : {
+					lat : 59.723705,
+					lng : -110.7155106
+				},
+				zoom : 4,
+				mapTypeId : google.maps.MapTypeId.ROADMAP,
+				streetViewControl : false
+			});
+
+			/* $.get("getmap.action", function (data) {
+				alert($(data).find("marker"));
+				  $(data).find("marker").each(function () {
+			         //Get user input values for the marker from the form
+			          var name      = $(this).attr('name');
+			          var address   = '<p>'+ $(this).attr('address') +'</p>';
+			          var type      = $(this).attr('type');
+			          var point     = new google.maps.LatLng(parseFloat($(this).attr('lat')),parseFloat($(this).attr('lng')));
+
+			          //call create_marker() function for xml loaded maker
+			          create_marker(point, name, address, false, false, false, "https://lit-journey-6254.herokuapp.com/icons/pin.png");
+			    });
+			});  */
+
+			$
+					.get(
+							"getAudio.action",
+							function(data) {
+
+								//alert(data);
+
+								var res = data.split("{}");
+								var arrayLength = res.length;
+								for (var i = 0; i < arrayLength; i++) {
+									//alert(res[i]);
+
+									var coordinates = res[i].split("}{");
+									if (coordinates.length > 3) {
+										var birthyear = coordinates[0].replace("{",
+												"").replace("}", "");
+										var longi = coordinates[1].replace("{", "")
+												.replace("}", "");
+										var lati = coordinates[2].replace("{", "")
+												.replace("}", "");
+										var id = coordinates[3].replace("{", "")
+												.replace("}", "");
+
+										var gender = coordinates[4]
+												.replace("{", "").replace("}", "");
+										var ifnotmothertounge = coordinates[5]
+												.replace("{", "").replace("}", "");
+										var mothertoungedata = coordinates[6]
+												.replace("{", "").replace("}", "");
+										var atwhatage = coordinates[7].replace("{",
+												"").replace("}", "");
+
+										var voices = coordinates[8]
+												.replace("{", "").replace("}", "");
+
+										var s = '<select id = \''+id+'\'>';
+										var voiceOptions = voices.split("-");
+										var voiceOptionsLength = voiceOptions.length;
+										for (var k = 0; k < voiceOptionsLength; k++) {
+											s += '<option value = '+id+"-"+voiceOptions[k]+'>'
+													+ voiceOptions[k] + '</option>';
+										}
+										s += '</select>';
+
+										var now = new Date();
+										var past = new Date(birthyear);
+										var nowYear = now.getFullYear();
+										var pastYear = past.getFullYear();
+										var age = nowYear - pastYear;
+										var point = new google.maps.LatLng(
+												parseFloat(longi), parseFloat(lati));
+										var nativeLang;
+										if (ifnotmothertounge == "true")
+											nativeLang = "Yes";
+										else
+											nativeLang = mothertoungedata;
+										create_marker(
+												point,
+												'ID: ' + id,
+												'<div style="margin: 10px;">'
+														+ '<p>Age: '
+														+ age
+														+ '</p>'
+														+ '<p>Gender: '
+														+ gender
+														+ '</p>'
+														+ '<p>Native language: '
+														+ nativeLang
+														+ '</p>'
+														+ '<p>Time in Canada: '
+														+ atwhatage
+														+ '</p>'
+														+ '<p>Choose Word:</p>'
+														+ s
+														+ '<p><audio id="audio" > <source src = ""/> </audio></p>'
+														+ '<button class="'+id+'" id="playVoice">Play</button>'
+														+ '<button class="'+id+'" id="downloadVoice">Download</button>'
+														+ '<button class="'+id+'" id="downloadAllVoice">Download All</button>'
+														+ '</div>', false, false,
+												false, "../icons/pin.png",id,age,
+												gender, nativeLang, atwhatage);
+									}
+									//Do something
+								}
+								// $(data).find("marker").each(function () {
+								//Get user input values for the marker from the form
+								//        var name      = $(this).attr('name');
+								//      var address   = '<p>'+ $(this).attr('address') +'</p>';
+								//    var type      = $(this).attr('type');
+								//  var point     = new google.maps.LatLng(parseFloat($(this).attr('lat')),parseFloat($(this).attr('lng')));
+
+								//call create_marker() function for xml loaded maker
+								//var point = new google.maps.LatLng(parseFloat(45.4), parseFloat(-75.7));
+								//create_marker(point, 'Temp', '<p>Hello World</p>', false, false, false,
+								//	"https://lit-journey-6254.herokuapp.com/icons/pin.png");
+								//        create_marker(point, name, address, false, false, false, "https://lit-journey-6254.herokuapp.com/icons/pin.png");
+								// });
+
+								$(document).on("click", "#downloadAllVoice",
+										function() {
+											id = $(this).attr('class');
+											$("#id").val(id);
+
+											$("#downloadAll").submit();
+
+										});
+
+								$(document)
+										.on(
+												"click",
+												"#playVoice",
+												function() {
+													id = $(this).attr('class');
+
+													var voiceSelected = $(
+															'#' + id + '').find(
+															":selected").text();
+
+													var request = {
+														"id" : id,
+														"voice" : voiceSelected
+													};
+													var ajaxData = {};
+													ajaxData["array"] = [ JSON
+															.stringify(request)
+															.replace(',', ', ')
+															.replace('[', '')
+															.replace(']', '') ];
+													$
+															.ajax({
+																"dataType" : 'json',
+																"type" : "POST",
+																"url" : 'getParticularAudio.action',
+																"data" : JSON
+																		.stringify(ajaxData),
+																contentType : "application/json; charset=utf-8",
+																async : false,
+																success : function(
+																		jsonString) {
+																	$("#audio")
+																			.attr(
+																					"src",
+																					jsonString);
+																	$("#audio")[0]
+																			.play();
+																},
+																complete : function(
+																		msg, a, b) {
+																	console
+																			.log('complete :'
+																					+ msg);
+																},
+																error : function(
+																		msg, a, b) {
+																	console
+																			.log('error:'
+																					+ msg);
+																}
+															});
+
+												});
+
+								$(document)
+										.on(
+												"click",
+												"#downloadVoice",
+												function() {
+													id = $(this).attr('class');
+
+													var voiceSelected = $(
+															'#' + id + '').find(
+															":selected").text();
+
+													var request = {
+														"id" : id,
+														"voice" : voiceSelected
+													};
+													var ajaxData = {};
+													ajaxData["array"] = [ JSON
+															.stringify(request)
+															.replace(',', ', ')
+															.replace('[', '')
+															.replace(']', '') ];
+													$
+															.ajax({
+																"dataType" : 'json',
+																"type" : "POST",
+																"url" : 'getParticularAudio.action',
+																"data" : JSON
+																		.stringify(ajaxData),
+																contentType : "application/json; charset=utf-8",
+																async : false,
+																success : function(
+																		jsonString) {
+																	/* $("<a href='"
+																		+ jsonString
+																		+ "' download='"+id+"_"+voiceSelected++".wav'></a>")[0]
+																			.click(); */
+																	var a = document
+																			.createElement('a');
+																	$(a)
+																			.attr(
+																					'href',
+																					jsonString)
+																			.attr(
+																					'download',
+																					id
+																							+ '_'
+																							+ voiceSelected
+																							+ '.wav')
+																			.addClass(
+																					'.voiceSelectedDownload')
+																			.attr(
+																					'id',
+																					id
+																							+ '_'
+																							+ voiceSelected)
+																			.appendTo(
+																					'body');
+
+																	$(a)[0].click();
+																},
+																complete : function(
+																		msg, a, b) {
+																	console
+																			.log('complete :'
+																					+ msg);
+																},
+																error : function(
+																		msg, a, b) {
+																	console
+																			.log('error:'
+																					+ msg);
+																}
+															});
+
+												});
+							});
+
+			var input = document.getElementById('pac-input');
+			var searchBox = new google.maps.places.SearchBox(input);
+			map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+			map.addListener('bounds_changed', function() {
+				searchBox.setBounds(map.getBounds());
+			});
+
+			searchBox.addListener('places_changed', function() {
+				var places = searchBox.getPlaces();
+
+				if (places.length == 0) {
+					return;
+				}
+
+				var bounds = new google.maps.LatLngBounds();
+				places.forEach(function(place) {
+					if (place.geometry.viewport) {
+						bounds.union(place.geometry.viewport);
+					} else {
+						bounds.extend(place.geometry.location);
+					}
+				});
+				map.fitBounds(bounds);
+			});
+		}
+
+		function create_marker(MapPos, MapTitle, MapDesc, InfoOpenDefault,
+				DragAble, Removable, iconPath, id, age, gender, nativeLang,
+				atwhatage) {
+			//new marker
+			var marker = new google.maps.Marker({
+				position : MapPos,
+				map : map,
+				draggable : DragAble,
+				animation : google.maps.Animation.DROP,
+				title : MapTitle,
+				icon : iconPath,
+				gender: null,
+				age: null,
+				nativeLang:null,
+				atwhatage:null
+			});
+
+			marker.id = id;
+			marker.age = age;
+			marker.gender = gender;
+			marker.nativeLang = nativeLang;
+			marker.atwhatage = atwhatage;
+			uniqueId++;
+			var contentString = $('<div class="marker-info-win">'
+					+ '<div class="marker-inner-win"><span class="info-content">'
+					+ '<h4 class="marker-heading">' + MapTitle + '</h4>' + MapDesc
+					+ '</span>' + '</div></div>');
+
+			var infowindow = new google.maps.InfoWindow();
+			infowindow.setContent(contentString[0]);
+
+			google.maps.event.addListener(marker, 'click', function() {
+				infowindow.open(map, marker);
+			});
+
+			if (InfoOpenDefault) {
+				infowindow.open(map, marker);
+			}
+			markers.push(marker);
+		}
+		</script>
+
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGLwCkDXVFyy0ryStEIONSMkMrWk3z4a4&libraries=places&callback=initAutocomplete"
+		async defer></script>
+	<script type="text/javascript">
+	
 	$(document).ready(function() {
 		//google.maps.event.addDomListener(window, "load", initAutocomplete);
 		$('#filterGeneder').multiselect();
@@ -226,337 +565,7 @@ html, body {
 		});
 
 	});
-	function initAutocomplete() {
-		map = new google.maps.Map(document.getElementById('map'), {
-			center : {
-				lat : 59.723705,
-				lng : -110.7155106
-			},
-			zoom : 4,
-			mapTypeId : google.maps.MapTypeId.ROADMAP,
-			streetViewControl : false
-		});
-
-		/* $.get("getmap.action", function (data) {
-			alert($(data).find("marker"));
-			  $(data).find("marker").each(function () {
-		         //Get user input values for the marker from the form
-		          var name      = $(this).attr('name');
-		          var address   = '<p>'+ $(this).attr('address') +'</p>';
-		          var type      = $(this).attr('type');
-		          var point     = new google.maps.LatLng(parseFloat($(this).attr('lat')),parseFloat($(this).attr('lng')));
-
-		          //call create_marker() function for xml loaded maker
-		          create_marker(point, name, address, false, false, false, "https://lit-journey-6254.herokuapp.com/icons/pin.png");
-		    });
-		});  */
-
-		$
-				.get(
-						"getAudio.action",
-						function(data) {
-
-							//alert(data);
-
-							var res = data.split("{}");
-							var arrayLength = res.length;
-							for (var i = 0; i < arrayLength; i++) {
-								//alert(res[i]);
-
-								var coordinates = res[i].split("}{");
-								if (coordinates.length > 3) {
-									var birthyear = coordinates[0].replace("{",
-											"").replace("}", "");
-									var longi = coordinates[1].replace("{", "")
-											.replace("}", "");
-									var lati = coordinates[2].replace("{", "")
-											.replace("}", "");
-									var id = coordinates[3].replace("{", "")
-											.replace("}", "");
-
-									var gender = coordinates[4]
-											.replace("{", "").replace("}", "");
-									var ifnotmothertounge = coordinates[5]
-											.replace("{", "").replace("}", "");
-									var mothertoungedata = coordinates[6]
-											.replace("{", "").replace("}", "");
-									var atwhatage = coordinates[7].replace("{",
-											"").replace("}", "");
-
-									var voices = coordinates[8]
-											.replace("{", "").replace("}", "");
-
-									var s = '<select id = \''+id+'\'>';
-									var voiceOptions = voices.split("-");
-									var voiceOptionsLength = voiceOptions.length;
-									for (var k = 0; k < voiceOptionsLength; k++) {
-										s += '<option value = '+id+"-"+voiceOptions[k]+'>'
-												+ voiceOptions[k] + '</option>';
-									}
-									s += '</select>';
-
-									var now = new Date();
-									var past = new Date(birthyear);
-									var nowYear = now.getFullYear();
-									var pastYear = past.getFullYear();
-									var age = nowYear - pastYear;
-									var point = new google.maps.LatLng(
-											parseFloat(longi), parseFloat(lati));
-									var nativeLang;
-									if (ifnotmothertounge == "true")
-										nativeLang = "Yes";
-									else
-										nativeLang = mothertoungedata;
-									create_marker(
-											point,
-											'ID: ' + id,
-											'<div style="margin: 10px;">'
-													+ '<p>Age: '
-													+ age
-													+ '</p>'
-													+ '<p>Gender: '
-													+ gender
-													+ '</p>'
-													+ '<p>Native language: '
-													+ nativeLang
-													+ '</p>'
-													+ '<p>Time in Canada: '
-													+ atwhatage
-													+ '</p>'
-													+ '<p>Choose Word:</p>'
-													+ s
-													+ '<p><audio id="audio" > <source src = ""/> </audio></p>'
-													+ '<button class="'+id+'" id="playVoice">Play</button>'
-													+ '<button class="'+id+'" id="downloadVoice">Download</button>'
-													+ '<button class="'+id+'" id="downloadAllVoice">Download All</button>'
-													+ '</div>', false, false,
-											false, "../icons/pin.png",id,age,
-											gender, nativeLang, atwhatage);
-								}
-								//Do something
-							}
-							// $(data).find("marker").each(function () {
-							//Get user input values for the marker from the form
-							//        var name      = $(this).attr('name');
-							//      var address   = '<p>'+ $(this).attr('address') +'</p>';
-							//    var type      = $(this).attr('type');
-							//  var point     = new google.maps.LatLng(parseFloat($(this).attr('lat')),parseFloat($(this).attr('lng')));
-
-							//call create_marker() function for xml loaded maker
-							//var point = new google.maps.LatLng(parseFloat(45.4), parseFloat(-75.7));
-							//create_marker(point, 'Temp', '<p>Hello World</p>', false, false, false,
-							//	"https://lit-journey-6254.herokuapp.com/icons/pin.png");
-							//        create_marker(point, name, address, false, false, false, "https://lit-journey-6254.herokuapp.com/icons/pin.png");
-							// });
-
-							$(document).on("click", "#downloadAllVoice",
-									function() {
-										id = $(this).attr('class');
-										$("#id").val(id);
-
-										$("#downloadAll").submit();
-
-									});
-
-							$(document)
-									.on(
-											"click",
-											"#playVoice",
-											function() {
-												id = $(this).attr('class');
-
-												var voiceSelected = $(
-														'#' + id + '').find(
-														":selected").text();
-
-												var request = {
-													"id" : id,
-													"voice" : voiceSelected
-												};
-												var ajaxData = {};
-												ajaxData["array"] = [ JSON
-														.stringify(request)
-														.replace(',', ', ')
-														.replace('[', '')
-														.replace(']', '') ];
-												$
-														.ajax({
-															"dataType" : 'json',
-															"type" : "POST",
-															"url" : 'getParticularAudio.action',
-															"data" : JSON
-																	.stringify(ajaxData),
-															contentType : "application/json; charset=utf-8",
-															async : false,
-															success : function(
-																	jsonString) {
-																$("#audio")
-																		.attr(
-																				"src",
-																				jsonString);
-																$("#audio")[0]
-																		.play();
-															},
-															complete : function(
-																	msg, a, b) {
-																console
-																		.log('complete :'
-																				+ msg);
-															},
-															error : function(
-																	msg, a, b) {
-																console
-																		.log('error:'
-																				+ msg);
-															}
-														});
-
-											});
-
-							$(document)
-									.on(
-											"click",
-											"#downloadVoice",
-											function() {
-												id = $(this).attr('class');
-
-												var voiceSelected = $(
-														'#' + id + '').find(
-														":selected").text();
-
-												var request = {
-													"id" : id,
-													"voice" : voiceSelected
-												};
-												var ajaxData = {};
-												ajaxData["array"] = [ JSON
-														.stringify(request)
-														.replace(',', ', ')
-														.replace('[', '')
-														.replace(']', '') ];
-												$
-														.ajax({
-															"dataType" : 'json',
-															"type" : "POST",
-															"url" : 'getParticularAudio.action',
-															"data" : JSON
-																	.stringify(ajaxData),
-															contentType : "application/json; charset=utf-8",
-															async : false,
-															success : function(
-																	jsonString) {
-																/* $("<a href='"
-																	+ jsonString
-																	+ "' download='"+id+"_"+voiceSelected++".wav'></a>")[0]
-																		.click(); */
-																var a = document
-																		.createElement('a');
-																$(a)
-																		.attr(
-																				'href',
-																				jsonString)
-																		.attr(
-																				'download',
-																				id
-																						+ '_'
-																						+ voiceSelected
-																						+ '.wav')
-																		.addClass(
-																				'.voiceSelectedDownload')
-																		.attr(
-																				'id',
-																				id
-																						+ '_'
-																						+ voiceSelected)
-																		.appendTo(
-																				'body');
-
-																$(a)[0].click();
-															},
-															complete : function(
-																	msg, a, b) {
-																console
-																		.log('complete :'
-																				+ msg);
-															},
-															error : function(
-																	msg, a, b) {
-																console
-																		.log('error:'
-																				+ msg);
-															}
-														});
-
-											});
-						});
-
-		var input = document.getElementById('pac-input');
-		var searchBox = new google.maps.places.SearchBox(input);
-		map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-		map.addListener('bounds_changed', function() {
-			searchBox.setBounds(map.getBounds());
-		});
-
-		searchBox.addListener('places_changed', function() {
-			var places = searchBox.getPlaces();
-
-			if (places.length == 0) {
-				return;
-			}
-
-			var bounds = new google.maps.LatLngBounds();
-			places.forEach(function(place) {
-				if (place.geometry.viewport) {
-					bounds.union(place.geometry.viewport);
-				} else {
-					bounds.extend(place.geometry.location);
-				}
-			});
-			map.fitBounds(bounds);
-		});
-	}
-
-	function create_marker(MapPos, MapTitle, MapDesc, InfoOpenDefault,
-			DragAble, Removable, iconPath, id, age, gender, nativeLang,
-			atwhatage) {
-		//new marker
-		var marker = new google.maps.Marker({
-			position : MapPos,
-			map : map,
-			draggable : DragAble,
-			animation : google.maps.Animation.DROP,
-			title : MapTitle,
-			icon : iconPath,
-			gender: null,
-			age: null,
-			nativeLang:null,
-			atwhatage:null
-		});
-
-		marker.id = id;
-		marker.age = age;
-		marker.gender = gender;
-		marker.nativeLang = nativeLang;
-		marker.atwhatage = atwhatage;
-		uniqueId++;
-		var contentString = $('<div class="marker-info-win">'
-				+ '<div class="marker-inner-win"><span class="info-content">'
-				+ '<h4 class="marker-heading">' + MapTitle + '</h4>' + MapDesc
-				+ '</span>' + '</div></div>');
-
-		var infowindow = new google.maps.InfoWindow();
-		infowindow.setContent(contentString[0]);
-
-		google.maps.event.addListener(marker, 'click', function() {
-			infowindow.open(map, marker);
-		});
-
-		if (InfoOpenDefault) {
-			infowindow.open(map, marker);
-		}
-		markers.push(marker);
-	}
+	
 </script>
 	<script type="text/javascript">
 		var d = document.createElement('div');
