@@ -176,10 +176,10 @@ html, body {
 		function initAutocomplete() {
 			map = new google.maps.Map(document.getElementById('map'), {
 				center : {
-					lat : 59.723705,
-					lng : -110.7155106
+					lat : 59.3207266,
+					lng : -105.2373684
 				},
-				zoom : 4,
+				zoom : 5,
 				mapTypeId : google.maps.MapTypeId.ROADMAP,
 				streetViewControl : false
 			});
@@ -486,7 +486,7 @@ html, body {
 			marker.nativeLang = nativeLang;
 			marker.atwhatage = atwhatage;
 			uniqueId++;
-			
+
 			var contentString = $('<div class="marker-info-win">'
 					+ '<div class="marker-inner-win"><span class="info-content">'
 					+ '<h4 class="marker-heading">' + MapTitle + '</h4>' + MapDesc
@@ -555,7 +555,7 @@ html, body {
 		var nativeSpeaker = '<select id="nativeSpeakerFilter" class="form-control" multiple="multiple">'
 			+ '<option value="true">true</option>'
 			+ '<option value="false">false</option>' + '</select>';
-			
+
 	var timeInCanada = '<select id="timeInCanadaFilter" class="form-control" multiple="multiple">'
 			+ '<option value="before age 5">before age 5</option>'
 			+ '<option value="between 5 and 12">between 5 and 12</option>'
@@ -621,7 +621,7 @@ html, body {
 												timeInCanadaSelectedFilter.length - 1);
 
 							for (var i = 0; i < markers.length; i++) {
-								
+
 								genderCheck = false;
 								nativeCheck = false;
 								timeInCheck = false;
@@ -637,12 +637,12 @@ html, body {
 								if ($("#filterMaximumAge").val() > 0) {
 									max = $("#filterMaximumAge").val();
 								}
-								
-								
+
+
 								if(markers[i].age <=max && markers[i].age>=min){
 									ageCheck=true;
 								}
-								
+
 
 								if (genderFilterSelected.length > 0) {
 									temp = genderFilterSelected.split(',');
@@ -655,7 +655,7 @@ html, body {
 								}else{
 									genderCheck = true;
 								}
-								
+
 								if (nativeSpeakerFilterSelected.length > 0) {
 									temp = nativeSpeakerFilterSelected.split(',');
 									for (var j = 0; j <= temp.length; j++) {
@@ -679,7 +679,7 @@ html, body {
 								}else{
 									timeInCheck = true;
 								}
-								
+
 								if(genderCheck && nativeCheck && timeInCheck && ageCheck){
 									if(markers[i].getMap() == null){
 										markers[i].setMap(map);

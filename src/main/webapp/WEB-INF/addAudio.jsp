@@ -742,10 +742,10 @@ a.button {
 
 		map = new google.maps.Map(document.getElementById("map"), {
 			center : {
-				lat : 59.723705,
-				lng : -110.7155106
+				lat : 59.3207266,
+				lng : -105.2373684
 			},
-			zoom : 4,
+			zoom : 5,
 			mapTypeId : google.maps.MapTypeId.ROADMAP,
 			streetViewControl : false
 		});
@@ -871,7 +871,7 @@ a.button {
 
 	//############### Remove Marker Function ##############
 	function remove_marker(Marker) {
-		/* determine whether marker is draggable 
+		/* determine whether marker is draggable
 		new markers are draggable and saved markers are fixed */
 		if (Marker.getDraggable()) {
 			Marker.setMap(null); //just remove new marker
@@ -1017,7 +1017,7 @@ a.button {
 
 				});
 
-		
+
 	</script>
 </body>
 </html>
