@@ -179,7 +179,7 @@ html, body {
 					lat : 59.3207266,
 					lng : -105.2373684
 				},
-				zoom : 5,
+				zoom : 4,
 				mapTypeId : google.maps.MapTypeId.ROADMAP,
 				streetViewControl : false
 			});
