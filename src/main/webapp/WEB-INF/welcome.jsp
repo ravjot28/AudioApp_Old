@@ -563,7 +563,7 @@ html, body {
 			+ '<option value="age 21 or older">age 21 or older</option>'
 			+ '<option value="I have never lived in Canada">I have never lived in Canada</option>' + '</select>';
 
-		d.innerHTML = '<table><tr><td colspan="2" style="width:100%"><h2>Filter results</h2></td></tr>'
+		d.innerHTML = '<table><tr><td align="center" colspan="2" style="width:100%"><h2>Filter results</h2></td></tr>'
 				+ '<tr><td>Gender</td><td>'
 				+ gender
 				+ '</td></tr>'
@@ -573,8 +573,8 @@ html, body {
 				+ '<tr><td>Maximum Age</td><td>'
 				+ maxAge
 				+ '</td></tr>'
-				+ '<tr><td><pre>Native Canadian'
-				+ 'English Speaker</pre></td><td>'
+				+ '<tr><td>Native Canadian<br />'
+				+ 'English Speaker</td><td>'
 				+ nativeSpeaker
 				+ '</td></tr>'
 				+ '<tr><td>Time in Canada</td><td>'
