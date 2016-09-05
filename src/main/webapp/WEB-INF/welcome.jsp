@@ -229,8 +229,11 @@ html, body {
 												.replace("{", "").replace("}", "");
 										var atwhatage = coordinates[7].replace("{",
 												"").replace("}", "");
+										
+										var locV = coordinates[8].replace("{",
+										"").replace("}", "");
 
-										var voices = coordinates[8]
+										var voices = coordinates[9]
 												.replace("{", "").replace("}", "");
 
 										var s = '<select id = \''+id+'\'>';
@@ -278,7 +281,7 @@ html, body {
 														+ '<button class="'+id+'" id="downloadAllVoice">Download All</button>'
 														+ '</div>', false, false,
 												false, "../icons/pin.png", id, age,
-												gender, nativeLang, atwhatage);
+												gender, nativeLang, atwhatage,locV);
 									}
 									//Do something
 								}
@@ -465,7 +468,7 @@ html, body {
 
 		function create_marker(MapPos, MapTitle, MapDesc, InfoOpenDefault,
 				DragAble, Removable, iconPath, id, age, gender, nativeLang,
-				atwhatage) {
+				atwhatage,locV) {
 			//new marker
 			var marker = new google.maps.Marker({
 				position : MapPos,
@@ -485,6 +488,7 @@ html, body {
 			marker.gender = gender;
 			marker.nativeLang = nativeLang;
 			marker.atwhatage = atwhatage;
+			marker.locationV = locV;
 			uniqueId++;
 
 			var contentString = $('<div class="marker-info-win">'
@@ -531,11 +535,17 @@ html, body {
 
 	});
 	</script>
+	
 	<script type="text/javascript">
 		var d = document.createElement('div');
-		//var b = document.createElement('button');
-		//var s = document.createElement('select');
-
+		
+		var locations;
+		
+		$.get("getLocation.action", function (data) {
+			locations=data;
+		});
+		
+		
 		d.id = 'panelSide';
 		d.style.position = 'fixed';
 		d.style.padding = '10px';
@@ -555,6 +565,10 @@ html, body {
 		var nativeSpeaker = '<select id="nativeSpeakerFilter" class="form-control" multiple="multiple">'
 			+ '<option value="true">yes</option>'
 			+ '<option value="false">no</option>' + '</select>';
+			
+			
+		var locationDropDown = '<select id="locationOfVoices" class="form-control" multiple="multiple">'
+		+locations+ '</select>';
 
 	var timeInCanada = '<select id="timeInCanadaFilter" class="form-control" multiple="multiple">'
 			+ '<option value="before age 5">before age 5</option>'
@@ -563,6 +577,10 @@ html, body {
 			+ '<option value="age 21 or older">age 21 or older</option>'
 			+ '<option value="I have never lived in Canada">I have never lived in Canada</option>' + '</select>';
 
+			
+			if(locations.trim().length>0){
+				
+			
 		d.innerHTML = '<table><tr><td align="center" colspan="2" style="width:100%"><h2>Filter results</h2></td></tr>'
 				+ '<tr><td>Gender</td><td>'
 				+ gender
@@ -577,16 +595,47 @@ html, body {
 				+ 'English Speaker</td><td>'
 				+ nativeSpeaker
 				+ '</td></tr>'
+				+'<tr><td>Locations</td><td>'
+				+locationDropDown
+				+ '</td></tr>'
 				+ '<tr><td>Time in Canada</td><td>'
 				+ timeInCanada
 				+ '</td></tr>'
 				+ '<tr><td></td><td><button id="filterSubmit" type="button" class="btn btn-primary">Apply</button> </td></tr></table>';
-
+			}else{
+				d.innerHTML = '<table><tr><td align="center" colspan="2" style="width:100%"><h2>Filter results</h2></td></tr>'
+					+ '<tr><td>Gender</td><td>'
+					+ gender
+					+ '</td></tr>'
+					+ '<tr><td>Minimum Age</td><td>'
+					+ minAge
+					+ '</td></tr>'
+					+ '<tr><td>Maximum Age</td><td>'
+					+ maxAge
+					+ '</td></tr>'
+					+ '<tr><td>Native Canadian<br />'
+					+ 'English Speaker</td><td>'
+					+ nativeSpeaker
+					+ '</td></tr>'
+					+ '<tr><td>Time in Canada</td><td>'
+					+ timeInCanada
+					+ '</td></tr>'
+					+ '<tr><td></td><td><button id="filterSubmit" type="button" class="btn btn-primary">Apply</button> </td></tr></table>';
+				
+			}
 		$(document)
 				.on(
 						"click",
 						"#filterSubmit",
 						function() {
+							var locationFilterSelected = "";
+							if(locations.trim().length>0){
+							
+							
+							$('#locationOfVoices :selected').each(function() {
+								locationFilterSelected += $(this).text() + ",";
+							});
+							}
 
 							var genderFilterSelected = "";
 							$('#filterGeneder :selected').each(function() {
@@ -635,6 +684,7 @@ html, body {
 								nativeCheck = false;
 								timeInCheck = false;
 								ageCheck = false;
+								locationCheck = false;
 
 								min = 0;
 								max = 999999;
@@ -652,6 +702,19 @@ html, body {
 									ageCheck=true;
 								}
 
+								
+								if (locationFilterSelected.length > 0) {
+									temp = locationFilterSelected.split(',');
+									for (var j = 0; j <= temp.length; j++) {
+										if(temp[j] == markers[i].locationV){
+											locationCheck = true;
+											break;
+										}
+									}
+								}else{
+									locationCheck = true;
+								}
+								
 
 								if (genderFilterSelected.length > 0) {
 									temp = genderFilterSelected.split(',');
@@ -689,7 +752,7 @@ html, body {
 									timeInCheck = true;
 								}
 
-								if(genderCheck && nativeCheck && timeInCheck && ageCheck){
+								if(genderCheck && nativeCheck && timeInCheck && ageCheck && locationCheck){
 									if(markers[i].getMap() == null){
 										markers[i].setMap(map);
 									}

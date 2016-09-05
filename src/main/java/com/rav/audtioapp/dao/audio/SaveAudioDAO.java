@@ -5,10 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Map;
 import java.util.StringTokenizer;
 
 import com.rav.audtioapp.dao.DAOUtil;
 import com.rav.audtioapp.dto.SaveAudioDTO;
+import com.rav.audtioapp.util.GeoService;
 
 public class SaveAudioDAO {
 
@@ -24,7 +26,7 @@ public class SaveAudioDAO {
 					+ "birthyear character varying(4000), gender character varying(4000), mothertoungedata character varying(4000), "
 					+ "ratefluency character varying(4000),  atwhatage character varying(4000),  emailaddress character varying(4000),  "
 					+ "  bornincanada character varying(4000), ifnotmothertounge character varying(4000),\"approvedBy\" character varying(4000),"
-					+ "status character varying(4000), "
+					+ "status character varying(4000), state character varying(4000), city character varying(4000), "
 					+ "CONSTRAINT \"AudioSubmission_Details_pkey\" PRIMARY KEY (id) )");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -68,8 +70,8 @@ public class SaveAudioDAO {
 					"INSERT INTO \"AudioSubmission_Details\" ( id, bag, cot, gang, past, spa, band, deck, house, pasta, test, "
 							+ "boat, duck, how, pool, tie, boot, face, kiss, seat, tight, caught,   far, pack, sharp, "
 							+ "too, longitude, lattitude, birthyear, gender,   mothertoungedata, ratefluency, atwhatage, "
-							+ "emailaddress, bornincanada, ifnotmothertounge, status) "
-							+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,  ?, ?, ?, ?, ?,  ?, ?) ");
+							+ "emailaddress, bornincanada, ifnotmothertounge, status,state,city) "
+							+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,  ?, ?, ?, ?, ?,  ?, ?,?,?) ");
 			int index = 1;
 			statement.setInt(index++, id);
 			statement.setString(index++, dto.getBag());
@@ -110,6 +112,12 @@ public class SaveAudioDAO {
 			statement.setString(index++, dto.getBornInCanada());
 			statement.setString(index++, dto.getIfNotMotherTounge());
 			statement.setString(index++, "NOTAPPROVED");
+			StringTokenizer t = new StringTokenizer(location, " ");
+			double longi = Double.parseDouble(t.nextToken());
+			double lat = Double.parseDouble(t.nextToken());
+			Map<String, String> data = GeoService.getState(lat, longi);
+			statement.setString(index++, data.get("state"));
+			statement.setString(index++, data.get("city"));
 			statement.executeUpdate();
 		} catch (Exception e) {
 			System.err.println(e);

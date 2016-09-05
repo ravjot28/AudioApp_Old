@@ -23,8 +23,8 @@ public class GetAudioDAO {
 					+ "pack text, sharp text, too text, longitude character varying(4000), lattitude character varying(4000), "
 					+ "birthyear character varying(4000), gender character varying(4000), mothertoungedata character varying(4000), "
 					+ "ratefluency character varying(4000),  atwhatage character varying(4000),  emailaddress character varying(4000),  "
-					+ "town character varying(4000),  bornincanada character varying(4000), ifnotmothertounge character varying(4000),\"approvedBy\" character varying(4000),"
-					+ "status character varying(4000),province character varying(4000), "
+					+ "  bornincanada character varying(4000), ifnotmothertounge character varying(4000),\"approvedBy\" character varying(4000),"
+					+ "status character varying(4000), state character varying(4000), city character varying(4000), "
 					+ "CONSTRAINT \"AudioSubmission_Details_pkey\" PRIMARY KEY (id) )");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -77,7 +77,7 @@ public class GetAudioDAO {
 		Statement statement = null;
 		try {
 			statement = connection.createStatement();
-			String sql = "select birthyear,longitude,lattitude,id,gender,ifnotmothertounge,mothertoungedata,atwhatage,bag, cot, gang, past, "
+			String sql = "select birthyear,longitude,lattitude,id,gender,ifnotmothertounge,mothertoungedata,atwhatage,state,city,bag, cot, gang, past, "
 					+ "spa, band, deck, house, pasta, test,boat, duck, how, pool, tie, boot, face, kiss, seat, tight, caught,  far, pack, "
 					+ "sharp, too FROM \"AudioSubmission_Details\" where status  ='APPROVED'";
 			System.out.println("select emailaddress,longitude,lattitude FROM \"AudioSubmission_Details\" where status  ='APPROVED'");
@@ -93,7 +93,7 @@ public class GetAudioDAO {
 				voices = voices.substring(0, voices.length() - 1);
 				result.add("{" + rs.getString(1) + "}" + "{" + rs.getString(2) + "}" + "{" + rs.getString(3) + "}"
 						+ "{CVMX-" + rs.getInt(4) + "}" + "{" + rs.getString(5) + "}" + "{" + rs.getString(6) + "}"
-						+ "{" + rs.getString(7) + "}" + "{" + rs.getString(8) + "}" + "{" + voices + "}");
+						+ "{" + rs.getString(7) + "}" + "{" + rs.getString(8) + "}" + "{" + rs.getString(9)+"-"+rs.getString(10) + "}" + "{" + voices + "}");
 			}
 			statement.close();
 		} catch (Exception e) {
