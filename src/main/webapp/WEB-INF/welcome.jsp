@@ -553,8 +553,8 @@ html, body {
 		var maxAge = '<input  size="17px" type="text" id="filterMaximumAge" name="filterMaximumAge" placeholder="Maximum Age">';
 
 		var nativeSpeaker = '<select id="nativeSpeakerFilter" class="form-control" multiple="multiple">'
-			+ '<option value="true">true</option>'
-			+ '<option value="false">false</option>' + '</select>';
+			+ '<option value="true">yes</option>'
+			+ '<option value="false">no</option>' + '</select>';
 
 	var timeInCanada = '<select id="timeInCanadaFilter" class="form-control" multiple="multiple">'
 			+ '<option value="before age 5">before age 5</option>'
@@ -580,7 +580,7 @@ html, body {
 				+ '<tr><td>Time in Canada</td><td>'
 				+ timeInCanada
 				+ '</td></tr>'
-				+ '<tr><td></td><td><button id="filterSubmit" type="button" class="btn btn-default">Apply</button> </td></tr></table>';
+				+ '<tr><td></td><td><button id="filterSubmit" type="button" class="btn btn-primary">Apply</button> </td></tr></table>';
 
 		$(document)
 				.on(
@@ -599,8 +599,16 @@ html, body {
 							var nativeSpeakerFilterSelected = "";
 							$('#nativeSpeakerFilter :selected').each(
 									function() {
-										nativeSpeakerFilterSelected += $(this)
-												.text()
+										var transformedNativeLangValue = null;
+										if( $(this)
+												.text().equals("yes")){
+											transformedNativeLangValue = "true";
+										}else if( $(this)
+												.text().equals("no")){
+											transformedNativeLangValue = "false";
+										}
+										
+										nativeSpeakerFilterSelected +=transformedNativeLangValue
 												+ ",";
 									});
 							if (nativeSpeakerFilterSelected.length > 2)
