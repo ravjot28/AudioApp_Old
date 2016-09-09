@@ -578,7 +578,7 @@ html, body {
 			+ '<option value="I have never lived in Canada">I have never lived in Canada</option>' + '</select>';
 
 			
-			if( (typeof locations === 'undefined') || locations.trim().length>0){
+			if( !(typeof locations === 'undefined') && locations.trim().length>0){
 				
 			
 		d.innerHTML = '<table><tr><td align="center" colspan="2" style="width:100%"><h2>Filter results</h2></td></tr>'
@@ -629,7 +629,7 @@ html, body {
 						"#filterSubmit",
 						function() {
 							var locationFilterSelected = "";
-							if(locations.trim().length>0){
+							if( !(typeof locations === 'undefined') && locations.trim().length>0){
 							
 							
 							$('#locationOfVoices :selected').each(function() {
