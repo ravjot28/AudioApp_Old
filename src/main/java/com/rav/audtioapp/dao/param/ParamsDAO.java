@@ -141,8 +141,10 @@ public class ParamsDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				statement.close();
-				conn.close();
+				if (statement != null)
+					statement.close();
+				if (conn != null)
+					conn.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -173,8 +175,11 @@ public class ParamsDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				statement.close();
-				conn.close();
+				
+				if (statement != null)
+					statement.close();
+				if (conn != null)
+					conn.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -185,23 +190,25 @@ public class ParamsDAO {
 
 	public void deactiavteParam(String paramName) {
 		PreparedStatement statement = null;
-
+		Connection conn = null;
 		try {
 			String sql = "update " + ParamConstants.PARAM_TABLE_NAME + "   set " + GeneralConstants.ACTIVE
 					+ " ='N' where " + ParamConstants.PARAM_NAME + "=?";
-			Connection conn = DAOUtil.getInstance().getConnection();
+			conn = DAOUtil.getInstance().getConnection();
 			statement = conn.prepareStatement(sql);
 			int index = 1;
 			statement.setString(index++, paramName);
 			statement.executeUpdate();
-			statement.close();
-			conn.close();
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				statement.close();
+				if (statement != null)
+					statement.close();
+				if (conn != null)
+					conn.close();
+
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

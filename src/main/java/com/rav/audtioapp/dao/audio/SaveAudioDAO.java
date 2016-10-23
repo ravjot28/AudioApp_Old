@@ -15,9 +15,11 @@ import com.rav.audtioapp.util.GeoService;
 public class SaveAudioDAO {
 
 	public SaveAudioDAO() {
-
+		Connection conn = null;
+		Statement stmt = null;
 		try {
-			Statement stmt = DAOUtil.getInstance().getConnection().createStatement();
+			conn = DAOUtil.getInstance().getConnection();
+			stmt = conn.createStatement();
 			stmt.executeUpdate("CREATE TABLE IF NOT EXISTS \"AudioSubmission_Details\" "
 					+ "(id numeric NOT NULL, bag text, cot text, gang text, past text, spa text, band text, "
 					+ "deck text, house text, pasta text, test text, boat text, duck text, how text, pool text, "
@@ -30,6 +32,19 @@ public class SaveAudioDAO {
 					+ "CONSTRAINT \"AudioSubmission_Details_pkey\" PRIMARY KEY (id) )");
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			if (stmt != null)
+				try {
+					stmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 		}
 	}
 
@@ -44,15 +59,16 @@ public class SaveAudioDAO {
 			while (rs.next()) {
 				result = rs.getInt(1);
 			}
-			statement.close();
 		} catch (Exception e) {
 			System.err.println(e);
 		} finally {
 			try {
-				connection.close();
+				if (statement != null)
+					statement.close();
+				if (connection != null)
+					connection.close();
 				connection = null;
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -123,10 +139,11 @@ public class SaveAudioDAO {
 			System.err.println(e);
 		} finally {
 			try {
-				connection.close();
-				connection = null;
+				if (statement != null)
+					statement.close();
+				if (connection != null)
+					connection.close();				connection = null;
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

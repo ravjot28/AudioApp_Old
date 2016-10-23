@@ -10,9 +10,11 @@ import com.rav.audtioapp.dao.DAOUtil;
 public class AudioDetailsDAO {
 
 	public AudioDetailsDAO() {
-
+		Connection conn = null;
+		Statement stmt = null;
 		try {
-			Statement stmt = DAOUtil.getInstance().getConnection().createStatement();
+			conn = DAOUtil.getInstance().getConnection();
+			stmt = DAOUtil.getInstance().getConnection().createStatement();
 			stmt.executeUpdate("CREATE TABLE IF NOT EXISTS \"AudioSubmission_Details\" "
 					+ "(id numeric NOT NULL, bag text, cot text, gang text, past text, spa text, band text, "
 					+ "deck text, house text, pasta text, test text, boat text, duck text, how text, pool text, "
@@ -25,6 +27,19 @@ public class AudioDetailsDAO {
 					+ "CONSTRAINT \"AudioSubmission_Details_pkey\" PRIMARY KEY (id) )");
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			if (stmt != null)
+				try {
+					stmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			try {
+				if (conn != null && !conn.isClosed())
+					conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -49,7 +64,8 @@ public class AudioDetailsDAO {
 			System.err.println(e);
 		} finally {
 			try {
-				connection.close();
+				if (connection != null)
+					connection.close();
 				connection = null;
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

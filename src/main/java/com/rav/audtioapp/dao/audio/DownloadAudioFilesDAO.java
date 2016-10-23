@@ -16,9 +16,11 @@ import com.rav.audtioapp.dto.DownloadAudioFilesDTO;
 public class DownloadAudioFilesDAO {
 
 	public DownloadAudioFilesDAO() {
-
+		Connection conn = null;
+		Statement stmt = null;
 		try {
-			Statement stmt = DAOUtil.getInstance().getConnection().createStatement();
+			conn = DAOUtil.getInstance().getConnection();
+			stmt = conn.createStatement();
 			stmt.executeUpdate("CREATE TABLE IF NOT EXISTS \"AudioSubmission_Details\" "
 					+ "(id numeric NOT NULL, bag text, cot text, gang text, past text, spa text, band text, "
 					+ "deck text, house text, pasta text, test text, boat text, duck text, how text, pool text, "
@@ -31,6 +33,19 @@ public class DownloadAudioFilesDAO {
 					+ "CONSTRAINT \"AudioSubmission_Details_pkey\" PRIMARY KEY (id) )");
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			if (stmt != null)
+				try {
+					stmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 		}
 	}
 
@@ -58,15 +73,17 @@ public class DownloadAudioFilesDAO {
 				}
 
 			}
-			statement.close();
 		} catch (Exception e) {
 			System.err.println(e);
 		} finally {
 			try {
-				connection.close();
+				if (statement != null)
+					statement.close();
+
+				if (connection != null)
+					connection.close();
 				connection = null;
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -143,15 +160,16 @@ public class DownloadAudioFilesDAO {
 							}
 						}
 					}
-					statement.close();
 				} catch (Exception e) {
 					e.printStackTrace();
 				} finally {
 					try {
-						connection.close();
+						if (statement != null)
+							statement.close();
+						if (connection != null)
+							connection.close();
 						connection = null;
 					} catch (SQLException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}

@@ -10,9 +10,11 @@ import com.rav.audtioapp.dao.DAOUtil;
 public class AudioApprovalDAO {
 
 	public AudioApprovalDAO() {
-
+		Connection conn = null;
+		Statement stmt = null;
 		try {
-			Statement stmt = DAOUtil.getInstance().getConnection().createStatement();
+			conn = DAOUtil.getInstance().getConnection();
+			stmt = conn.createStatement();
 			stmt.executeUpdate("CREATE TABLE IF NOT EXISTS \"AudioSubmission_Details\" "
 					+ "(id numeric NOT NULL, bag text, cot text, gang text, past text, spa text, band text, "
 					+ "deck text, house text, pasta text, test text, boat text, duck text, how text, pool text, "
@@ -25,28 +27,43 @@ public class AudioApprovalDAO {
 					+ "CONSTRAINT \"AudioSubmission_Details_pkey\" PRIMARY KEY (id) )");
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			if (stmt != null)
+				try {
+					stmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			try {
+				if (conn != null && !conn.isClosed())
+					conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
-	public void updateStatus(String status, int id,String approvalId) {
+	public void updateStatus(String status, int id, String approvalId) {
 		Connection connection = DAOUtil.getInstance().getConnection();
 		PreparedStatement statement = null;
 		try {
-			statement = connection.prepareStatement("update \"AudioSubmission_Details\" set status = ?,\"approvedBy\" =? where id = ?");
+			statement = connection.prepareStatement(
+					"update \"AudioSubmission_Details\" set status = ?,\"approvedBy\" =? where id = ?");
 			statement.setString(1, status);
 			statement.setString(2, approvalId);
 			statement.setInt(3, id);
 			statement.executeUpdate();
 
-			statement.close();
 		} catch (Exception e) {
 			System.err.println(e);
-		}finally{
+		} finally {
 			try {
-				connection.close();
+				if (statement != null)
+					statement.close();
+				if (connection != null)
+					connection.close();
 				connection = null;
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

@@ -9,13 +9,29 @@ import java.sql.Statement;
 public class RegistrationDAO {
 
 	public RegistrationDAO() {
+		Connection conn = null;
+		Statement stmt = null;
 		try {
-			Statement stmt = DAOUtil.getInstance().getConnection().createStatement();
+			conn = DAOUtil.getInstance().getConnection();
+			stmt = conn.createStatement();
 			stmt.executeUpdate("CREATE TABLE IF NOT EXISTS \"UsersDetails\" (\"userName\" character varying(4000),  "
 					+ "\"emailAddress\" character varying(4000) NOT NULL,  password character varying(4000),  "
 					+ "active character varying(4000),  CONSTRAINT \"UsersDetails_pkey\" PRIMARY KEY (\"emailAddress\"))");
 		} catch (Exception e) {
 			System.err.println(e);
+		} finally {
+			if (stmt != null)
+				try {
+					stmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 		}
 	}
 
@@ -37,16 +53,17 @@ public class RegistrationDAO {
 
 			if (count > 0)
 				result = true;
-			statement.close();
 
 		} catch (Exception e) {
 			System.err.println(e);
 		} finally {
 			try {
-				connection.close();
+				if (statement != null)
+					statement.close();
+				if (connection != null)
+					connection.close();
 				connection = null;
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -72,16 +89,17 @@ public class RegistrationDAO {
 
 			if (count > 0)
 				result = true;
-			statement.close();
 
 		} catch (Exception e) {
 			System.err.println(e);
 		} finally {
 			try {
-				connection.close();
+				if (statement != null)
+					statement.close();
+				if (connection != null)
+					connection.close();
 				connection = null;
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -101,15 +119,16 @@ public class RegistrationDAO {
 			statement.setString(3, password);
 			statement.setString(4, "Y");
 			statement.executeUpdate();
-			statement.close();
 		} catch (Exception e) {
 			System.err.println(e);
 		} finally {
 			try {
-				connection.close();
+				if (statement != null)
+					statement.close();
+				if (connection != null)
+					connection.close();
 				connection = null;
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

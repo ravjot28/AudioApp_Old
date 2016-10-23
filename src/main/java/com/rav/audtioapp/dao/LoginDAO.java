@@ -8,10 +8,12 @@ import java.sql.Statement;
 public class LoginDAO {
 
 	public LoginDAO() {
-
+		Connection conn = null;
+		Statement stmt = null;
 		try {
 			System.out.println("In LoginDAO constructor");
-			Statement stmt = DAOUtil.getInstance().getConnection().createStatement();
+			conn = DAOUtil.getInstance().getConnection();
+			stmt = conn.createStatement();
 			System.out.println("Created Connection and statement");
 			stmt.executeUpdate("CREATE TABLE IF NOT EXISTS \"UsersDetails\" (\"userName\" character varying(4000),  "
 					+ "\"emailAddress\" character varying(4000) NOT NULL,  password character varying(4000),  "
@@ -19,6 +21,19 @@ public class LoginDAO {
 			System.out.println("Executing the create statement");
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			if (stmt != null)
+				try {
+					stmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 		}
 	}
 
@@ -40,16 +55,18 @@ public class LoginDAO {
 
 			if (count > 0)
 				result = true;
-			statement.close();
 
 		} catch (Exception e) {
 			System.err.println(e);
 		} finally {
 			try {
-				connection.close();
+				if (statement != null)
+					statement.close();
+
+				if (connection != null)
+					connection.close();
 				connection = null;
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -75,23 +92,24 @@ public class LoginDAO {
 
 			if (count > 0)
 				result = true;
-			statement.close();
 
 		} catch (Exception e) {
 			System.err.println(e);
 		} finally {
 			try {
-				connection.close();
+				if (statement != null)
+					statement.close();
+
+				if (connection != null)
+					connection.close();
 				connection = null;
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 
 		return result;
 	}
-	
 
 	public String getPassword(String userName) {
 		String result = null;
@@ -109,16 +127,18 @@ public class LoginDAO {
 				result = rs.getString(1);
 			}
 
-			statement.close();
 
 		} catch (Exception e) {
 			System.err.println(e);
 		} finally {
 			try {
-				connection.close();
+				if (statement != null)
+					statement.close();
+
+				if (connection != null)
+					connection.close();
 				connection = null;
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

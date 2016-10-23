@@ -13,9 +13,11 @@ import com.rav.audtioapp.dao.DAOUtil;
 public class GetAudioDAO {
 
 	public GetAudioDAO() {
-
+		Connection conn = null;
+		Statement stmt = null;
 		try {
-			Statement stmt = DAOUtil.getInstance().getConnection().createStatement();
+			conn = DAOUtil.getInstance().getConnection();
+			stmt = conn.createStatement();
 			stmt.executeUpdate("CREATE TABLE IF NOT EXISTS \"AudioSubmission_Details\" "
 					+ "(id numeric NOT NULL, bag text, cot text, gang text, past text, spa text, band text, "
 					+ "deck text, house text, pasta text, test text, boat text, duck text, how text, pool text, "
@@ -28,6 +30,19 @@ public class GetAudioDAO {
 					+ "CONSTRAINT \"AudioSubmission_Details_pkey\" PRIMARY KEY (id) )");
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			if (stmt != null)
+				try {
+					stmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 		}
 	}
 
@@ -44,7 +59,7 @@ public class GetAudioDAO {
 			while (rs.next()) {
 				ResultSetMetaData rsmd = rs.getMetaData();
 				String voices = "";
-				for (int j = 9; j < rsmd.getColumnCount()+1; j++) {
+				for (int j = 9; j < rsmd.getColumnCount() + 1; j++) {
 					if (rs.getString(rsmd.getColumnName(j)) != null) {
 						voices += rsmd.getColumnName(j) + "-";
 					}
@@ -55,15 +70,16 @@ public class GetAudioDAO {
 						+ "{" + rs.getString(7) + "}" + "{" + rs.getString(8) + "}" + "{" + voices + "}");
 
 			}
-			statement.close();
 		} catch (Exception e) {
 			System.err.println(e);
 		} finally {
 			try {
-				connection.close();
+				if (statement != null)
+					statement.close();
+				if (connection != null)
+					connection.close();
 				connection = null;
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -80,12 +96,13 @@ public class GetAudioDAO {
 			String sql = "select birthyear,longitude,lattitude,id,gender,ifnotmothertounge,mothertoungedata,atwhatage,state,city,bag, cot, gang, past, "
 					+ "spa, band, deck, house, pasta, test,boat, duck, how, pool, tie, boot, face, kiss, seat, tight, caught,  far, pack, "
 					+ "sharp, too FROM \"AudioSubmission_Details\" where status  ='APPROVED'";
-			System.out.println("select emailaddress,longitude,lattitude FROM \"AudioSubmission_Details\" where status  ='APPROVED'");
+			System.out.println(
+					"select emailaddress,longitude,lattitude FROM \"AudioSubmission_Details\" where status  ='APPROVED'");
 			ResultSet rs = statement.executeQuery(sql);
 			while (rs.next()) {
 				ResultSetMetaData rsmd = rs.getMetaData();
 				String voices = "";
-				for (int j = 9; j < rsmd.getColumnCount()+1; j++) {
+				for (int j = 9; j < rsmd.getColumnCount() + 1; j++) {
 					if (rs.getString(rsmd.getColumnName(j)) != null) {
 						voices += rsmd.getColumnName(j) + "-";
 					}
@@ -93,17 +110,19 @@ public class GetAudioDAO {
 				voices = voices.substring(0, voices.length() - 1);
 				result.add("{" + rs.getString(1) + "}" + "{" + rs.getString(2) + "}" + "{" + rs.getString(3) + "}"
 						+ "{CVMX-" + rs.getInt(4) + "}" + "{" + rs.getString(5) + "}" + "{" + rs.getString(6) + "}"
-						+ "{" + rs.getString(7) + "}" + "{" + rs.getString(8) + "}" + "{" + rs.getString(9)+"-"+rs.getString(10) + "}" + "{" + voices + "}");
+						+ "{" + rs.getString(7) + "}" + "{" + rs.getString(8) + "}" + "{" + rs.getString(9) + "-"
+						+ rs.getString(10) + "}" + "{" + voices + "}");
 			}
-			statement.close();
 		} catch (Exception e) {
 			System.err.println(e);
 		} finally {
 			try {
-				connection.close();
+				if (statement != null)
+					statement.close();
+				if (connection != null)
+					connection.close();
 				connection = null;
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -117,20 +136,21 @@ public class GetAudioDAO {
 		Statement statement = null;
 		try {
 			statement = connection.createStatement();
-			String sql = "select " + voice + " FROM \"AudioSubmission_Details\" where id = " + id ;
+			String sql = "select " + voice + " FROM \"AudioSubmission_Details\" where id = " + id;
 			ResultSet rs = statement.executeQuery(sql);
 			while (rs.next()) {
 				result = rs.getString(1);
 			}
-			statement.close();
 		} catch (Exception e) {
 			System.err.println(e);
 		} finally {
 			try {
-				connection.close();
+				if (statement != null)
+					statement.close();
+				if (connection != null)
+					connection.close();
 				connection = null;
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
