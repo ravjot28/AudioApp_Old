@@ -225,7 +225,6 @@ $.fn.wizard = function(config) {
 									success : function(jsonString) {
 										// var obj = jQuery.parseJSON(
 										// jsonString );
-										alert(jsonString);
 										var replacingText = '<div class="modal-dialog">'
 												+ '	<div class="modal-content">'
 												+ '	<div class="modal-header">'
@@ -242,7 +241,6 @@ $.fn.wizard = function(config) {
 												+ '<!-- / .modal-content -->'
 												+ '</div>';
 										
-										alert(replacingText);
 										$("#modal-success").empty();
 										$("#modal-success").append(
 												replacingText);
