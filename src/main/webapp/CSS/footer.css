@@ -267,6 +267,7 @@ a.notificationIcons:hover span {
 
 #footer .col_1 {
 	width: 530px;
+	font-weight: normal;
 }
 
 .col_1 a:link {
