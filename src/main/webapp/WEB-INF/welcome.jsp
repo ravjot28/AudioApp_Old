@@ -603,7 +603,7 @@ html, body {
 				+ '</td></tr>'
 				+ '<tr><td></td><td><button id="filterSubmit" type="button" class="btn btn-primary">Apply</button> </td></tr></table>';
 			}else{
-				d.innerHTML = '<table><tr><td align="center" colspan="2" style="width:100%"><h2>Filter results</h2></td></tr>'
+				d.innerHTML = '<table><tr><td align="center" colspan="2" style="width:100%"><h4>Filter results</h4></td></tr>'
 					+ '<tr><td>Gender</td><td>'
 					+ gender
 					+ '</td></tr>'
