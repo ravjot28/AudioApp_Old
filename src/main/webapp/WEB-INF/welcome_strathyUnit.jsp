@@ -12,13 +12,13 @@
 <head>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 
-
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel="stylesheet" href="/CSS/style.css" type="text/css"
 	media="screen">
 <link rel="stylesheet" href="/CSS/footer.css" type="text/css"
 	media="screen">
+
 <link rel="stylesheet" href="CSS/bootstrap-multiselect.css"
 	type="text/css">
 
@@ -31,7 +31,7 @@ html, body {
 
 #map {
 	width: 100%;
-	height: 95%;
+	height: 88.9%;
 	margin-top: 50px;
 	margin-left: auto;
 	margin-right: auto;
@@ -172,6 +172,7 @@ html, body {
 	</form>
 
 
+
 	<div class="modal fade" id="login-modal" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true"
 		style="display: none;">
@@ -198,23 +199,16 @@ html, body {
 		placeholder="<%=tc.getParamValue(ParamConstants.STRATHY_ENTER_LOCATION_SEARCH_BAR)%>">
 	<div id="map"></div>
 
-
-
-
-
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	<%@include file="/WEB-INF/footer.jsp"%>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
-
 	<%-- <script
 		src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initAutocomplete"
 		async defer></script> --%>
 
 	<script>
-	var markers = [];
-	var uniqueId = 1;
 		function initAutocomplete() {
 			map = new google.maps.Map(document.getElementById('map'), {
 				center : {
@@ -271,8 +265,11 @@ html, body {
 												.replace("{", "").replace("}", "");
 										var atwhatage = coordinates[7].replace("{",
 												"").replace("}", "");
+										
+										var locV = coordinates[8].replace("{",
+										"").replace("}", "");
 
-										var voices = coordinates[8]
+										var voices = coordinates[9]
 												.replace("{", "").replace("}", "");
 
 										var s = '<select id = \''+id+'\'>';
@@ -319,8 +316,8 @@ html, body {
 														+ '<button class="'+id+'" id="downloadVoice">Download</button>'
 														+ '<button class="'+id+'" id="downloadAllVoice">Download All</button>'
 														+ '</div>', false, false,
-												false, "../icons/pin.png",id,age,
-												gender, nativeLang, atwhatage);
+												false, "../icons/pin.png", id, age,
+												gender, nativeLang, atwhatage,locV);
 									}
 									//Do something
 								}
@@ -336,17 +333,7 @@ html, body {
 								//create_marker(point, 'Temp', '<p>Hello World</p>', false, false, false,
 								//	"https://lit-journey-6254.herokuapp.com/icons/pin.png");
 								//        create_marker(point, name, address, false, false, false, "https://lit-journey-6254.herokuapp.com/icons/pin.png");
-								// });
-
-								$(document).on("click", "#downloadAllVoice",
-										function() {
-											id = $(this).attr('class');
-											$("#id").val(id);
-
-											$("#downloadAll").submit();
-
-										});
-
+								// });\
 								$(document)
 										.on(
 												"click",
@@ -434,6 +421,7 @@ html, body {
 																async : false,
 																success : function(
 																		jsonString) {
+
 																	/* $("<a href='"
 																		+ jsonString
 																		+ "' download='"+id+"_"+voiceSelected++".wav'></a>")[0]
@@ -479,6 +467,14 @@ html, body {
 												});
 							});
 
+			$(document).on("click", "#downloadAllVoice", function() {
+				id = $(this).attr('class');
+				$("#id").val(id);
+
+				$("#downloadAll").submit();
+
+			});
+
 			var input = document.getElementById('pac-input');
 			var searchBox = new google.maps.places.SearchBox(input);
 			map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
@@ -508,7 +504,7 @@ html, body {
 
 		function create_marker(MapPos, MapTitle, MapDesc, InfoOpenDefault,
 				DragAble, Removable, iconPath, id, age, gender, nativeLang,
-				atwhatage) {
+				atwhatage,locV) {
 			//new marker
 			var marker = new google.maps.Marker({
 				position : MapPos,
@@ -528,7 +524,9 @@ html, body {
 			marker.gender = gender;
 			marker.nativeLang = nativeLang;
 			marker.atwhatage = atwhatage;
+			marker.locationV = locV;
 			uniqueId++;
+
 			var contentString = $('<div class="marker-info-win">'
 					+ '<div class="marker-inner-win"><span class="info-content">'
 					+ '<h4 class="marker-heading">' + MapTitle + '</h4>' + MapDesc
@@ -546,18 +544,25 @@ html, body {
 			}
 			markers.push(marker);
 		}
-		</script>
 
+		</script>
 	<script
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGLwCkDXVFyy0ryStEIONSMkMrWk3z4a4&libraries=places&callback=initAutocomplete"
 		async defer></script>
-	<script type="text/javascript">
 
+	<script type="text/javascript">
+	var markers = [];
+	var uniqueId = 1;
 	$(document).ready(function() {
 		//google.maps.event.addDomListener(window, "load", initAutocomplete);
+
 		$('#filterGeneder').multiselect();
 		$('#nativeSpeakerFilter').multiselect();
 		$('#timeInCanadaFilter').multiselect();
+
+		$('#genders').multiselect();
+		$('#words').multiselect();
+		$('#nativeLanguageSelection').multiselect();
 
 		var map;
 		$('.dropdown-menu').find('form').click(function(e) {
@@ -565,17 +570,22 @@ html, body {
 		});
 
 	});
-
-</script>
+	</script>
+	
 	<script type="text/javascript">
 		var d = document.createElement('div');
-		//var b = document.createElement('button');
-		//var s = document.createElement('select');
-
+		
+		var locations;
+		
+		$.get("getLocation.action", function (data) {
+			locations=data;
+		});
+		
+		
 		d.id = 'panelSide';
 		d.style.position = 'fixed';
 		d.style.padding = '10px';
-		d.style.right = '0px';
+		d.style.left = '0px';
 		d.style.top = '40vh';
 		d.style.backgroundColor = 'rgba(265,0,0,0.5)';
 		d.style.border = '1px solid black';
@@ -589,8 +599,12 @@ html, body {
 		var maxAge = '<input  size="17px" type="text" id="filterMaximumAge" name="filterMaximumAge" placeholder="Maximum Age">';
 
 		var nativeSpeaker = '<select id="nativeSpeakerFilter" class="form-control" multiple="multiple">'
-			+ '<option value="true">true</option>'
-			+ '<option value="false">false</option>' + '</select>';
+			+ '<option value="true">yes</option>'
+			+ '<option value="false">no</option>' + '</select>';
+			
+			
+		var locationDropDown = '<select id="locationOfVoices" class="form-control" multiple="multiple">'
+		+locations+ '</select>';
 
 	var timeInCanada = '<select id="timeInCanadaFilter" class="form-control" multiple="multiple">'
 			+ '<option value="before age 5">before age 5</option>'
@@ -599,7 +613,11 @@ html, body {
 			+ '<option value="age 21 or older">age 21 or older</option>'
 			+ '<option value="I have never lived in Canada">I have never lived in Canada</option>' + '</select>';
 
-		d.innerHTML = '<table>'
+			
+			if( !(typeof locations === 'undefined') && locations.trim().length>0){
+				
+			
+		d.innerHTML = '<table><tr><td align="center" colspan="2" style="width:100%"><h2>Filter results</h2></td></tr>'
 				+ '<tr><td>Gender</td><td>'
 				+ gender
 				+ '</td></tr>'
@@ -609,19 +627,51 @@ html, body {
 				+ '<tr><td>Maximum Age</td><td>'
 				+ maxAge
 				+ '</td></tr>'
-				+ '<tr><td>Native Speaker</td><td>'
+				+ '<tr><td>Native Canadian<br />'
+				+ 'English Speaker</td><td>'
 				+ nativeSpeaker
+				+ '</td></tr>'
+				+'<tr><td>Locations</td><td>'
+				+locationDropDown
 				+ '</td></tr>'
 				+ '<tr><td>Time in Canada</td><td>'
 				+ timeInCanada
 				+ '</td></tr>'
-				+ '<tr><td></td><td><button id="filterSubmit" type="button" class="btn btn-default">Filter</button> </td></tr></table>';
-
+				+ '<tr><td></td><td><button id="filterSubmit" type="button" class="btn btn-primary">Apply</button> </td></tr></table>';
+			}else{
+				d.innerHTML = '<table><tr><td align="center" colspan="2" style="width:100%"><h2>Filter results</h2></td></tr>'
+					+ '<tr><td>Gender</td><td>'
+					+ gender
+					+ '</td></tr>'
+					+ '<tr><td>Minimum Age</td><td>'
+					+ minAge
+					+ '</td></tr>'
+					+ '<tr><td>Maximum Age</td><td>'
+					+ maxAge
+					+ '</td></tr>'
+					+ '<tr><td>Native Canadian<br />'
+					+ 'English Speaker</td><td>'
+					+ nativeSpeaker
+					+ '</td></tr>'
+					+ '<tr><td>Time in Canada</td><td>'
+					+ timeInCanada
+					+ '</td></tr>'
+					+ '<tr><td></td><td><button id="filterSubmit" type="button" class="btn btn-primary">Apply</button> </td></tr></table>';
+				
+			}
 		$(document)
 				.on(
 						"click",
 						"#filterSubmit",
 						function() {
+							var locationFilterSelected = "";
+							if( !(typeof locations === 'undefined') && locations.trim().length>0){
+							
+							
+							$('#locationOfVoices :selected').each(function() {
+								locationFilterSelected += $(this).text() + ",";
+							});
+							}
 
 							var genderFilterSelected = "";
 							$('#filterGeneder :selected').each(function() {
@@ -634,8 +684,16 @@ html, body {
 							var nativeSpeakerFilterSelected = "";
 							$('#nativeSpeakerFilter :selected').each(
 									function() {
-										nativeSpeakerFilterSelected += $(this)
-												.text()
+										var transformedNativeLangValue = null;
+										if( $(this)
+												.text().equals("yes")){
+											transformedNativeLangValue = "true";
+										}else if( $(this)
+												.text().equals("no")){
+											transformedNativeLangValue = "false";
+										}
+										
+										nativeSpeakerFilterSelected +=transformedNativeLangValue
 												+ ",";
 									});
 							if (nativeSpeakerFilterSelected.length > 2)
@@ -658,11 +716,11 @@ html, body {
 
 							for (var i = 0; i < markers.length; i++) {
 
-
 								genderCheck = false;
 								nativeCheck = false;
 								timeInCheck = false;
 								ageCheck = false;
+								locationCheck = false;
 
 								min = 0;
 								max = 999999;
@@ -680,6 +738,19 @@ html, body {
 									ageCheck=true;
 								}
 
+								
+								if (locationFilterSelected.length > 0) {
+									temp = locationFilterSelected.split(',');
+									for (var j = 0; j <= temp.length; j++) {
+										if(temp[j] == markers[i].locationV){
+											locationCheck = true;
+											break;
+										}
+									}
+								}else{
+									locationCheck = true;
+								}
+								
 
 								if (genderFilterSelected.length > 0) {
 									temp = genderFilterSelected.split(',');
@@ -717,7 +788,7 @@ html, body {
 									timeInCheck = true;
 								}
 
-								if(genderCheck && nativeCheck && timeInCheck && ageCheck){
+								if(genderCheck && nativeCheck && timeInCheck && ageCheck && locationCheck){
 									if(markers[i].getMap() == null){
 										markers[i].setMap(map);
 									}
