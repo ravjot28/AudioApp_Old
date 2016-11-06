@@ -33,9 +33,9 @@ $.fn.wizard = function(config) {
 			
 			if (age.length == 0
 					|| gender.length == 0
-					|| ((!langyes && !langno) && (langno && mothertounge.length == 0))
+					|| !( langyes || (langno && (mothertounge.length>0)))
 					|| fluency.length == 0
-					|| ((!citizenYes && !citizenNo) && (canadaage.length == 0))) {
+					|| !( citizenYes || (citizenNo && (canadaage.length>0))) ) {
 				return false;
 			} else {
 				var hv = $('#location').val();
@@ -126,13 +126,13 @@ $.fn.wizard = function(config) {
 			if (gender.length == 0){
 				alert("In order to proceed, you must complete the form. Please select your gender.");
 			}
-			if ((!langyes && !langno) && (langno && mothertounge.length == 0)){
+			if (!( langyes || (langno && (mothertounge.length>0)))){
 				alert("In order to proceed, you must complete the form. Please provide mother tounge.");
 			}
 			if (fluency.length == 0){
 				alert("In order to proceed, you must complete the form. Please rate your fluency in english.");
 			}
-			if ((!citizenYes && !citizenNo) && (canadaage.length == 0)) {
+			if (!( citizenYes || (citizenNo && (canadaage.length>0))) ) {
 				alert("In order to proceed, you must complete the form. Please answer about your stay in Canada.");
 			}
 			return;
