@@ -80,7 +80,7 @@ public class ParamConstants {
 	public static final String DOWNLOAD_AUDIO_SELECT_MINIMUM_AGE = "DOWNLOAD_AUDIO_SELECT_MINIMUM_AGE";
 	public static final String DOWNLOAD_AUDIO_SELECT_MAXIMUM_AGE = "DOWNLOAD_AUDIO_SELECT_MAXIMUM_AGE";
 
-	public static final String ABOUT_US = "ABOUT_US";
+	public static final String ABOUT_US = "ABOUT_US_CONTENT";
 	public static final String CREDITS = "CREDITS";
 
 	public static String PARAM_INSERT = "INSERT INTO " + PARAM_TABLE_NAME + " (" + PARAM_NAME + ", " + PARAM_VALUE
