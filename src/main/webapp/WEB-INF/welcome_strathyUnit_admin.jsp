@@ -11,6 +11,7 @@
 <html>
 <head>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel="stylesheet" href="/CSS/style.css" type="text/css"
@@ -132,6 +133,10 @@ html, body {
 					</ul>
 				</div>
 				<!-- /.navbar-collapse --> </nav>
+	<form action="downloadAllAudioFiles.action" method="post" role="form"
+		id="downloadAll">
+		<input type="hidden" id="id" name="id" value="" />
+	</form>
 			</div>
 		</div>
 	</div>
@@ -206,8 +211,11 @@ html, body {
 												.replace("{", "").replace("}", "");
 										var atwhatage = coordinates[7].replace("{",
 												"").replace("}", "");
+										
+										var locV = coordinates[8].replace("{",
+										"").replace("}", "");
 
-										var voices = coordinates[8]
+										var voices = coordinates[9]
 												.replace("{", "").replace("}", "");
 
 										var s = '<select id = \''+id+'\'>';
@@ -232,8 +240,10 @@ html, body {
 											nativeLang = "Yes";
 										else
 											nativeLang = mothertoungedata;
-
-										var form = '<div style="margin: 10px;">'
+										create_marker(
+												point,
+												'ID: ' + id,
+												'<div style="margin: 10px;">'
 												+ '<p>Age: '
 												+ age
 												+ '</p>'
@@ -252,12 +262,10 @@ html, body {
 												+ '<button class="'+id+'" id="playVoice">Play</button>'
 												+ '<p><button class="'+id+'" id="approve">Approve</button>'
 												+ '<button class="'+id+'" id="reject">Reject</button></p>'
-												+ '</div>'
-
-										create_marker(point, 'Hi', form, false,
-												false, false,
-												"../icons/pin_strathyunit.png", id,age,
-												gender, nativeLang, atwhatage);
+												
+												+ '</div>',false, false,
+												false,"../icons/pin_strathyunit.png", id,age,
+												gender, nativeLang, atwhatage,locV);
 
 									}
 									//Do something
@@ -673,8 +681,8 @@ html, body {
 		});
 
 	});
-
-</script>
+	</script>
+	
 	<script type="text/javascript">
 		var d = document.createElement('div');
 		
@@ -720,7 +728,7 @@ html, body {
 			if( !(typeof locations === 'undefined') && locations.trim().length>0){
 				
 			
-		d.innerHTML = '<table><tr><td align="center" colspan="2" style="width:100%"><h2>Filter results</h2></td></tr>'
+		d.innerHTML = '<table><tr><td align="center" colspan="2" style="width:100%"><h4>Filter results</h4></td></tr>'
 				+ '<tr><td>Gender</td><td>'
 				+ gender
 				+ '</td></tr>'

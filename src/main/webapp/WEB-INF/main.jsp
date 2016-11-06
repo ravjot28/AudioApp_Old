@@ -234,9 +234,11 @@ html, body {
 									if (ifnotmothertounge == "true")
 										nativeLang = "Yes";
 									else
-										nativeLang = mothertoungedata;
-
-									var form = '<div style="margin: 10px;">'
+											nativeLang = mothertoungedata;
+										create_marker(
+												point,
+												'ID: ' + id,
+												'<div style="margin: 10px;">'
 											+ '<p>Age: '
 											+ age
 											+ '</p>'
@@ -254,18 +256,9 @@ html, body {
 											+ '<button class="'+id+'" id="playVoice">Play</button>'
 											+ '<p><button class="'+id+'" id="approve">Approve</button>'
 											+ '<button class="'+id+'" id="reject">Reject</button></p>'
-											+ '</div>'
-
-									create_marker(
-											point,
-											'Hi',
-											form,
-											false,
-											false,
-											false,
-											"../icons/pin_strathyunit.png",
-											id,age,
-											gender, nativeLang, atwhatage);
+											+ '</div>', false, false,
+											false, "../icons/pin_strathyunit.png", id,age,
+											gender, nativeLang, atwhatage,locV);
 
 								}
 								//Do something
@@ -682,7 +675,7 @@ html, body {
 			if( !(typeof locations === 'undefined') && locations.trim().length>0){
 				
 			
-		d.innerHTML = '<table><tr><td align="center" colspan="2" style="width:100%"><h2>Filter results</h2></td></tr>'
+		d.innerHTML = '<table><tr><td align="center" colspan="2" style="width:100%"><h4>Filter results</h4></td></tr>'
 				+ '<tr><td>Gender</td><td>'
 				+ gender
 				+ '</td></tr>'
