@@ -236,7 +236,9 @@ $.fn.wizard = function(config) {
 												+ '<p>Thank you for your participation in the Canadian Voices Map! Your reference number is: '
 												+ jsonString
 												+ '.</p>'
-												+ '<p>We will review your submission and assuming all looks well, add your audio data to our website. This usually takes about a week. If you would like to contact us regarding your participation in the project, please contact: CVM@queensu.ca</p>'
+												+ '<p>We will review your submission and assuming all looks well, add your audio data to our website.'
+												+'This usually takes about a week. '
+												+'If you would like to contact us regarding your participation in the project, please contact: CVM@queensu.ca</p>'
 												+ ''
 												+ ' </div>'
 												+ '	<div class="modal-footer">'
