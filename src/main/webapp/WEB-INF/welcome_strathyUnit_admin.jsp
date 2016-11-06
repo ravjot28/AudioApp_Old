@@ -121,7 +121,7 @@ html, body {
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#"><%=tc.getParamValue(ParamConstants.STRATHY_WEBSITE_HEADING)%>
+					<a class="navbar-brand" href="#"><span><img src="../images/queens_logo.png"/></span><%=tc.getParamValue(ParamConstants.STRATHY_WEBSITE_HEADING)%>
 						<!-- Strathy Language --></a>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
