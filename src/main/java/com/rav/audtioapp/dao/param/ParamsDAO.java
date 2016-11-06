@@ -79,6 +79,9 @@ public class ParamsDAO {
 					ParamConstants.STRATHY_EMAIL_SUBJECT_TO_END_USER_CONTENT);
 			initializeParameter(ParamConstants.STRATHY_EMAIL_TO_END_USER,
 					ParamConstants.STRATHY_EMAIL_TO_END_USER_CONTENT);
+			
+			initializeParameter(ParamConstants.SUCCESS_AUDIO_SUBMISSION_MESSAGE,
+					ParamConstants.SUCCESS_AUDIO_SUBMISSION_MESSAGE_VALUE);
 
 		} catch (Exception e) {
 			e.printStackTrace();

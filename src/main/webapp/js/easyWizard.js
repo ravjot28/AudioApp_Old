@@ -225,6 +225,10 @@ $.fn.wizard = function(config) {
 									success : function(jsonString) {
 										// var obj = jQuery.parseJSON(
 										// jsonString );
+										
+										var res = jsonString.split("*message*");
+										id =res[0];
+										message =res[1];
 
 										var replacingText = '<div class="modal-dialog">'
 												+ '	<div class="modal-content">'
@@ -233,13 +237,7 @@ $.fn.wizard = function(config) {
 												+ '	</div>'
 												+ '	<div class="modal-title">Success</div>'
 												+ ' <div class="modal-body">'
-												+ '<p>Thank you for your participation in the Canadian Voices Map! Your reference number is: '
-												+ jsonString
-												+ '.</p>'
-												+ '<p>We will review your submission and assuming all looks well, add your audio data to our website.'
-												+'This usually takes about a week. '
-												+'If you would like to contact us regarding your participation in the project, please contact: CVM@queensu.ca</p>'
-												+ ''
+												+messsage
 												+ ' </div>'
 												+ '	<div class="modal-footer">'
 												+ '		<button type="button" class="btn btn-success" data-dismiss="modal">OK</button>'

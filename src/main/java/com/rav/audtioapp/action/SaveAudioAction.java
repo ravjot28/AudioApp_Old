@@ -7,6 +7,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import com.rav.audtioapp.constants.param.ParamConstants;
+import com.rav.audtioapp.dao.param.ParamsDAO;
 import com.rav.audtioapp.dto.SaveAudioDTO;
 import com.rav.audtioapp.service.SaveAudioService;
 
@@ -26,7 +28,12 @@ public class SaveAudioAction {
 		// System.out.println(array);
 		String id = new SaveAudioService().processRequest(getDTO(array.get(0)));
 		jsonString = "[\"id\":" + id + "]";
-		jsonString = id;
+		try {
+			jsonString = id + "*message*"
+					+ new ParamsDAO().getParamValue(ParamConstants.SUCCESS_AUDIO_SUBMISSION_MESSAGE);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return "success";
 	}
 
