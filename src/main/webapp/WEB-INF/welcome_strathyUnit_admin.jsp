@@ -718,10 +718,10 @@ html, body {
 		+locations+ '</select>';
 
 	var timeInCanada = '<select id="timeInCanadaFilter" class="form-control" multiple="multiple">'
-			+ '<option value="before age 5">before age 5</option>'
-			+ '<option value="between 5 and 12">between 5 and 12</option>'
-			+ '<option value="between 13 and 20">between 13 and 20</option>'
-			+ '<option value="age 21 or older">age 21 or older</option>'
+			+ '<option value="before age 5">Born in Canada or arrived before age 5</option>'
+			+ '<option value="between 5 and 12">Arrived between 5 and 12</option>'
+			+ '<option value="between 13 and 20">Arrived between 13 and 20</option>'
+			+ '<option value="age 21 or older">Arrived age 21 or older</option>'
 			+ '<option value="I have never lived in Canada">I have never lived in Canada</option>' + '</select>';
 
 			
@@ -815,9 +815,24 @@ html, body {
 							var timeInCanadaSelectedFilter = "";
 							$('#timeInCanadaFilter :selected').each(
 									function() {
-										timeInCanadaSelectedFilter += $(this)
-												.text()
+										
+										if($(this).text().equals("Born in Canada or arrived before age 5")){
+											timeInCanadaSelectedFilter += "before age 5"
+											+ ",";
+										}else if($(this).text().equals("Arrived between 5 and 12")){
+											timeInCanadaSelectedFilter += "between 5 and 12"
+											+ ",";
+										}else if($(this).text().equals("Arrived between 13 and 20")){
+											timeInCanadaSelectedFilter += "between 13 and 20"
+											+ ",";
+										}else if($(this).text().equals("Arrived age 21 or older")){
+											timeInCanadaSelectedFilter += "age 21 or older"
+											+ ",";
+										}else{
+											timeInCanadaSelectedFilter += $(this).text()
 												+ ",";
+										}
+										
 									});
 							if (timeInCanadaSelectedFilter.length > 2)
 								timeInCanadaSelectedFilter = timeInCanadaSelectedFilter
