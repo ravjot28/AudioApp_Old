@@ -12,6 +12,18 @@ public class ParamConstants {
 	public static final String PARAM_TABLE_NAME = "Housing_Params";
 
 	// param names
+
+	public static final String HOME_TAB = "HOME_TAB";
+	public static final String HOME_TAB_VALUE = "Home";
+	public static final String ADD_AUDIO_TAB = "ADD_AUDIO_TAB";
+	public static final String ADD_AUDIO_TAB_VALUE = "Add Audio";
+	public static final String DOWNLOAD_AUDIO_TAB = "DOWNLOAD_AUDIO_TAB";
+	public static final String DOWNLOAD_AUDIO_TAB_VALUE = "Download Audio";
+	public static final String ABOUT_US_TAB = "ABOUT_US_TAB";
+	public static final String ABOUT_US_TAB_VALUE = "About Us";
+	public static final String CREDITS_TAB = "CREDITS_TAB";
+	public static final String CREDITS_TAB_VALUE = "Credits";
+
 	public static final String STRATHY_ADMIN = "STRATHY_ADMIN";
 
 	public static final String STRATHY_WEBSITE_HEADING = "STRATHY_WEBSITE_HEADING";
@@ -99,7 +111,7 @@ public class ParamConstants {
 			+ "goal of the project is to explore dialect diversity in Canadian\n"
 			+ "English. Users can listen to samples, download audio files and\n" + "contribute their own voices.\n" +
 
-	"</p>\n" + "<p>On the following screens, you will be asked to answer some\n"
+			"</p>\n" + "<p>On the following screens, you will be asked to answer some\n"
 			+ "background questions about yourself and then to record yourself\n"
 			+ "reading twenty different English words. The process should take\n"
 			+ "less than ten minutes. There are no known risks to participation\n"
@@ -121,7 +133,7 @@ public class ParamConstants {
 			+ "or 613-533-6081. This study has been granted clearance according\n"
 			+ "to the recommended principles of Canadian ethics guidelines, and\n" + "Queen's University policies.\n" +
 
-	"</p>\n" + "<p>By clicking \"Next\" below, you acknowledge the following:</p>\n"
+			"</p>\n" + "<p>By clicking \"Next\" below, you acknowledge the following:</p>\n"
 			+ "<p>1. You have read and understand the above Letter of\n" + "Information.</p>\n"
 			+ "<p>2. You understand that the audio files and background\n"
 			+ "information you submit will be available on a public website.</p>";
@@ -141,7 +153,7 @@ public class ParamConstants {
 			+ "href=\"http://www.soundonsound.com/sos/dec98/articles/20tips.568.htm\">click\n" + "here</a>.\n"
 			+ "</p>\n" +
 
-	"<p>To record, click on the \"start recording\" button and then\n"
+			"<p>To record, click on the \"start recording\" button and then\n"
 			+ "say the word in a natural, casual manner. Press \"stop\" when you\n"
 			+ "are done. To re-record a word, simply do it again and the\n" + "previous version will be erased.</p>";
 
@@ -173,7 +185,7 @@ public class ParamConstants {
 			+ "the relevant tab and follow the instructions. Note that the \"Add\n"
 			+ "your voice\" function only works with Chrome as your search engine.\n" + "</p>\n" +
 
-	"<p>\n" + "Why did you choose these words?<br /> The words in the recording\n"
+			"<p>\n" + "Why did you choose these words?<br /> The words in the recording\n"
 			+ "list were chosen to highlight different areas of possible dialect\n" + "variation.\n" + "</p>";
 
 	public static final String CREDITS_CONTENT = "<p>\n" + "<strong>Canadian English Voice Map</strong>\n" + "<p>\n"

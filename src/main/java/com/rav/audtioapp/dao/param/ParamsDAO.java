@@ -24,6 +24,13 @@ public class ParamsDAO {
 
 			conn.close();
 
+			initializeParameter(ParamConstants.HOME_TAB, ParamConstants.HOME_TAB_VALUE);
+			initializeParameter(ParamConstants.ADD_AUDIO_TAB, ParamConstants.ADD_AUDIO_TAB_VALUE);
+			initializeParameter(ParamConstants.DOWNLOAD_AUDIO_TAB, ParamConstants.DOWNLOAD_AUDIO_TAB_VALUE);
+			initializeParameter(ParamConstants.ABOUT_US_TAB, ParamConstants.ABOUT_US_TAB_VALUE);
+			initializeParameter(ParamConstants.CREDITS_TAB, ParamConstants.CREDITS_TAB_VALUE);
+			
+			
 			initializeParameter(ParamConstants.ABOUT_US, ParamConstants.ABOUT_US_CONTENT);
 			initializeParameter(ParamConstants.CREDITS, ParamConstants.CREDITS_CONTENT);
 			initializeParameter(ParamConstants.ADD_AUDIO_PAGE_HEADING, ParamConstants.ADD_AUDIO_PAGE_HEADING_CONTENT);
