@@ -29,8 +29,7 @@ public class SaveAudioAction {
 		String id = new SaveAudioService().processRequest(getDTO(array.get(0)));
 		jsonString = "[\"id\":" + id + "]";
 		try {
-			jsonString = id + "*message*"
-					+ new ParamsDAO().getParamValue(ParamConstants.SUCCESS_AUDIO_SUBMISSION_MESSAGE);
+			jsonString =  new ParamsDAO().getParamValue(ParamConstants.SUCCESS_AUDIO_SUBMISSION_MESSAGE).replace("$ID$", id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

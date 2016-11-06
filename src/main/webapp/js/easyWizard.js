@@ -225,11 +225,7 @@ $.fn.wizard = function(config) {
 									success : function(jsonString) {
 										// var obj = jQuery.parseJSON(
 										// jsonString );
-										
-										var res = jsonString.split("*message*");
-										id =res[0];
-										message =res[1];
-
+										alert(jsonString);
 										var replacingText = '<div class="modal-dialog">'
 												+ '	<div class="modal-content">'
 												+ '	<div class="modal-header">'
@@ -237,7 +233,7 @@ $.fn.wizard = function(config) {
 												+ '	</div>'
 												+ '	<div class="modal-title">Success</div>'
 												+ ' <div class="modal-body">'
-												+messsage
+												+jsonString
 												+ ' </div>'
 												+ '	<div class="modal-footer">'
 												+ '		<button type="button" class="btn btn-success" data-dismiss="modal">OK</button>'
@@ -245,6 +241,8 @@ $.fn.wizard = function(config) {
 												+ '</div>'
 												+ '<!-- / .modal-content -->'
 												+ '</div>';
+										
+										alert(replacingText);
 										$("#modal-success").empty();
 										$("#modal-success").append(
 												replacingText);
