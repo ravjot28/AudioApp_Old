@@ -371,212 +371,334 @@ a.button {
 						<table>
 							<tr>
 								<td><div style="margin: 10px;">
-										<p>
-											Bag
-											<button name="bag" id="record">Record</button>
-											<button name="bag" id="stop">Stop</button>
-										</p>
+										<table>
+											<tr>
+												<td>Bag</td>
+												<td><button name="bag" id="record">Record</button></td>
+												<td><button name="bag" id="stop">Stop</button></td>
+											</tr>
+										</table>
 
 									</div></td>
 								<td><div style="margin: 10px;">
-										<p>
-											Cot
-											<button name="cot" id="record">Record</button>
-											<button name="cot" id="stop">Stop</button>
-										</p>
+										<table>
+											<tr>
+												<td>Cot</td>
+												<td><button name="cot" id="record">Record</button></td>
+												<td><button name="cot" id="stop">Stop</button></td>
+											</tr>
+										</table>
 									</div></td>
 								<td><div style="margin: 10px;">
-										<p>
-											Gang
-											<button name="gang" id="record">Record</button>
-											<button name="gang" id="stop">Stop</button>
-										</p>
+										<table>
+											<tr>
+												<td>Gang</td>
+												<td><button name="gang" id="record">Record</button></td>
+												<td><button name="gang" id="stop">Stop</button></td>
+											</tr>
+										</table>
 									</div></td>
 							</tr>
-
-
-
-
-
-
-
 							<tr>
 								<td><div style="margin: 10px;">
-										<p>
-											Past
-											<button name="past" id="record">Record</button>
-											<button name="past" id="stop">Stop</button>
-										</p>
+										<table>
+											<tr>
+												<td>Past</td>
+												<td>
+													<button name="past" id="record">Record</button>
+												</td>
+												<td>
+													<button name="past" id="stop">Stop</button>
+												</td>
+											</tr>
+										</table>
 									</div></td>
 								<td>
 									<div style="margin: 10px;">
-										<p>
-											Spa
-											<button name="spa" id="record">Record</button>
-											<button name="spa" id="stop">Stop</button>
-										</p>
+										<table>
+											<tr>
+												<td>Spa</td>
+												<td>
+													<button name="spa" id="record">Record</button>
+												</td>
+												<td>
+													<button name="spa" id="stop">Stop</button>
+												</td>
+											</tr>
+										</table>
 									</div>
 								</td>
 								<td><div style="margin: 10px;">
-										<p>
-											Band
-											<button name="band" id="record">Record</button>
-											<button name="band" id="stop">Stop</button>
-										</p>
+										<table>
+											<tr>
+												<td>Band</td>
+												<td>
+													<button name="band" id="record">Record</button>
+												</td>
+												<td>
+													<button name="band" id="stop">Stop</button>
+												</td>
+											</tr>
+										</table>
 									</div></td>
 							</tr>
 							<tr>
 								<td><div style="margin: 10px;">
-										<p>
-											Deck
-											<button name="deck" id="record">Record</button>
-											<button name="deck" id="stop">Stop</button>
-										</p>
+										<table>
+											<tr>
+												<td>Deck</td>
+												<td>
+													<button name="deck" id="record">Record</button>
+												</td>
+												<td>
+													<button name="deck" id="stop">Stop</button>
+												</td>
+											</tr>
+										</table>
 									</div></td>
 								<td><div style="margin: 10px;">
-										<p>
-											House
-											<button name="house" id="record">Record</button>
-											<button name="house" id="stop">Stop</button>
-										</p>
+										<table>
+											<tr>
+												<td>House</td>
+												<td>
+													<button name="house" id="record">Record</button>
+												</td>
+												<td>
+													<button name="house" id="stop">Stop</button>
+												</td>
+											</tr>
+										</table>
 									</div></td>
 								<td><div style="margin: 10px;">
-										<p>
-											Pasta
-											<button name="pasta" id="record">Record</button>
-											<button name="pasta" id="stop">Stop</button>
-										</p>
-
-									</div></td>
-							</tr>
-							<tr>
-								<td><div style="margin: 10px;">
-										<p>
-											Test
-											<button name="test" id="record">Record</button>
-											<button name="test" id="stop">Stop</button>
-										</p>
-									</div></td>
-								<td><div style="margin: 10px;">
-										<p>
-											Boat
-											<button name="boat" id="record">Record</button>
-											<button name="boat" id="stop">Stop</button>
-										</p>
-									</div></td>
-								<td><div style="margin: 10px;">
-										<p>
-											Duck
-											<button name="duck" id="record">Record</button>
-											<button name="duck" id="stop">Stop</button>
-										</p>
-
+										<table>
+											<tr>
+												<td>Pasta</td>
+												<td>
+													<button name="pasta" id="record">Record</button>
+												</td>
+												<td>
+													<button name="pasta" id="stop">Stop</button>
+												</td>
+											</tr>
+										</table>
 									</div></td>
 							</tr>
 							<tr>
 								<td><div style="margin: 10px;">
-										<p>
-											How
-											<button name="how" id="record">Record</button>
-											<button name="how" id="stop">Stop</button>
-										</p>
+										<table>
+											<tr>
+												<td>Test</td>
+												<td>
+													<button name="test" id="record">Record</button>
+												</td>
+												<td>
+													<button name="test" id="stop">Stop</button>
+												</td>
+											</tr>
+										</table>
 									</div></td>
 								<td><div style="margin: 10px;">
-										<p>
-											Pool
-											<button name="pool" id="record">Record</button>
-											<button name="pool" id="stop">Stop</button>
-										</p>
-
+										<table>
+											<tr>
+												<td>Boat</td>
+												<td>
+													<button name="boat" id="record">Record</button>
+												</td>
+												<td>
+													<button name="boat" id="stop">Stop</button>
+												</td>
+											</tr>
+										</table>
 									</div></td>
 								<td><div style="margin: 10px;">
-										<p>
-											Tie
-											<button name="tie" id="record">Record</button>
-											<button name="tie" id="stop">Stop</button>
-										</p>
-									</div></td>
-							</tr>
-							<tr>
-								<td><div style="margin: 10px;">
-										<p>
-											Boot
-											<button name="boot" id="record">Record</button>
-											<button name="boot" id="stop">Stop</button>
-										</p>
-
-									</div></td>
-								<td><div style="margin: 10px;">
-										<p>
-											Face
-											<button name="face" id="record">Record</button>
-											<button name="face" id="stop">Stop</button>
-										</p>
-									</div></td>
-								<td><div style="margin: 10px;">
-										<p>
-											Kiss
-											<button name="kiss" id="record">Record</button>
-											<button name="kiss" id="stop">Stop</button>
-										</p>
-
+										<table>
+											<tr>
+												<td>Duck</td>
+												<td>
+													<button name="duck" id="record">Record</button>
+												</td>
+												<td>
+													<button name="duck" id="stop">Stop</button>
+												</td>
+											</tr>
+										</table>
 									</div></td>
 							</tr>
 							<tr>
 								<td><div style="margin: 10px;">
-										<p>
-											Seat
-											<button name="seat" id="record">Record</button>
-											<button name="seat" id="stop">Stop</button>
-										</p>
+										<table>
+											<tr>
+												<td>How</td>
+												<td>
+													<button name="how" id="record">Record</button>
+												</td>
+												<td>
+													<button name="how" id="stop">Stop</button>
+												</td>
+											</tr>
+										</table>
 									</div></td>
 								<td><div style="margin: 10px;">
-										<p>
-											Tight
-											<button name="tight" id="record">Record</button>
-											<button name="tight" id="stop">Stop</button>
-										</p>
-
+										<table>
+											<tr>
+												<td>Pool</td>
+												<td>
+													<button name="pool" id="record">Record</button>
+												</td>
+												<td>
+													<button name="pool" id="stop">Stop</button>
+												</td>
+											</tr>
+										</table>
 									</div></td>
 								<td><div style="margin: 10px;">
-										<p>
-											Caught
-											<button name="caught" id="record">Record</button>
-											<button name="caught" id="stop">Stop</button>
-										</p>
-									</div></td>
-							</tr>
-							<tr>
-								<td><div style="margin: 10px;">
-										<p>
-											Far
-											<button name="far" id="record">Record</button>
-											<button name="far" id="stop">Stop</button>
-										</p>
-
-									</div></td>
-								<td><div style="margin: 10px;">
-										<p>
-											Pack
-											<button name="pack" id="record">Record</button>
-											<button name="pack" id="stop">Stop</button>
-										</p>
-									</div></td>
-								<td><div style="margin: 10px;">
-										<p>
-											Sharp
-											<button name="sharp" id="record">Record</button>
-											<button name="sharp" id="stop">Stop</button>
-										</p>
+										<table>
+											<tr>
+												<td>Tie</td>
+												<td>
+													<button name="tie" id="record">Record</button>
+												</td>
+												<td>
+													<button name="tie" id="stop">Stop</button>
+												</td>
+											</tr>
+										</table>
 									</div></td>
 							</tr>
 							<tr>
 								<td><div style="margin: 10px;">
-										<p>
-											Too
-											<button name="too" id="record">Record</button>
-											<button name="too" id="stop">Stop</button>
-										</p>
+										<table>
+											<tr>
+												<td>Boot</td>
+												<td>
+													<button name="boot" id="record">Record</button>
+													<button name="boot" id="stop">Stop</button>
+												</td>
+											</tr>
+										</table>
+									</div></td>
+								<td><div style="margin: 10px;">
+										<table>
+											<tr>
+												<td>Face</td>
+												<td>
+													<button name="face" id="record">Record</button>
+												</td>
+												<td>
+													<button name="face" id="stop">Stop</button>
+												</td>
+											</tr>
+										</table>
+									</div></td>
+								<td><div style="margin: 10px;">
+										<table>
+											<tr>
+												<td>Kiss</td>
+												<td>
+													<button name="kiss" id="record">Record</button>
+												</td>
+												<td>
+													<button name="kiss" id="stop">Stop</button>
+												</td>
+											</tr>
+										</table>
+									</div></td>
+							</tr>
+							<tr>
+								<td><div style="margin: 10px;">
+										<table>
+											<tr>
+												<td>Seat</td>
+												<td>
+													<button name="seat" id="record">Record</button>
+												</td>
+												<td>
+													<button name="seat" id="stop">Stop</button>
+												</td>
+											</tr>
+										</table>
+									</div></td>
+								<td><div style="margin: 10px;">
+										<table>
+											<tr>
+												<td>Tight</td>
+												<td>
+													<button name="tight" id="record">Record</button>
+												</td>
+												<td>
+													<button name="tight" id="stop">Stop</button>
+												</td>
+											</tr>
+										</table>
+									</div></td>
+								<td><div style="margin: 10px;">
+										<table>
+											<tr>
+												<td>Caught</td>
+												<td>
+													<button name="caught" id="record">Record</button>
+												</td>
+												<td>
+													<button name="caught" id="stop">Stop</button>
+												</td>
+											</tr>
+										</table>
+									</div></td>
+							</tr>
+							<tr>
+								<td><div style="margin: 10px;">
+										<table>
+											<tr>
+												<td>Far</td>
+												<td>
+													<button name="far" id="record">Record</button>
+												</td>
+												<td>
+													<button name="far" id="stop">Stop</button>
+												</td>
+											</tr>
+										</table>
+									</div></td>
+								<td><div style="margin: 10px;">
+										<table>
+											<tr>
+												<td>Pack</td>
+												<td>
+													<button name="pack" id="record">Record</button>
+												</td>
+												<td>
+													<button name="pack" id="stop">Stop</button>
+												</td>
+											</tr>
+										</table>
+									</div></td>
+								<td><div style="margin: 10px;">
+										<table>
+											<tr>
+												<td>Sharp</td>
+												<td>
+													<button name="sharp" id="record">Record</button>
+												</td>
+												<td>
+													<button name="sharp" id="stop">Stop</button>
+												</td>
+											</tr>
+										</table>
+									</div></td>
+							</tr>
+							<tr>
+								<td><div style="margin: 10px;">
+										<table>
+											<tr>
+												<td>Too</td>
+												<td>
+													<button name="too" id="record">Record</button>
+												</td>
+												<td>
+													<button name="too" id="stop">Stop</button>
+												</td>
+											</tr>
+										</table>
 									</div></td>
 								<td></td>
 								<td></td>
