@@ -319,11 +319,13 @@ a.button {
 						<p><%=tc.getParamValue(ParamConstants.ADD_AUDIO_PAGE_2_BORN_CANADA_TITLE)%>
 							<!-- Were you born in Canada? -->
 						</p>
-						<label class="radio-inline"> <input type="radio"
-							name="citizenYes">Yes
-						</label> <label class="radio-inline"> <input type="radio"
-							name="citizenNo">No
+						
+						<label class="radio-inline"> <input id="citizenYes"
+							type="radio" name="optradio1">Yes
+						</label> <label class="radio-inline"> <input id="citizenNo"
+							type="radio" name="optradio1">No
 						</label>
+						
 
 						<p><%=tc.getParamValue(ParamConstants.ADD_AUDIO_PAGE_2_WHAT_AGE_MOVE_IN_TITLE)%>
 							<!-- If no, at what age did you move to Canada?: -->
