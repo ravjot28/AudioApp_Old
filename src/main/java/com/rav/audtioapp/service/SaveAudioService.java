@@ -14,14 +14,14 @@ public class SaveAudioService {
 
 		try {
 			new Thread(new SendMailCommunication(new ParamsDAO().getParamValue(ParamConstants.STRATHY_EMAIL_ADDRESS),
-					new ParamsDAO().getParamValue(ParamConstants.STRATHY_EMAIL_BODY).replaceAll("$ID$", "CVMX-" + id),
-					new ParamsDAO().getParamValue(ParamConstants.STRATHY_EMAIL_SUBJECT).replaceAll("$ID$",
+					new ParamsDAO().getParamValue(ParamConstants.STRATHY_EMAIL_BODY).replace("$ID$", "CVMX-" + id),
+					new ParamsDAO().getParamValue(ParamConstants.STRATHY_EMAIL_SUBJECT).replace("$ID$",
 							"CVMX-" + id))).start();
 
 			new Thread(new SendMailCommunication(dto.getEmailAddress(),
-					new ParamsDAO().getParamValue(ParamConstants.STRATHY_EMAIL_TO_END_USER).replaceAll("$ID$",
+					new ParamsDAO().getParamValue(ParamConstants.STRATHY_EMAIL_TO_END_USER).replace("$ID$",
 							"CVMX-" + id),
-					new ParamsDAO().getParamValue(ParamConstants.STRATHY_EMAIL_SUBJECT_TO_END_USER).replaceAll("$ID$",
+					new ParamsDAO().getParamValue(ParamConstants.STRATHY_EMAIL_SUBJECT_TO_END_USER).replace("$ID$",
 							"CVMX-" + id))).start();
 
 		} catch (Exception e) {
