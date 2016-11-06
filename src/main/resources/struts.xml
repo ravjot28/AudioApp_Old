@@ -27,18 +27,26 @@
 		<action name="strathyUnitAddAudio" class="com.rav.audtioapp.action.DummyAction">
 			<result name="success">WEB-INF/addAudio.jsp</result>
 		</action>
+		<action name="superAdmin" class="com.rav.audtioapp.action.DummyAction">
+			<result name="success">WEB-INF/welcome_strathyUnit_admin.jsp</result>
+		</action>
+		
+		
+		<action name="adminWork" class="com.rav.audtioapp.action.DummyAction">
+			<result name="success">WEB-INF/main.jsp</result>
+		</action>
 	</package>
 
 	<package name="loginRegistration" extends="struts-default,json-default">
 
 		<action name="login" class="com.rav.audtioapp.action.LoginAction">
-			<result name="success">WEB-INF/main.jsp</result>
-			<result name="input">WEB-INF/welcome_strathyUnit.jsp</result>
-			<result name="admin">WEB-INF/welcome_strathyUnit_admin.jsp</result>
+			<result name="success">adminWork</result>
+			<result name="input" type="redirect">strathyUnitLogin</result>
+			<result name="admin" type="redirect">superAdmin</result>
 		</action>
 		<action name="register" class="com.rav.audtioapp.action.RegisterationAction">
-			<result name="success">WEB-INF/welcome.jsp</result>
-			<result name="input">WEB-INF/welcome.jsp</result>
+			<result name="success" type="redirect">strathyUnitLogin</result>
+			<result name="input" type="redirect">strathyUnitLogin</result>
 		</action>
 	</package>
 
