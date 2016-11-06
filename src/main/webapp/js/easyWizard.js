@@ -30,14 +30,12 @@ $.fn.wizard = function(config) {
 			var citizenYes = $("#citizenYes").is(":checked");
 			var citizenNo = $("#citizenNo").is(":checked");
 			var canadaage = $('#canadaage').find(":selected").text();
-			var emailAddress = $('#emailAddress').val();
-			var re = /\S+@\S+\.\S+/;
+			
 			if (age.length == 0
 					|| gender.length == 0
 					|| ((!langyes && !langno) && (langno && mothertounge.length == 0))
 					|| fluency.length == 0
-					|| ((!citizenYes && !citizenNo) && (canadaage.length == 0))
-					|| emailAddress.length == 0 || !re.test(emailAddress)) {
+					|| ((!citizenYes && !citizenNo) && (canadaage.length == 0))) {
 				return false;
 			} else {
 				var hv = $('#location').val();
@@ -111,10 +109,35 @@ $.fn.wizard = function(config) {
 
 	btnNext.on("click", function() {
 		if (!validateNext(step, steps[step - 1])) {
-			alert("Please fill the form");
+			
+			var age = $('#age').find(":selected").text();
+			var gender = $('#gender').find(":selected").text();
+			var langyes = $("#langyes").is(":checked");
+			var langno = $("#langno").is(":checked");
+			var mothertounge = $('#mothertounge').val();
+			var fluency = $('#fluency').find(":selected").text();
+			var citizenYes = $("#citizenYes").is(":checked");
+			var citizenNo = $("#citizenNo").is(":checked");
+			var canadaage = $('#canadaage').find(":selected").text();
+			
+			if (age.length == 0){
+				alert("In order to proceed, you must complete the form. Please select your birth year.");
+			}
+			if (gender.length == 0){
+				alert("In order to proceed, you must complete the form. Please select your gender.");
+			}
+			if ((!langyes && !langno) && (langno && mothertounge.length == 0)){
+				alert("In order to proceed, you must complete the form. Please provide mother tounge.");
+			}
+			if (fluency.length == 0){
+				alert("In order to proceed, you must complete the form. Please rate your fluency in english.");
+			}
+			if ((!citizenYes && !citizenNo) && (canadaage.length == 0)) {
+				alert("In order to proceed, you must complete the form. Please answer about your stay in Canada.");
+			}
 			return;
 		}
-		;
+		
 
 		$(container).find(".wizard-steps-panel .step-" + step).toggleClass(
 				"doing").toggleClass("done");

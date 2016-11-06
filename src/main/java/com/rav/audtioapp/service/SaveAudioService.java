@@ -15,14 +15,16 @@ public class SaveAudioService {
 		try {
 			new Thread(new SendMailCommunication(new ParamsDAO().getParamValue(ParamConstants.STRATHY_EMAIL_ADDRESS),
 					new ParamsDAO().getParamValue(ParamConstants.STRATHY_EMAIL_BODY).replace("$ID$", "CVMX-" + id),
-					new ParamsDAO().getParamValue(ParamConstants.STRATHY_EMAIL_SUBJECT).replace("$ID$",
-							"CVMX-" + id))).start();
+					new ParamsDAO().getParamValue(ParamConstants.STRATHY_EMAIL_SUBJECT).replace("$ID$", "CVMX-" + id)))
+							.start();
 
-			new Thread(new SendMailCommunication(dto.getEmailAddress(),
-					new ParamsDAO().getParamValue(ParamConstants.STRATHY_EMAIL_TO_END_USER).replace("$ID$",
-							"CVMX-" + id),
-					new ParamsDAO().getParamValue(ParamConstants.STRATHY_EMAIL_SUBJECT_TO_END_USER).replace("$ID$",
-							"CVMX-" + id))).start();
+			if (dto.getEmailAddress() != null && dto.getEmailAddress().trim().length() > 0) {
+				new Thread(new SendMailCommunication(dto.getEmailAddress(),
+						new ParamsDAO().getParamValue(ParamConstants.STRATHY_EMAIL_TO_END_USER).replace("$ID$",
+								"CVMX-" + id),
+						new ParamsDAO().getParamValue(ParamConstants.STRATHY_EMAIL_SUBJECT_TO_END_USER).replace("$ID$",
+								"CVMX-" + id))).start();
+			}
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
