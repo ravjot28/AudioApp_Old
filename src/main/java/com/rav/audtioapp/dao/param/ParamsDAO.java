@@ -144,7 +144,7 @@ public class ParamsDAO {
 			statement.setString(index++, paramName);
 			ResultSet rs = statement.executeQuery();
 			while (rs.next()) {
-				paramValue = rs.getString(1).replaceAll("\r", " ");
+				paramValue = rs.getString(1);
 			}
 
 		} catch (Exception e) {
@@ -178,7 +178,7 @@ public class ParamsDAO {
 			statement = conn.prepareStatement(sql);
 			ResultSet rs = statement.executeQuery();
 			while (rs.next()) {
-				paramValue += rs.getString(1) + "---" + rs.getString(2).replaceAll("(\\r|\\n)", "") + "~~";
+				paramValue += rs.getString(1) + "---" + rs.getString(2) + "~~";
 			}
 
 		} catch (Exception e) {

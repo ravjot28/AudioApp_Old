@@ -579,12 +579,12 @@ html, body {
 
 					var select = document.getElementById('myoptions');
 					select.options[0] = new Option("Select the parameter", "");
-					for (var i = 1; i <= options.length; i++) {
+					for (var i = 0; i <= options.length; i++) {
 						temp = options[i];
 
 						temps = temp.split("---");
 
-						select.options[i] = new Option(temps[0], temps[1]);
+						select.options[i+1] = new Option(temps[0], temps[1]);
 					}
 
 
