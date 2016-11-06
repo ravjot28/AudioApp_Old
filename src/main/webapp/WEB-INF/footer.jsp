@@ -4,13 +4,12 @@
 
 <div id="footer">
 	<ul id="footer_menu">
-		<li><a href="strathyUnit">Home</a></li>
-		<li><a href="strathyUnitAddAudio">Add Audio</a></li>
-		<li><a data-toggle="modal" href="#downloadForm">Download
-				Audio</a></li>
+		<li><a href="strathyUnit"><%=tc.getParamValue(ParamConstants.HOME_TAB)%></a></li>
+		<li><a href="strathyUnitAddAudio"><%=tc.getParamValue(ParamConstants.ADD_AUDIO_TAB)%></a></li>
+		<li><a data-toggle="modal" href="#downloadForm"><%=tc.getParamValue(ParamConstants.DOWNLOAD_AUDIO_TAB)%></a></li>
 
 
-		<li><a href="#">About Us</a>
+		<li><a href="#"><%=tc.getParamValue(ParamConstants.ABOUT_US_TAB)%></a>
 			<div class="one_column_layout">
 				<div>
 					<h2>About Us</h2>
@@ -61,7 +60,7 @@
 			</div></li>
 
 
-		<li><a href="#">Credits</a>
+		<li><a href="#"><%=tc.getParamValue(ParamConstants.CREDITS_TAB)%></a>
 			<div class="one_column_layout">
 				<div>
 					<h2>Credits</h2>
