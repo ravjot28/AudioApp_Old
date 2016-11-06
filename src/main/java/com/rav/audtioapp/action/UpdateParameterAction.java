@@ -7,8 +7,9 @@ public class UpdateParameterAction {
 	private String parameterValue;
 
 	public String execute() {
-		new ParamsDAO().deactiavteParam(parameterName);
-		new ParamsDAO().insertParam(parameterName, parameterValue);
+		ParamsDAO dao = new ParamsDAO();
+		dao.deactiavteParam(parameterName);
+		dao.insertParam(parameterName, parameterValue);
 		return "success";
 	}
 
